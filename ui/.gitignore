@@ -60,6 +60,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# tokens and access keys
+/secrets/secrets.js
+
 
 # other
 nohup.out

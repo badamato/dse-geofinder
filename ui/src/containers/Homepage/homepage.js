@@ -9,6 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Reactmap from '../../components/Reactmap/reactmap';
+import secrets from '../../secrets/secrets'
 
 import style from '../../style/style.css';
 
@@ -48,8 +49,8 @@ const styles = theme => ({
     }
 });
 
-// const TOKEN = process.env.REACT_APP_MapboxAccessToken;
-const TOKEN = 'pk.eyJ1IjoiYmFkYW1hdG8iLCJhIjoiY2p1anZ6YTVkMXBzZTQ0dWpheGF4ODF6dyJ9.KglfXQnMkcHnkKPyr-ZkXw';
+const TOKEN = MapboxAccessToken;
+// const TOKEN = 'pk.eyJ1IjoiYmFkYW1hdG8iLCJhIjoiY2p1anZ6YTVkMXBzZTQ0dWpheGF4ODF6dyJ9.KglfXQnMkcHnkKPyr-ZkXw';
 const LONG = -84.386330;
 const LAT = 33.753746;
 const ZOOM = 12;
@@ -63,7 +64,7 @@ class HomePage extends PureComponent {
 
         return (
         <div className='container'>
-        <Grid container xs={24}>
+        <Grid container>
             <Paper className='search-paper'>
                 <div style={{marginTop: "6px"}} className='searchIcon'>
                     <SearchIcon />
@@ -93,7 +94,7 @@ class HomePage extends PureComponent {
             </Paper>
                 
                 <Paper className={classes.mapContainer} elevation={1}>
-                <ReactMap className={classes.map}
+                <Reactmap className={classes.map}
                     token= { TOKEN }
                     longitude= { LONG }
                     latitude= { LAT }

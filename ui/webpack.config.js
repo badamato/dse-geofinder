@@ -71,6 +71,11 @@ performance: { hints: false },
         filename: 'bundle.js'
     },
 
+    devServer: {
+        contentBase: "./public",
+        hot: true
+    },
+
     // bundle app.js and everything it imports, recursively.
     entry: {
         app: resolve('./src/main.js')
