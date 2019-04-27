@@ -12,7 +12,7 @@ const CONFIG = {
 performance: { hints: false },
     // bundle app.js and everything it imports, recursively.
     entry: {
-        app: resolve('./src/js/main.js')
+        app: resolve('./src/main.js')
     },
 
     devtool: 'eval',
@@ -73,7 +73,7 @@ performance: { hints: false },
 
     // bundle app.js and everything it imports, recursively.
     entry: {
-        app: resolve('./src/js/main.js')
+        app: resolve('./src/main.js')
     },
 
             /*

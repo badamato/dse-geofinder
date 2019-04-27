@@ -2,7 +2,7 @@
     "name": "geofinder-api",
     "version": "1.0.0",
     "description": "Remake of Geofinder API",
-    "main": "src/js/app.js",
+    "main": "src/containers/app.js",
     "author": "Beth Damato",
     "scripts": {
         "start": "webpack-dev-server --watch --progress --hot --host 0.0.0.0",

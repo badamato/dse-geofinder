@@ -1,0 +1,123 @@
+.control-items{
+    margin: 4.5% !important;
+}
+.basepage{
+    margin-left: 80px;
+}
+.side-grid{
+    width:20%;
+}
+/* .map-paper {
+    position: absolute;
+    top: 8px;
+    margin-bottom: 1%;
+    margin-left: 30.5%;
+    width: 70%;
+    min-height: 800px;
+} */
+/* .cql-paper {
+    position: absolute;
+    top: 820px;
+    margin-bottom: 2%;
+    margin-left: 30.5%;
+    width:70%;
+    min-height: 150px;
+} */
+.search-paper {
+    padding: 30px 10px 0 10px;
+    margin-bottom: 2%;
+    width: 29%;
+    min-height: 933px;
+}
+.half-paper {
+    margin: 4.5%;
+    width: 40%;
+    min-height: 700px;
+}
+.control {
+    margin: 4.5%;
+    width:100%;
+    min-height: 300px;
+}
+.control-large {
+    margin: 4.5%;
+    width:100%;
+    min-height: 613px;
+    height: 700px;
+    overflow: auto;
+}
+.control-container {
+    padding: 3%;
+}
+.tabs {
+    padding: 3%;
+    margin: 4.5%;
+    width:100%;
+}
+.tab {
+    min-width:30% !important;
+}
+.container {
+    padding: .5%;
+    position:relative;
+    min-height: 1000px;
+    background-color: #f8f8f8;
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+.inside-container {
+    padding: 3%;
+    position:relative;
+    min-height: 700px;
+}
+.app p {
+    color: blue;
+}
+.overflow-holder{
+    overflow: auto;
+    min-height:700px;
+}
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.grow {
+    flex-grow: 1;
+}
+.search {
+    /* margin: 0 15px; */
+    display: flex;
+    border-radius: 2px;
+    background-color: #e5e5e5;
+}
+.search:hover {
+    background-color: #b2b2b2;
+}
+.searchIcon {
+    margin-left: 25%;
+    position: fixed;
+    pointer-events: none;
+    color: #999999;
+}
+.inputInput {
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 30px;
+    transition: width 2s;
+    width: 80%;
+        /* [theme.breakpoints.up('sm')]: {
+            width: 120,
+            '&:focus': {
+            width: 200,
+            },
+        }, */
+}
+/* .cql-field {
+    background-color: #e5e5e5;
+    width: 80%;
+    margin: 10px 5px 10px 30px;
+} */
+#map {
+    width: 100%;
+}
