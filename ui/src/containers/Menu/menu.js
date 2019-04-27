@@ -24,7 +24,7 @@ import GraphIcon from '@material-ui/icons/ScatterPlot';
 import AdminIcon from '@material-ui/icons/MyLocation';
 import BrushIcon from '@material-ui/icons/Brush';
 
-import {drawerToggle, changeScreen} from '../actions/NavigationActions'
+import {drawerToggle, changeScreen} from '../../actions/navigationactions';
 
 const drawerWidth = 240;
 
@@ -171,7 +171,7 @@ return(
             <MenuIcon />
         </IconButton>
         <div style={{height: "60px"}} className={classes.logo}>
-                        <img style={{height: '57px', marginLeft: "20px"}} src={require('../../img/logo.png')} />
+                        <img style={{height: '57px', marginLeft: "20px"}} src={require('../../images/logo.png')} />
                     </div>
         <Typography className={classes.title} variant="h4" color="inherit" noWrap>
             {this.props.appName}
