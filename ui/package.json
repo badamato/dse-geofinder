@@ -1,5 +1,5 @@
 {
-    "name": "geofinder-api",
+    "name": "dse-geofinder",
     "version": "1.0.0",
     "description": "Remake of Geofinder API",
     "main": "src/containers/app.js",
