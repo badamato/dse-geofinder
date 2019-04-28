@@ -45,16 +45,14 @@ const styles = theme => ({
     cqlField: {
         backgroundColor: '#e5e5e5',
         width: '80%',
-        margin: '20px 30px 20px 120px',
+        margin: '20px 90px 20px 120px',
     }
 });
 
 const TOKEN = MapboxAccessToken;
-// const TOKEN = 'pk.eyJ1IjoiYmFkYW1hdG8iLCJhIjoiY2p1anZ6YTVkMXBzZTQ0dWpheGF4ODF6dyJ9.KglfXQnMkcHnkKPyr-ZkXw';
 const LONG = -84.386330;
 const LAT = 33.753746;
 const ZOOM = 12;
-// const STYLE_ID = ""
 
 
 class HomePage extends PureComponent {
@@ -66,9 +64,7 @@ class HomePage extends PureComponent {
         <div className='container'>
         <Grid container>
             <Paper className='search-paper'>
-                <div style={{marginTop: "6px"}} className='searchIcon'>
-                    <SearchIcon />
-                </div>
+
                 <div className='search'>
                 <InputBase
                     placeholder="Search…"
@@ -76,6 +72,9 @@ class HomePage extends PureComponent {
                     //onChange={(e) => this.props.updateCurrentTransaction("currentTransaction", e.target.value) }
                     className='inputInput'
                 />
+                    <div className='searchIcon'>
+                    <SearchIcon />
+                    </div>
                 </div>
                 <div>
                     <Button variant="contained" color="primary" size="small" className={classes.button}>
@@ -99,7 +98,6 @@ class HomePage extends PureComponent {
                     longitude= { LONG }
                     latitude= { LAT }
                     zoom= { ZOOM }
-                    // styleID= { STYLE_ID }
                     />
                 </Paper>
 

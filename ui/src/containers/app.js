@@ -45,12 +45,6 @@ class App extends Component {
                     :
                     null
                 }
-                {
-                    this.props.NavigationReducer.page === 'Admin' ?
-                    <Admin/>
-                    :
-                    null
-                }
                 </Grid>
             </Grid>
         </MuiThemeProvider>

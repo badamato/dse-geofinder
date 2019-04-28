@@ -7,22 +7,6 @@
 .side-grid{
     width:20%;
 }
-/* .map-paper {
-    position: absolute;
-    top: 8px;
-    margin-bottom: 1%;
-    margin-left: 30.5%;
-    width: 70%;
-    min-height: 800px;
-} */
-/* .cql-paper {
-    position: absolute;
-    top: 820px;
-    margin-bottom: 2%;
-    margin-left: 30.5%;
-    width:70%;
-    min-height: 150px;
-} */
 .search-paper {
     padding: 30px 10px 0 10px;
     margin-bottom: 2%;
@@ -94,8 +78,8 @@ body {
     background-color: #b2b2b2;
 }
 .searchIcon {
-    margin-left: 25%;
-    position: fixed;
+    margin-top: 6px;
+    margin-left: 5%;
     pointer-events: none;
     color: #999999;
 }
@@ -113,11 +97,6 @@ body {
             },
         }, */
 }
-/* .cql-field {
-    background-color: #e5e5e5;
-    width: 80%;
-    margin: 10px 5px 10px 30px;
-} */
 #map {
     width: 100%;
 }

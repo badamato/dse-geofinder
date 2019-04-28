@@ -176,21 +176,6 @@ return(
         <Typography className={classes.title} variant="h4" color="inherit" noWrap>
             {this.props.appName}
         </Typography>
-        {/* <div className={classes.grow} />
-        <div className={classes.search}>
-            <div className={classes.searchIcon}>
-            <SearchIcon />
-            </div>
-            <InputBase
-            placeholder="Search…"
-            //value={ this.props.currentTransaction }
-            //onChange={(e) => this.props.updateCurrentTransaction("currentTransaction", e.target.value) }
-            classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-            }}
-            />
-        </div> */}
         </Toolbar>
     </AppBar>
     
