@@ -99,9 +99,15 @@ content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
 },
-logo: {
+header: {
     flex: 1,
     margin: 0,
+    height: '90px',
+},
+logo: {
+    height: '72px',
+    marginLeft: '20px',
+    marginTop: '10px',
 },
 title: {
     flex: 1,
@@ -167,11 +173,11 @@ return(
     <div className={classes.root}>
     <AppBar position="static">
         <Toolbar>
-        <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+        {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
             <MenuIcon />
-        </IconButton>
-        <div style={{height: "60px"}} className={classes.logo}>
-                        <img style={{height: '57px', marginLeft: "20px"}} src={require('../../images/logo.png')} />
+        </IconButton> */}
+        <div className={classes.header}>
+                        <img className={classes.logo} src={require('../../images/logo.png')} />
                     </div>
         <Typography className={classes.title} variant="h4" color="inherit" noWrap>
             {this.props.appName}
@@ -179,7 +185,7 @@ return(
         </Toolbar>
     </AppBar>
     
-    <Drawer
+    {/* <Drawer
         variant="permanent"
         className={classNames(classes.drawer, {
         [classes.drawerOpen]: this.props.drawerOpen,
@@ -220,7 +226,7 @@ return(
             </ListItem>
         ))}
         </List>
-    </Drawer>
+    </Drawer> */}
     </div>
     );
 }
