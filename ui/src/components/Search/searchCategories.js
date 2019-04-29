@@ -47,7 +47,9 @@ const styles = {
     },
     resultsContainer: {
         border: '1px solid blue',
-        height: '300px',
+        padding: '10px',
+        height: '680px',
+        overflow: 'scroll',
     },
     results: {
         
@@ -86,53 +88,6 @@ class SearchCategories extends Component {
                 <br/>
                 <div className={classes.resultsContainer}>
                     <Typography className={classes.results}>
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
                         ***Put results here
                         ***Put results here
                         ***Put results here

@@ -15,6 +15,11 @@ class ReactMap extends Component {
         }
         mapboxgl.accessToken = token;
         this.map = new mapboxgl.Map(mapConfig);
+
+        // this.marker = new mapboxgl.Marker()
+        //     .setLngLat([-84.386330, 33.753746])
+        //     .addTo(mapConfig);
+
     }
     
 
