@@ -1,4 +1,14 @@
-.control-items{
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.grow {
+    flex-grow: 1;
+}
+#map {
+    width: 100%;
+}
+/* .control-items{
     margin: 4.5% !important;
 }
 .side-grid{
@@ -9,12 +19,12 @@
     margin-bottom: 2%;
     width: 29%;
     min-height: 933px;
-}
+} 
 .half-paper {
     margin: 4.5%;
     width: 40%;
     min-height: 700px;
-}
+} 
 .control {
     margin: 4.5%;
     width:100%;
@@ -37,7 +47,7 @@
 }
 .tab {
     min-width:30% !important;
-}
+} 
 .container {
     padding: .5%;
     position:relative;
@@ -45,26 +55,16 @@
     background-color: #f8f8f8;
     background-repeat: no-repeat;
     background-position: right top;
-}
+} 
 .inside-container {
     padding: 3%;
     position:relative;
     min-height: 700px;
-}
+} *
 .app p {
     color: blue;
 }
 .overflow-holder{
     overflow: auto;
     min-height:700px;
-}
-body {
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-.grow {
-    flex-grow: 1;
-}
-#map {
-    width: 100%;
-}
+}  */

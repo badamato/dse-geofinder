@@ -10,8 +10,21 @@ import secrets from '../../secrets/secrets';
 import style from '../../style/style.css';
 
 
-
 const styles = {
+    container: {
+        padding: '.5%',
+        position: 'relative',
+        minHeight: '1000px',
+        backgroundColor: '#f8f8f8',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'right top',
+    },
+    searchPaper: {
+        padding: '50px 10px 0 10px',
+        marginBottom: '2%',
+        width: '29%',
+        minHeight: '933px',
+    },
     mapContainer: {
         display: 'flex',
         position: 'absolute',
@@ -56,9 +69,9 @@ class HomePage extends PureComponent {
         const { classes } = this.props;
 
         return (
-        <div className='container'>
+        <div className={classes.container}>
         <Grid container>
-            <Paper className='search-paper'>
+            <Paper className={classes.searchPaper}>
                 <Navtabs />
             </Paper>
 
@@ -72,11 +85,9 @@ class HomePage extends PureComponent {
 
             <Grid item xs={12}>
                 <Paper className={classes.cqlPaper} elevation={1}>
-                    {/* <div className={classes.cqlText}> */}
                         <Typography variant="h5" className={classes.cqlText}>
                             Cassandra CQL Query
                         </Typography>
-                    {/* </div> */}
                     <div className={classes.cqlField}>
 
                     </div>
