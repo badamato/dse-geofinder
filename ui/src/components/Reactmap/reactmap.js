@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
+import secrets from '../../secrets/secrets';
 
 
 class ReactMap extends Component {

@@ -7,7 +7,8 @@ import NoSsr from '@material-ui/core/NoSsr';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 
-import Search from '../Search/search';
+import SearchFullText from '../Search/searchFullText';
+import SearchCategories from '../Search/searchCategories';
 
 
 function TabContainer(props) {
@@ -56,13 +57,13 @@ render() {
             </AppBar>
             {value === 0 && 
                 <TabContainer component='div'>
-                    <Search />
+                    <SearchFullText />
                 </TabContainer>
             }
 
             {value === 1 && 
                 <TabContainer component='div'>
-                    Page 2
+                    <SearchFullText />
                 </TabContainer>
             }
         </div>
