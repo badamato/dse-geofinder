@@ -4,6 +4,7 @@ import Divider from '@material-ui/core/Divider';
 import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { Typography } from '@material-ui/core';
 
 
 const styles = {
@@ -43,6 +44,13 @@ const styles = {
     },
     divider: {
         margin: 0,
+    },
+    resultsContainer: {
+        border: '1px solid red',
+        height: '300px',
+    },
+    results: {
+
     }
 
 };
@@ -75,6 +83,61 @@ class SearchFullText extends Component {
                         type="file"/>
                 </div>
                 <Divider variant="middle" className={classes.divider} />
+                <br/>
+                <div className={classes.resultsContainer}>
+                    <Typography className={classes.results}>
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                        ***Put results here
+                    </Typography>
+                </div>
             </div>
         )
     }

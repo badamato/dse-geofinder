@@ -63,7 +63,7 @@ render() {
 
             {value === 1 && 
                 <TabContainer component='div'>
-                    <SearchFullText />
+                    <SearchCategories />
                 </TabContainer>
             }
         </div>
