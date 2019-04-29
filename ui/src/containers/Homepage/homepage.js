@@ -25,20 +25,20 @@ const styles = {
         width: '29%',
         minHeight: '933px',
     },
-    mapContainer: {
+    mapPaper: {
         display: 'flex',
         position: 'absolute',
         top: '8px',
         marginBottom: '1%',
         marginLeft: '30.5%',
         width: '70%',
-        minHeight: '800px',
+        minHeight: '815px',
     },
     cqlPaper: {
         display: 'flex',
         position: 'absolute',
-        top: '820px',
-        marginBottom: '2%',
+        top: '829px',
+        // marginBottom: '2%',
         marginLeft: '30.5%',
         width: '70%',
         minHeight: '150px',
@@ -75,8 +75,8 @@ class HomePage extends PureComponent {
                 <Navtabs />
             </Paper>
 
-            <Paper className={classes.mapContainer} elevation={1}>
-                <Reactmap className={classes.map}
+            <Paper className={classes.mapPaper} elevation={1}>
+                <Reactmap
                     token= { TOKEN }
                     longitude= { LONG }
                     latitude= { LAT }

@@ -102,7 +102,7 @@ content: {
 header: {
     flex: 1,
     margin: 0,
-    height: '90px',
+    height: '80px',
 },
 logo: {
     height: '72px',

@@ -72,3 +72,4 @@ target/
 *.iml
 quarkus.log
 .mvn
+.csv
