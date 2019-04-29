@@ -74,7 +74,7 @@ render() {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-
+        
     }
 }
 
