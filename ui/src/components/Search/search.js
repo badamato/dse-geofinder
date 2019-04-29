@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 
 const styles = {
     button: {
-        margin: '12px',
+        margin: '15px',
     },
     input: {
         display: 'none',

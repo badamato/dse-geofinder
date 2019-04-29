@@ -15,6 +15,11 @@ performance: { hints: false },
         app: resolve('./src/main.js')
     },
 
+    devServer: {
+        contentBase: "./public",
+        hot: true
+    },
+
     devtool: 'eval',
 
     module: {
@@ -65,11 +70,11 @@ performance: { hints: false },
 };
 
 const PROD = {
-performance: { hints: false },
-    output: {
-        path: path.resolve(__dirname, '../src/main/resources/META-INF/resources/'),
-        filename: 'bundle.js'
-    },
+    performance: { hints: false },
+        output: {
+            path: path.resolve(__dirname, '../src/main/resources/META-INF/resources/'),
+            filename: 'bundle.js'
+        },
 
     devServer: {
         contentBase: "./public",

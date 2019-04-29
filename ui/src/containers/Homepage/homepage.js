@@ -1,25 +1,17 @@
 import React, {PureComponent} from 'react';
-import { FormHelperText } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
-import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Reactmap from '../../components/Reactmap/reactmap';
-import secrets from '../../secrets/secrets'
 
+import Reactmap from '../../components/Reactmap/reactmap';
+import Navtabs from '../../components/Navtabs/navtabs';
+import secrets from '../../secrets/secrets';
 import style from '../../style/style.css';
 
-const styles = theme => ({
-    button: {
-        margin: theme.spacing.unit,
-    },
-    input: {
-        display: 'none',
-    },
+
+
+const styles = {
     mapContainer: {
         display: 'flex',
         position: 'absolute',
@@ -28,10 +20,6 @@ const styles = theme => ({
         marginLeft: '30.5%',
         width: '70%',
         minHeight: '800px',
-    },
-    map: {
-        width: '100%',
-    
     },
     cqlPaper: {
         display: 'flex',
@@ -45,9 +33,16 @@ const styles = theme => ({
     cqlField: {
         backgroundColor: '#e5e5e5',
         width: '80%',
-        margin: '20px 90px 20px 120px',
+        borderRadius: '20px',
+        margin: '20px 110px 20px 0',
+    }, 
+    cqlText: {
+        width: '15%',
+        flex: '1',
+        padding: '10px',
+        margin: '40px 10px 40px 110px',
     }
-});
+}
 
 const TOKEN = MapboxAccessToken;
 const LONG = -84.386330;
@@ -64,50 +59,24 @@ class HomePage extends PureComponent {
         <div className='container'>
         <Grid container>
             <Paper className='search-paper'>
-
-                <div className='search'>
-                <InputBase
-                    placeholder="Search…"
-                    //value={ this.props.currentTransaction }
-                    //onChange={(e) => this.props.updateCurrentTransaction("currentTransaction", e.target.value) }
-                    className='inputInput'
-                />
-                    <div className='searchIcon'>
-                    <SearchIcon />
-                    </div>
-                </div>
-                <div>
-                    <Button variant="contained" color="primary" size="small" className={classes.button}>
-                        GO
-                    </Button>
-                    <input
-                        accept="image/*"
-                        className={classes.input}
-                        id=""
-                        multiple
-                        type="file"
-                    />
-                </div>
-                <br />
-                <Divider variant="middle" />
+                <Navtabs />
             </Paper>
-                
-                <Paper className={classes.mapContainer} elevation={1}>
+
+            <Paper className={classes.mapContainer} elevation={1}>
                 <Reactmap className={classes.map}
                     token= { TOKEN }
                     longitude= { LONG }
                     latitude= { LAT }
-                    zoom= { ZOOM }
-                    />
-                </Paper>
+                    zoom= { ZOOM }/>
+            </Paper>
 
             <Grid item xs={12}>
                 <Paper className={classes.cqlPaper} elevation={1}>
-                    <div>
-                    <Typography variant="h5" gutterBottom>
-                        Cassandra CQL Query
-                    </Typography>
-                    </div>
+                    {/* <div className={classes.cqlText}> */}
+                        <Typography variant="h5" className={classes.cqlText}>
+                            Cassandra CQL Query
+                        </Typography>
+                    {/* </div> */}
                     <div className={classes.cqlField}>
 
                     </div>

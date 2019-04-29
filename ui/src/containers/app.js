@@ -8,7 +8,6 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 //components
 import HomePage from './Homepage/homepage';
-import Dashboard from './Dashboard/dashboard';
 import MenuContainer from './Menu/menu';
 
 const theme = createMuiTheme({
@@ -36,12 +35,6 @@ class App extends Component {
                 {
                     this.props.NavigationReducer.page === 'Home' ?
                     <HomePage/>
-                    :
-                    null
-                }
-                {
-                    this.props.NavigationReducer.page === 'Dashboard' ?
-                    <Dashboard/>
                     :
                     null
                 }
