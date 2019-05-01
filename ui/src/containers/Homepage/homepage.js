@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
-import Reactmap from '../../components/Reactmap/reactmap';
+import Reactmap from '../../components/Map/reactmap'
 import Navtabs from '../../components/Navtabs/navtabs';
 import secrets from '../../secrets/secrets';
 import style from '../../style/style.css';
@@ -57,10 +57,10 @@ const styles = {
     }
 }
 
-const TOKEN = MapboxAccessToken;
-const LONG = -84.386330;
-const LAT = 33.753746;
-const ZOOM = 12;
+// const TOKEN = MapboxAccessToken;
+// const LONG = -84.386330;
+// const LAT = 33.753746;
+// const ZOOM = 12;
 
 
 class HomePage extends PureComponent {
@@ -76,11 +76,12 @@ class HomePage extends PureComponent {
             </Paper>
 
             <Paper className={classes.mapPaper} elevation={1}>
-                <Reactmap
+                {/* <Reactmap
                     token= { TOKEN }
                     longitude= { LONG }
                     latitude= { LAT }
-                    zoom= { ZOOM }/>
+                    zoom= { ZOOM }/> */}
+                    <Reactmap />
             </Paper>
 
             <Grid item xs={12}>

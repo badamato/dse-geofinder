@@ -1,33 +1,31 @@
-
-import React, { Component } from 'react';
-import mapboxgl from 'mapbox-gl';
-import secrets from '../../secrets/secrets';
-
+import React, {Component} from 'react';
+import ReactMapGL from 'react-map-gl';
 
 class ReactMap extends Component {
+    constructor(props) {
+        super(props);
 
-    componentDidMount() {
-        const { token, longitude, latitude, zoom, styleID } = this.props;
-        const mapConfig = {
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v9',
-            center: [longitude, latitude],
-            zoom: zoom,
-        }
-        mapboxgl.accessToken = token;
-        this.map = new mapboxgl.Map(mapConfig);
-
-        this.marker = new mapboxgl.Marker()
-            .setLngLat([-84.386330, 33.753746])
-            .addTo('map');
-
+        this.state = {
+            viewport: {
+                width: '100%',
+                height: 815,
+                latitude: 33.753746,
+                longitude: -84.386330,
+                zoom: 9
+            },
+            token: 'pk.eyJ1IjoiYmFkYW1hdG8iLCJhIjoiY2p1anZ6YTVkMXBzZTQ0dWpheGF4ODF6dyJ9.KglfXQnMkcHnkKPyr-ZkXw'
+        };
     }
-    
+
 
     render() {
         return (
-            <div id='map'></div>
-        )
+        <ReactMapGL
+            mapboxApiAccessToken={this.state.token}
+            {...this.state.viewport}
+            onViewportChange={(viewport) => this.setState({viewport})}
+        />
+        );
     }
 }
 
