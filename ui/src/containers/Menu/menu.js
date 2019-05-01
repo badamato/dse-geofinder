@@ -24,7 +24,7 @@ import GraphIcon from '@material-ui/icons/ScatterPlot';
 import AdminIcon from '@material-ui/icons/MyLocation';
 import BrushIcon from '@material-ui/icons/Brush';
 
-import {drawerToggle, changeScreen} from '../../actions/navigationactions';
+// import {drawerToggle, changeScreen} from '../../actions/navigationactions';
 
 const drawerWidth = 240;
 

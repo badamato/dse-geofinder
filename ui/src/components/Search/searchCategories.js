@@ -48,7 +48,7 @@ const styles = {
     resultsContainer: {
         border: '1px solid blue',
         padding: '10px',
-        height: '680px',
+        height: '640px',
         overflow: 'scroll',
     },
     results: {

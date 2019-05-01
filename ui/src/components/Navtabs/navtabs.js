@@ -6,6 +6,8 @@ import Tabs from '@material-ui/core/Tabs';
 import NoSsr from '@material-ui/core/NoSsr';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import FindInPage from '@material-ui/icons/FindInPage';
+import ViewList from '@material-ui/icons/ViewList';
 
 import SearchFullText from '../Search/searchFullText';
 import SearchCategories from '../Search/searchCategories';
@@ -51,8 +53,8 @@ render() {
         <div className={classes.root}>
             <AppBar position="static">
                 <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
-                    <LinkTab label="Full-Text Search" href="page1" />
-                    <LinkTab label="Catagory Search" href="page2" />
+                    <LinkTab label="Full-Text Search" icon={<FindInPage />} href="page1" />
+                    <LinkTab label="Catagory Search" icon={<ViewList />} href="page2" />
                 </Tabs>
             </AppBar>
             {value === 0 && 

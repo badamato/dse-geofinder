@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import ReactMapGL, { Marker, Layer, Popup } from 'react-map-gl';
 import Pin from './pin';
 import secrets from '../../secrets/secrets';
 
@@ -8,6 +8,7 @@ class ReactMap extends Component {
         super(props);
 
         this.state = {
+            api_url: 'https://services1.arcgis.com/4yjifSiIG17X0gW4/arcgis/rest/services/Census_Tracts_Opportunity_Zones_2016Census/FeatureServer/0?f=pjson',
             viewport: {
                 width: '100%',
                 height: 815,
@@ -23,8 +24,19 @@ class ReactMap extends Component {
                 { latitude: 33.761638, longitude: -84.387924 },
                 { latitude: 33.761367, longitude: -84.387826 },
                 { latitude: 33.763982, longitude: -84.392621 }
-            ]
+            ],
+            data: null
         };
+    }
+
+    componentDidMount() {
+        const {data, api_url } = this.state;
+
+        if (!data) {
+            fetch(api_url, { method: 'GET'})
+            .then(res => res.json())
+            .then(res => console.log(res))
+        }
     }
 
 
@@ -34,6 +46,7 @@ class ReactMap extends Component {
         return (
         <ReactMapGL
             mapboxApiAccessToken={this.state.token}
+            mapStyle='mapbox://styles/mapbox/streets-v11'
             {...this.state.viewport}
             onViewportChange={(viewport) => this.setState({viewport})}>
 
