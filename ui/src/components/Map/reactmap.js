@@ -8,7 +8,7 @@ class ReactMap extends Component {
         super(props);
 
         this.state = {
-            api_url: 'https://services1.arcgis.com/4yjifSiIG17X0gW4/arcgis/rest/services/Census_Tracts_Opportunity_Zones_2016Census/FeatureServer/0?f=pjson',
+            api_url: 'https://data.edmonton.ca/resource/87ck-293k.json',
             viewport: {
                 width: '100%',
                 height: 815,
@@ -35,7 +35,7 @@ class ReactMap extends Component {
         if (!data) {
             fetch(api_url, { method: 'GET'})
             .then(res => res.json())
-            .then(res => console.log(res))
+            .then(res => this.setState({data: res}))
         }
     }
 
