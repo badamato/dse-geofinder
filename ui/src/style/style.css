@@ -11,10 +11,10 @@ body {
 .control-panel {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 10px;
     max-width: 210px;
     background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     padding: 12px 24px;
     margin: 20px;
     font-size: 13px;
