@@ -1,7 +1,17 @@
 import React, {Component} from 'react';
-import ReactMapGL, { Marker, Layer, Popup } from 'react-map-gl';
+import {render} from 'react-dom';
+import ReactMapGL, { Marker, NavigationControl, Layer, Popup } from 'react-map-gl';
+
+import ControlPanel from './controlpanel';
 import Pin from './pin';
 import secrets from '../../secrets/secrets';
+
+const navStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    padding: '10px'
+};
 
 class ReactMap extends Component {
     constructor(props) {
@@ -25,7 +35,8 @@ class ReactMap extends Component {
                 { latitude: 33.761367, longitude: -84.387826 },
                 { latitude: 33.763982, longitude: -84.392621 }
             ],
-            data: null
+            data: null,
+            events: {}
         };
     }
 
@@ -38,16 +49,22 @@ class ReactMap extends Component {
         }
     }
 
+    _updateViewport = (viewport) => {
+        this.setState({viewport});
+    }
+
 
     render() {
-        const { coords } = this.state;
+        const { coords, viewport } = this.state;
 
         return (
         <ReactMapGL
+            {...viewport}
             mapboxApiAccessToken={this.state.token}
             // mapStyle='mapbox://styles/mapbox/streets-v11'
             mapStyle='mapbox://styles/mapbox/light-v9'
             {...this.state.viewport}
+            onViewportChange={this._updateViewport}
             onViewportChange={(viewport) => this.setState({viewport})}>
 
             { coords.map((coord, index) => (
@@ -55,6 +72,15 @@ class ReactMap extends Component {
                     <Pin />
                 </Marker>
             )) }
+
+        <div className="nav" style={navStyle}>
+            <NavigationControl onViewportChange={this._updateViewport} />
+        </div>
+
+        <ControlPanel
+        containerComponent={this.props.containerComponent}
+        events={this.state.events}
+        />
 
         </ReactMapGL>
         );
