@@ -4,18 +4,21 @@ import {get} from '../common/requests';
 import {changeScreen} from './navigationactions';
 
 
-export function getGeoData() {
-    return(dispatch, getState) => {
-        const url = '';
-        const interval = setInterval(() => {
-            get({
-                url: url, 
-                success: function(res){
+// const hostname = window.location.hostname;
+// const url = 'http://'+hostname+':8080/demo/write';
 
+export function getSuggData() {
+    return(dispatch, getState) => {
+        const url = 'http://localhost:8080/#/api/name-suggest?name=string&sort=sortfield';
+            get({
+                url: url,
+                // params: data,
+                success: function(res){
+                    console.log(res.data)
+                    let locationsList = []
                 },
                 dispatch: dispatch,
             });
-        }, 5000)
     }
 }
 
@@ -34,4 +37,4 @@ export const updateData = (type, data) => {
     }
 }
 
-export default {updateValue};
+export default {updateValue, getSuggData};

@@ -20,7 +20,8 @@ const initialAppState = {
     viewport: {
         width: "100%",
         height: "100%"
-    }
+    },
+    allLocData: [],
 };
 
 const initialState = {
