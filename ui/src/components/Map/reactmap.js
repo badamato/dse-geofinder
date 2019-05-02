@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {render} from 'react-dom';
 import ReactMapGL, { Marker, NavigationControl, Layer, Popup } from 'react-map-gl';
 
 import ControlPanel from './controlpanel';
 import Pin from './pin';
+import style from '../../style/style.css';
 import secrets from '../../secrets/secrets';
 
 const navStyle = {
