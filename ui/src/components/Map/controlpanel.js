@@ -1,5 +1,6 @@
 
 import React, {PureComponent} from 'react';
+import style from '../../style/style.css';
 
 const defaultContainer = ({children}) => <div className="control-panel">{children}</div>;
 
@@ -13,6 +14,8 @@ export default class ControlPanel extends PureComponent {
     renderEvent = (eventName) => {
         const {events = {}} = this.props;
         const lngLat = events[eventName];
+
+
         return (
         <div key={eventName}>
             <strong>{eventName}:</strong>{' '}
@@ -25,12 +28,12 @@ export default class ControlPanel extends PureComponent {
         const Container = this.props.containerComponent || defaultContainer;
         return (
         <Container>
-            <h3>Draggable Marker</h3>
-            <p>Try dragging the marker to another location.</p>
+            <h3>DEMOGRAPHIC PANEL</h3>
+            <p>Click to add income layer.</p>
+            <hr />
             <div>
             {eventNames.map(this.renderEvent)}
             </div>
-            {/* TODO add a "View Code" link here when we know the release */}
         </Container>
         );
     }
