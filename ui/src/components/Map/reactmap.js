@@ -8,7 +8,7 @@ class ReactMap extends Component {
         super(props);
 
         this.state = {
-            api_url: 'https://data.edmonton.ca/resource/87ck-293k.json',
+            api_url: '',
             viewport: {
                 width: '100%',
                 height: 815,
@@ -34,7 +34,6 @@ class ReactMap extends Component {
 
         if (!data) {
             fetch(api_url, { method: 'GET'})
-            .then(res => res.json())
             .then(res => this.setState({data: res}))
         }
     }
@@ -46,7 +45,8 @@ class ReactMap extends Component {
         return (
         <ReactMapGL
             mapboxApiAccessToken={this.state.token}
-            mapStyle='mapbox://styles/mapbox/streets-v11'
+            // mapStyle='mapbox://styles/mapbox/streets-v11'
+            mapStyle='mapbox://styles/mapbox/light-v9'
             {...this.state.viewport}
             onViewportChange={(viewport) => this.setState({viewport})}>
 
