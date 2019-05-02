@@ -24,7 +24,7 @@ class ControlPanel extends PureComponent {
                         />
                 </div>
                 <br />
-                <h5>DATA SOURCE: <a href="https://catalog.data.gov/dataset?tags=%22median+household+income%22" style={{textDecoration: 'none', color: 'blue'}}>ARCGIS DATA</a></h5>
+                <h5>DATA SOURCE: <a style={{textDecoration: 'none', color: 'blue'}} href="https://catalog.data.gov/dataset?tags=%22median+household+income%22" target="_blank">ARCGIS DATA</a></h5>
             </Container>
         );
     }

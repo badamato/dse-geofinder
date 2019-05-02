@@ -62,7 +62,8 @@ class ReactMap extends Component {
             {...viewport}
             mapboxApiAccessToken={this.state.token}
             // mapStyle='mapbox://styles/mapbox/streets-v11'
-            mapStyle='mapbox://styles/mapbox/light-v9'
+            // mapStyle='mapbox://styles/mapbox/light-v9'
+            mapStyle='mapbox://styles/mapbox/outdoors-v11'
             {...this.state.viewport}
             onViewportChange={this._updateViewport}
             onViewportChange={(viewport) => this.setState({viewport})}>

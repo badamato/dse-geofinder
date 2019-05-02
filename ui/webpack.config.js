@@ -47,7 +47,8 @@ performance: { hints: false },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{ loader: 'url?limit=10000&mimetype=image/svg+xml' }]
-            }
+            },
+
             /*
     {
         test: /\.css$/,
@@ -120,7 +121,8 @@ const PROD = {
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{ loader: 'url-loader?limit=10000&mimetype=image/svg+xml' }]
-            }
+            },
+
             /*
     {
         test: /\.css$/,
