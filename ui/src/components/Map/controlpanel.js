@@ -16,14 +16,15 @@ class ControlPanel extends PureComponent {
                 {/* <p>Click to add income layer.</p> */}
                 <hr />
                 <div className="input">
-                    <label>Low Income Areas </label>
+                    <label>Lower Income Areas </label>
                     <input type="checkbox"
                         name="geodata"
                         checked={allDay}
                         onChange={event => onChangeAllDay(event.target.checked)}
                         />
                 </div>
-                <h5>Data source: <a href="https://catalog.data.gov/dataset?tags=%22median+household+income%22" style={{textDecoration: 'none', color: 'blue'}}>ARCGIS DATA</a></h5>
+                <br />
+                <h5>DATA SOURCE: <a href="https://catalog.data.gov/dataset?tags=%22median+household+income%22" style={{textDecoration: 'none', color: 'blue'}}>ARCGIS DATA</a></h5>
             </Container>
         );
     }
