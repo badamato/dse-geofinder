@@ -4,24 +4,19 @@ import {get} from '../common/requests';
 import {changeScreen} from './navigationactions';
 
 
-// const hostname = window.location.hostname;
-// const url = 'http://'+hostname+':8080/demo/write';
+export const getGeoName = (name, lat, lng) => dispatch => {
 
-export function getSuggData() {
-    return(dispatch, getState) => {
-        const url = 'http://localhost:8080/#/api/name-suggest?name=string&sort=sortfield';
+        const url = 'http://localhost:9000/api/geo-name-suggest?name='+name+'&lat='+lat+'&lng='+lng
             get({
                 url: url,
                 // params: data,
                 success: function(res){
-                    console.log(res.data)
-                    let locationsList = []
+                    dispatch(updateValue('locData', res))
                 },
-                dispatch: dispatch,
+                dispatch: dispatch
             });
-    }
-}
 
+}
 
 
 export function updateValue(key, value){
@@ -37,4 +32,4 @@ export const updateData = (type, data) => {
     }
 }
 
-export default {updateValue, getSuggData};
+export default {updateValue, getGeoName};

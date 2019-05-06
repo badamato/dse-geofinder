@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
+
+import { getGeoName } from '../../actions/actions';
 
 
 const styles = {
@@ -58,8 +61,31 @@ const styles = {
 };
 
 class SearchFullText extends Component {
+
+    state = {
+        lat: null,
+        lng: null
+    }
+    componentDidMount() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.setState({lat: position.coords.latitude, lng: position.coords.longitude})
+            })
+        }
+    }
+    
+    search = (event) => {
+        const { lat, lng } = this.state;
+
+        const query = event.target.value;
+        if (query.length > 2) {
+            this.props.getGeoName(query, lat, lng)
+        }
+    }
+
     render() {
         const { classes } = this.props;
+        console.log(this.props)
 
         return (
             <div className={classes.root}>
@@ -68,6 +94,7 @@ class SearchFullText extends Component {
                         placeholder="Search…"
                         //value={ this.props.currentTransaction }
                         //onChange={(e) => this.props.updateCurrentTransaction("currentTransaction", e.target.value) }
+                        onChange = {this.search}
                         className={classes.inputInput}/>
                     <div className={classes.searchIcon}>
                         <SearchIcon />
@@ -82,7 +109,8 @@ class SearchFullText extends Component {
                         className={classes.input}
                         id=""
                         multiple
-                        type="file"/>
+                        type="file" 
+                        />
                 </div>
                 <Divider variant="middle" className={classes.divider} />
                 <br/>
@@ -98,4 +126,16 @@ class SearchFullText extends Component {
     }
 }
 
-export default withStyles(styles)(SearchFullText);
+
+const mapStateToProps = (state) => ({
+    location: state.app.locData,
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    getGeoName(name, lat, lng) {
+        return dispatch(getGeoName(name, lat, lng))
+    }
+})
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(SearchFullText));

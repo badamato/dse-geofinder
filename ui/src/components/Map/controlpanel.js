@@ -16,7 +16,7 @@ class ControlPanel extends PureComponent {
                 {/* <p>Click to add income layer.</p> */}
                 <hr />
                 <div className="input">
-                    <label>Lower Income Areas </label>
+                    <label>Food Desert Locations </label>
                     <input type="checkbox"
                         name="geodata"
                         checked={allDay}
@@ -24,7 +24,7 @@ class ControlPanel extends PureComponent {
                         />
                 </div>
                 <br />
-                <h5>DATA SOURCE: <a style={{textDecoration: 'none', color: 'blue'}} href="https://catalog.data.gov/dataset?tags=%22median+household+income%22" target="_blank">ARCGIS DATA</a></h5>
+                <h5>SOURCE: <a style={{textDecoration: 'none', color: 'blue'}} href="https://catalog.data.gov/dataset?tags=%22median+household+income%22" target="_blank">ERS/USDA</a></h5>
             </Container>
         );
     }

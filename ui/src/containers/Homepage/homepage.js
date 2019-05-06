@@ -9,6 +9,8 @@ import Navtabs from '../../components/Navtabs/navtabs';
 import secrets from '../../secrets/secrets';
 import style from '../../style/style.css';
 
+import {getGeoName} from '../../actions/actions'
+
 
 const styles = {
     container: {
@@ -90,7 +92,7 @@ class HomePage extends PureComponent {
                             Cassandra CQL Query
                         </Typography>
                     <div className={classes.cqlField}>
-
+                        
                     </div>
                 </Paper>
             </Grid>
