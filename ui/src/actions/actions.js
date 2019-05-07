@@ -9,7 +9,6 @@ export const getGeoName = (name, lat, lng) => dispatch => {
         const url = 'http://localhost:9000/api/geo-name-suggest?name='+name+'&lat='+lat+'&lng='+lng
             get({
                 url: url,
-                // params: data,
                 success: function(res){
                     dispatch(updateValue('locData', res))
                 },

@@ -57,7 +57,6 @@ const styles = {
     results: {
 
     }
-
 };
 
 class SearchFullText extends Component {
@@ -66,6 +65,7 @@ class SearchFullText extends Component {
         lat: null,
         lng: null
     }
+    
     componentDidMount() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -74,10 +74,10 @@ class SearchFullText extends Component {
         }
     }
     
-    search = (event) => {
+    search = (e) => {
         const { lat, lng } = this.state;
+        const query = e.target.value;
 
-        const query = event.target.value;
         if (query.length > 2) {
             this.props.getGeoName(query, lat, lng)
         }
