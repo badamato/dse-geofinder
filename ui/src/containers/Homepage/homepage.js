@@ -72,8 +72,8 @@ class HomePage extends PureComponent {
     
     render() {
         const { classes } = this.props;
-        const queryLoaded = Object.keys(this.props.locData) !== 0;
-        console.log(this.props.locData)
+        const queryLoaded = (this.props.locData) !== 0;
+        console.log(queryLoaded)
         
         return (
         <div className={classes.container}>
