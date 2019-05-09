@@ -15,7 +15,7 @@ import SearchCategories from '../Search/searchCategories';
 
 function TabContainer(props) {
     return (
-        <Typography component="div" style={{ padding: '50px 20px 30px 20px' }}>
+        <Typography component="div" style={{ padding: '40px 20px 30px 20px' }}>
             {props.children}
         </Typography>
     );

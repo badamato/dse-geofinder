@@ -44,8 +44,9 @@ const styles = {
     },
     resultsContainer: {
         border: '1px solid red',
+        marginTop: '10px',
         padding: '10px',
-        height: '640px',
+        height: '720px',
         overflow: 'scroll',
     },
     results: {
@@ -80,8 +81,6 @@ class SearchFullText extends Component {
 
     render() {
         const { classes } = this.props;
-    
-        console.log(this.props.locData)
 
         return (
             <div className={classes.root}>
@@ -92,18 +91,18 @@ class SearchFullText extends Component {
                         className={classes.inputInput}/>
                     <div className={classes.searchIcon}><SearchIcon /></div>
                 </div>
-                <div>
+                {/* <div>
                     <Button variant="contained" color="primary" size="small" className={classes.button}>
                         GO
                     </Button>
-                    {/* <input
+                    <input
                         accept="image/*"
                         className={classes.input}
                         id=""
                         multiple
                         type="file" 
-                        /> */}
-                </div>
+                        />
+                </div> */}
                 <Divider variant="middle" className={classes.divider} />
                 <br/>
                 <div className={classes.resultsContainer}>

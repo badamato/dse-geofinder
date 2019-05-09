@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 
 
+
 const styles = {
     button: {
         margin: '15px',
@@ -48,7 +49,7 @@ const styles = {
     resultsContainer: {
         border: '1px solid blue',
         padding: '10px',
-        height: '640px',
+        height: '700px',
         overflow: 'scroll',
     },
     results: {

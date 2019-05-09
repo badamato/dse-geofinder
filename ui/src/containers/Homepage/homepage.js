@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import Reactmap from '../../components/Map/reactmap'
 import Navtabs from '../../components/Navtabs/navtabs';
+import Divider from '@material-ui/core/Divider';
 import secrets from '../../secrets/secrets';
 import style from '../../style/style.css';
 
@@ -17,7 +18,7 @@ const styles = {
     container: {
         padding: '.5%',
         position: 'relative',
-        minHeight: '1000px',
+        minHeight: '90vh',
         backgroundColor: '#f8f8f8',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'right top',
@@ -26,7 +27,7 @@ const styles = {
         padding: '50px 10px 0 10px',
         marginBottom: '2%',
         width: '29%',
-        minHeight: '933px',
+        minHeight: '965px',
     },
     mapPaper: {
         display: 'flex',
@@ -40,23 +41,30 @@ const styles = {
     cqlPaper: {
         display: 'flex',
         position: 'absolute',
-        top: '829px',
+        top: '838px',
         marginLeft: '30.5%',
         width: '70%',
-        minHeight: '150px',
+        minHeight: '188px',
+        maxHeight: '188px',
     },
-    cqlField: {
-        backgroundColor: '#e5e5e5',
-        width: '80%',
-        borderRadius: '20px',
-        margin: '20px 110px 20px 0',
-    }, 
-    cqlText: {
-        width: '15%',
-        flex: '1',
+    cqlContainer: {
+        width: '100%',
+        maxHeight: '170px',
+        margin:  '0 30px 0 20px',
         padding: '10px',
-        margin: '40px 10px 40px 110px',
-    }
+        overflow: 'scroll',
+        
+    },
+    cqlTitle: {
+        paddingBottom: '10px',
+    },
+    cqlSection: {
+        margin: '0 auto',
+        textAlign: 'justify',
+    },
+    queryText: {
+        color: 'grey',
+    },
 }
 
 
@@ -65,9 +73,8 @@ class HomePage extends PureComponent {
     render() {
         const { classes } = this.props;
         const queryLoaded = Object.keys(this.props.locData) !== 0;
-
-        console.log(queryLoaded)
-
+        console.log(this.props.locData)
+        
         return (
         <div className={classes.container}>
         <Grid container>
@@ -81,12 +88,18 @@ class HomePage extends PureComponent {
 
             <Grid item xs={12}>
                 <Paper className={classes.cqlPaper} elevation={1}>
-                        <Typography variant="h5" className={classes.cqlText}>
-                            Cassandra CQL Query
-                        </Typography>
-                    <div className={classes.cqlField}>
-
-                    {queryLoaded ? JSON.stringify([this.props.locData.data]) : null}
+                    <div className={classes.cqlContainer}>
+                        <Typography variant="h5" className={classes.cqlTitle}>Queries</Typography>
+                        <div className={classes.cqlSection}>
+                            <Divider varient='middle' />
+                                <h5 className={classes.queryText}>SUGGEST CQL:{`  `}{queryLoaded && JSON.stringify([this.props.locData])}
+                                </h5>
+                        </div>
+                        <div className={classes.cqlSection}>
+                            <Divider varient='middle' />
+                                <h5 className={classes.queryText}>SEARCH CQL:{`  `}{queryLoaded && JSON.stringify([this.props.locData])}
+                                </h5>
+                        </div>
 
                     </div>
                 </Paper>
