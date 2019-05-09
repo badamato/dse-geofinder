@@ -16,7 +16,11 @@ performance: { hints: false },
     },
 
     devServer: {
-        contentBase: "./public",
+        proxy: {
+            '/api': 'http://localhost:9000'
+        },
+        contentBase: path.join(__dirname, './public'),
+        historyApiFallback: true,
         hot: true
     },
 
@@ -78,7 +82,11 @@ const PROD = {
         },
 
     devServer: {
-        contentBase: "./public",
+        proxy: {
+            '/api': 'http://localhost:9000'
+        },
+        contentBase: path.join(__dirname, './public'),
+        historyApiFallback: true,
         hot: true
     },
 

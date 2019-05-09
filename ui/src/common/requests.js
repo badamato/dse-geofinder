@@ -16,7 +16,8 @@ export function get({url, params, success, error, dispatch, auth = true} = {}) {
     var request = axios.get(url, {
         headers: {
             "content-type": "application/json",
-            "cache-control": "no-cache"
+            "cache-control": "no-cache",
+            "Access-Control-Allow-Origin": "X-Custom-Header"
         },
         params: params,
     }).then(success || function(response){
