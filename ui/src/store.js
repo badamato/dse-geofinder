@@ -21,7 +21,7 @@ const initialAppState = {
         width: "100%",
         height: "100%"
     },
-    locData: [],
+    locData: {},
 };
 
 const initialState = {

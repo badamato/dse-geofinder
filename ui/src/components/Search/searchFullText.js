@@ -18,18 +18,12 @@ const styles = {
         display: 'none',
     },
     inputInput: {
-            paddingTop: '2px',
-            paddingRight: '2px',
-            paddingBottom: '2px',
-            paddingLeft: '30px',
-            transition: 'width 2s',
-            width: '80%',
-                /* [theme.breakpoints.up('sm')]: {
-                    width: 120,
-                    '&:focus': {
-                    width: 200,
-                    },
-                }, */
+        paddingTop: '2px',
+        paddingRight: '2px',
+        paddingBottom: '2px',
+        paddingLeft: '30px',
+        transition: 'width 2s',
+        width: '80%',
     },
     search: {
         display: 'flex',
@@ -66,6 +60,7 @@ class SearchFullText extends Component {
         lng: null
     }
     
+    //built in formula for getting users current location - at init
     componentDidMount() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -74,7 +69,7 @@ class SearchFullText extends Component {
         }
     }
     
-    search = (e) => {
+    _search = (e) => {
         const { lat, lng } = this.state;
         const query = e.target.value;
 
@@ -85,32 +80,29 @@ class SearchFullText extends Component {
 
     render() {
         const { classes } = this.props;
-        console.log(this.props)
+    
+        console.log(this.props.locData)
 
         return (
             <div className={classes.root}>
                 <div className={classes.search}>
                     <InputBase
                         placeholder="Search…"
-                        //value={ this.props.currentTransaction }
-                        //onChange={(e) => this.props.updateCurrentTransaction("currentTransaction", e.target.value) }
-                        onChange = {this.search}
+                        onChange = {this._search}
                         className={classes.inputInput}/>
-                    <div className={classes.searchIcon}>
-                        <SearchIcon />
-                    </div>
+                    <div className={classes.searchIcon}><SearchIcon /></div>
                 </div>
                 <div>
                     <Button variant="contained" color="primary" size="small" className={classes.button}>
                         GO
                     </Button>
-                    <input
+                    {/* <input
                         accept="image/*"
                         className={classes.input}
                         id=""
                         multiple
                         type="file" 
-                        />
+                        /> */}
                 </div>
                 <Divider variant="middle" className={classes.divider} />
                 <br/>
@@ -128,7 +120,7 @@ class SearchFullText extends Component {
 
 
 const mapStateToProps = (state) => ({
-    location: state.app.locData,
+    locData: state.app.locData,
 
 });
 
@@ -137,5 +129,6 @@ const mapDispatchToProps = (dispatch) => ({
         return dispatch(getGeoName(name, lat, lng))
     }
 })
+
 
 export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(SearchFullText));

@@ -14,7 +14,10 @@ function uuidv4() {
 export function get({url, params, success, error, dispatch, auth = true} = {}) {
     var key = uuidv4()
     var request = axios.get(url, {
-        headers: {},
+        headers: {
+            "content-type": "application/json",
+            "cache-control": "no-cache"
+        },
         params: params,
     }).then(success || function(response){
         console.log(response)

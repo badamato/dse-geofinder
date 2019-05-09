@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 
 import Reactmap from '../../components/Map/reactmap'
 import Navtabs from '../../components/Navtabs/navtabs';
@@ -40,7 +41,6 @@ const styles = {
         display: 'flex',
         position: 'absolute',
         top: '829px',
-        // marginBottom: '2%',
         marginLeft: '30.5%',
         width: '70%',
         minHeight: '150px',
@@ -59,16 +59,14 @@ const styles = {
     }
 }
 
-// const TOKEN = MapboxAccessToken;
-// const LONG = -84.386330;
-// const LAT = 33.753746;
-// const ZOOM = 12;
-
 
 class HomePage extends PureComponent {
-
+    
     render() {
         const { classes } = this.props;
+        const queryLoaded = Object.keys(this.props.locData) !== 0;
+
+        console.log(queryLoaded)
 
         return (
         <div className={classes.container}>
@@ -78,12 +76,7 @@ class HomePage extends PureComponent {
             </Paper>
 
             <Paper className={classes.mapPaper} elevation={1}>
-                {/* <Reactmap
-                    token= { TOKEN }
-                    longitude= { LONG }
-                    latitude= { LAT }
-                    zoom= { ZOOM }/> */}
-                    <Reactmap />
+                <Reactmap />
             </Paper>
 
             <Grid item xs={12}>
@@ -92,7 +85,9 @@ class HomePage extends PureComponent {
                             Cassandra CQL Query
                         </Typography>
                     <div className={classes.cqlField}>
-                        
+
+                         {queryLoaded ? this.props.locData.data : null}
+
                     </div>
                 </Paper>
             </Grid>
@@ -102,5 +97,20 @@ class HomePage extends PureComponent {
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        locData: state.app.locData
+    }
+}
 
-export default withStyles(styles)(HomePage);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+    }
+}
+
+const HomepageContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withStyles(styles)(HomePage))
+
+export default HomepageContainer;
