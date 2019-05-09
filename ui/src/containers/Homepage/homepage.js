@@ -86,7 +86,7 @@ class HomePage extends PureComponent {
                         </Typography>
                     <div className={classes.cqlField}>
 
-                         {queryLoaded ? this.props.locData.data : null}
+                    {queryLoaded ? JSON.stringify([this.props.locData.data]) : null}
 
                     </div>
                 </Paper>
