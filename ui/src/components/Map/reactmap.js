@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import ReactMapGL, { Marker, NavigationControl, Layer, Popup } from 'react-map-gl';
+import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl';
 
 import ControlPanel from './controlpanel';
-import Pin from './pin';
+import Person from '../../images/person.png';
 import style from '../../style/style.css';
 import secrets from '../../secrets/secrets';
 
@@ -27,14 +27,6 @@ class ReactMap extends Component {
                 zoom: 13
             },
             token: MapboxAccessToken,
-            coords: [
-                { latitude: 33.760702, longitude: -84.387473 },
-                { latitude: 33.755368, longitude: -84.389651 },
-                { latitude: 33.758106, longitude: -84.394737 },
-                { latitude: 33.761638, longitude: -84.387924 },
-                { latitude: 33.761367, longitude: -84.387826 },
-                { latitude: 33.763982, longitude: -84.392621 }
-            ],
             data: null,
             events: {}
         };
@@ -55,7 +47,7 @@ class ReactMap extends Component {
 
 
     render() {
-        const { coords, viewport } = this.state;
+        const { viewport } = this.state;
 
         return (
         <ReactMapGL
@@ -65,23 +57,25 @@ class ReactMap extends Component {
             mapStyle='mapbox://styles/mapbox/outdoors-v11'
             {...this.state.viewport}
             onViewportChange={this._updateViewport}
-            onViewportChange={(viewport) => this.setState({viewport})}>
+            onViewportChange={(viewport) => this.setState({viewport})} >
 
-            { coords.map((coord, index) => (
-                <Marker key={index} latitude={coord.latitude} longitude={coord.longitude} >
-                    <Pin />
-                </Marker>
-            )) }
+            <Marker 
+                latitude={33.758447} 
+                longitude={-84.386171}
+                offsetLeft={-20} 
+                offsetTop={-10}
+                draggable={true} >
+                {/* <h6 style={{color: 'red'}}>YOU ARE HERE</h6> */}
+                <img src={Person} />
+            </Marker>
 
         <div className="nav" style={navStyle}>
             <NavigationControl onViewportChange={this._updateViewport} />
         </div>
 
         <ControlPanel
-        containerComponent={this.props.containerComponent}
-        events={this.state.events}
-        />
-
+            containerComponent={this.props.containerComponent}
+            events={this.state.events} />
         </ReactMapGL>
         );
     }
