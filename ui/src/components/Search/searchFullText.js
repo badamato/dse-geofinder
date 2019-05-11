@@ -70,13 +70,14 @@ class SearchFullText extends Component {
         }
     }
     
-    _search = (e) => {
+    search = (e) => {
         const { lat, lng } = this.state;
         const query = e.target.value;
 
         if (query.length > 2) {
             this.props.getGeoName(query, lat, lng)
         }
+        
     }
 
     render() {
@@ -87,7 +88,7 @@ class SearchFullText extends Component {
                 <div className={classes.search}>
                     <InputBase
                         placeholder="Search…"
-                        onChange = {this._search}
+                        onChange = {this.search}
                         className={classes.inputInput}/>
                     <div className={classes.searchIcon}><SearchIcon /></div>
                 </div>

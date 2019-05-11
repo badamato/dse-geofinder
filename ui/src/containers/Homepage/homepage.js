@@ -59,11 +59,12 @@ const styles = {
         paddingBottom: '10px',
     },
     cqlSection: {
+        display: 'flex',
         margin: '0 auto',
-        textAlign: 'justify',
+        textAlign: 'left',
     },
     queryText: {
-        color: 'grey',
+        margin: '10px'
     },
 }
 
@@ -72,8 +73,7 @@ class HomePage extends PureComponent {
     
     render() {
         const { classes } = this.props;
-        const queryLoaded = (this.props.locData) !== 0;
-        console.log(queryLoaded)
+        const { query } = (this.props.locData || {});
         
         return (
         <div className={classes.container}>
@@ -90,15 +90,15 @@ class HomePage extends PureComponent {
                 <Paper className={classes.cqlPaper} elevation={1}>
                     <div className={classes.cqlContainer}>
                         <Typography variant="h5" className={classes.cqlTitle}>Queries</Typography>
+                        <Divider varient='middle' />
                         <div className={classes.cqlSection}>
-                            <Divider varient='middle' />
-                                <h5 className={classes.queryText}>SUGGEST CQL:{`  `}{queryLoaded && JSON.stringify([this.props.locData])}
+                                <h5 className={classes.queryText}>SUGGEST CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{query}</span>
                                 </h5>
                         </div>
+                        <Divider varient='middle' />
                         <div className={classes.cqlSection}>
-                            <Divider varient='middle' />
-                                <h5 className={classes.queryText}>SEARCH CQL:{`  `}{queryLoaded && JSON.stringify([this.props.locData])}
-                                </h5>
+                                {/* <h5 className={classes.queryText}>SEARCH CQL:{`  `}{queryLoaded && JSON.stringify([this.props.locData])}
+                                </h5> */}
                         </div>
 
                     </div>
