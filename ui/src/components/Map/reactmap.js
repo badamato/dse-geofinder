@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl';
 
 import ControlPanel from './controlpanel';
-import Person from '../../images/person.png';
+import Pin from './pin';
 import style from '../../style/style.css';
 import secrets from '../../secrets/secrets';
 
@@ -62,11 +62,8 @@ class ReactMap extends Component {
             <Marker 
                 latitude={33.758447} 
                 longitude={-84.386171}
-                offsetLeft={-20} 
-                offsetTop={-10}
                 draggable={true} >
-                {/* <h6 style={{color: 'red'}}>YOU ARE HERE</h6> */}
-                <img src={Person} />
+                <Pin />
             </Marker>
 
         <div className="nav" style={navStyle}>
