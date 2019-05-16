@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl';
+import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
 
 import ControlPanel from './controlpanel';
 import Pin from './pin';
@@ -26,6 +26,10 @@ class ReactMap extends Component {
                 longitude: -84.386171,
                 zoom: 13
             },
+            marker: {
+                latitude: 33.758447,
+                longitude: -84.386171,
+            },
             token: MapboxAccessToken,
             data: null,
             events: {}
@@ -45,9 +49,36 @@ class ReactMap extends Component {
         this.setState({viewport});
     }
 
+    _logDragEvent(name, event) {
+        this.setState({
+            events: {
+                ...this.state.events,
+                [name]: event.lngLat
+            }
+        });
+    }
+
+    _onMarkerDragStart = event => {
+        this._logDragEvent('onDragStart', event);
+    };
+        
+    _onMarkerDrag = event => {
+        this._logDragEvent('onDrag', event);
+    };
+
+    _onMarkerDragEnd = event => {
+        this._logDragEvent('onDragEnd', event);
+        this.setState({
+        marker: {
+            longitude: event.lngLat[0],
+            latitude: event.lngLat[1]
+        }
+        });
+    };
+
 
     render() {
-        const { viewport } = this.state;
+        const { viewport, marker } = this.state;
 
         return (
         <ReactMapGL
@@ -60,9 +91,12 @@ class ReactMap extends Component {
             onViewportChange={(viewport) => this.setState({viewport})} >
 
             <Marker 
-                latitude={33.758447} 
-                longitude={-84.386171}
-                draggable={true} >
+                longitude={marker.longitude}
+                latitude={marker.latitude} 
+                draggable
+                onDragStart={this._onMarkerDragStart}
+                onDrag={this._onMarkerDrag}
+                onDragEnd={this._onMarkerDragEnd} >
                 <Pin />
             </Marker>
 

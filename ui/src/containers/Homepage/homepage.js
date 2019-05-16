@@ -97,10 +97,9 @@ class HomePage extends PureComponent {
                         </div>
                         <Divider varient='middle' />
                         <div className={classes.cqlSection}>
-                                {/* <h5 className={classes.queryText}>SEARCH CQL:{`  `}{queryLoaded && JSON.stringify([this.props.locData])}
-                                </h5> */}
-                        </div>
 
+
+                        </div>
                     </div>
                 </Paper>
             </Grid>

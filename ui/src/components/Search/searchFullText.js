@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 
 import { getGeoName } from '../../actions/actions';
@@ -43,14 +42,13 @@ const styles = {
         margin: 0,
     },
     resultsContainer: {
-        border: '1px solid red',
         marginTop: '10px',
         padding: '10px',
         height: '720px',
         overflow: 'scroll',
     },
     results: {
-
+        border: '1px solid green',
     }
 };
 
@@ -82,36 +80,30 @@ class SearchFullText extends Component {
 
     render() {
         const { classes } = this.props;
+        const { names } = (this.props.locData || {});
+        console.log(names)
 
         return (
             <div className={classes.root}>
                 <div className={classes.search}>
                     <InputBase
-                        placeholder="Search…"
+                        placeholder="Type your search here…"
                         onChange = {this.search}
                         className={classes.inputInput}/>
-                    <div className={classes.searchIcon}><SearchIcon /></div>
+                    {/* <div className={classes.searchIcon}><SearchIcon /></div> */}
                 </div>
-                {/* <div>
-                    <Button variant="contained" color="primary" size="small" className={classes.button}>
-                        GO
-                    </Button>
-                    <input
-                        accept="image/*"
-                        className={classes.input}
-                        id=""
-                        multiple
-                        type="file" 
-                        />
-                </div> */}
                 <Divider variant="middle" className={classes.divider} />
                 <br/>
                 <div className={classes.resultsContainer}>
-                    <Typography className={classes.results}>
-                        ***Put results here
-                        ***Put results here
-                        ***Put results here
-                    </Typography>
+                    {/* {names.map ((name, id) => {
+                        return (
+                            <div>
+                                <Typography className={classes.results}>
+                                    {name.names}
+                                </Typography>
+                            </div>
+                        )
+                    })} */}
                 </div>
             </div>
         )
