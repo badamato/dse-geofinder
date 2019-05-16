@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Downshift from 'downshift';
+
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 // import SearchIcon from '@material-ui/icons/Search';
@@ -56,7 +58,8 @@ class SearchFullText extends Component {
 
     state = {
         lat: null,
-        lng: null
+        lng: null,
+        names: [],
     }
     
     //built in formula for getting users current location - at init
@@ -75,23 +78,69 @@ class SearchFullText extends Component {
         if (query.length > 2) {
             this.props.getGeoName(query, lat, lng)
         }
-        
+        debugger
     }
+
+    // downshiftOnChange(selectedName) {
+    //     alert(`your selection is ${selectedName.name}`)
+    // }
 
     render() {
         const { classes } = this.props;
         const { names } = (this.props.locData || {});
         console.log(names)
 
+
         return (
             <div className={classes.root}>
-                <div className={classes.search}>
-                    <InputBase
-                        placeholder="Type your search here…"
-                        onChange = {this.search}
-                        className={classes.inputInput}/>
-                    {/* <div className={classes.searchIcon}><SearchIcon /></div> */}
-                </div>
+                <Downshift
+                    // onChange={downshiftOnChange}
+                    // itemToString={item => (item ? item.names : '')} 
+                >
+                {({
+                    selectedItem,
+                    getInputProps,
+                    getItemProps,
+                    highlightedIndex,
+                    isOpen,
+                    inputValue,
+                }) => (
+                    <div className={classes.search}>
+                        <InputBase
+                            {...getInputProps({
+                                placeholder: "Type your search here…",
+                                onChange: this.search,
+                                className: classes.inputInput,
+                            })}
+                        />
+                        {isOpen ? (
+                            <div className='downshift-dropdown'>
+                                {[names].filter(
+                                    item =>
+                                    !inputValue || 
+                                    item.names
+                                    .toLowerCase()
+                                    .includes(inputValue.toLowerCase())
+                                )
+                                .slice(0, 10)
+                                .map((item, index) => (
+                                    <div
+                                        className='dropdown-item'
+                                        {...getItemProps({ key: index, index, item })}
+                                        style={{
+                                            backgroundColor:
+                                                highlightedIndex === index ? 'lightgray' : 'white',
+                                            fontWeight: 
+                                                selectedItem === item ? 'bold' : 'normal'
+                                        }}>
+                                        {item.names}
+                                    </div>
+                                ))}
+                            </div>
+                        ) : null}
+                    </div>
+                )}
+                </Downshift>
                 <Divider variant="middle" className={classes.divider} />
                 <br/>
                 <div className={classes.resultsContainer}>

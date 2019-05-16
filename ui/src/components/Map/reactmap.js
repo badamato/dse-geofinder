@@ -14,27 +14,23 @@ const navStyle = {
 };
 
 class ReactMap extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            api_url: '',
-            viewport: {
-                width: '100%',
-                height: 815,
-                latitude: 33.758447,
-                longitude: -84.386171,
-                zoom: 13
-            },
-            marker: {
-                latitude: 33.758447,
-                longitude: -84.386171,
-            },
-            token: MapboxAccessToken,
-            data: null,
-            events: {}
-        };
-    }
+    state = {
+        api_url: '',
+        viewport: {
+            width: '100%',
+            height: 815,
+            latitude: 33.758447,
+            longitude: -84.386171,
+            zoom: 13
+        },
+        marker: {
+            latitude: 33.758447,
+            longitude: -84.386171,
+        },
+        token: MapboxAccessToken,
+        data: null,
+        events: {}
+    };
 
     componentDidMount() {
         const {data, api_url } = this.state;
