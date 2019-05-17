@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
+import MapGL, { Marker, NavigationControl } from 'react-map-gl';
 
 import ControlPanel from './controlpanel';
 import Pin from './pin';
@@ -15,7 +15,6 @@ const navStyle = {
 
 class ReactMap extends Component {
     state = {
-        api_url: '',
         viewport: {
             width: '100%',
             height: 815,
@@ -28,18 +27,8 @@ class ReactMap extends Component {
             longitude: -84.386171,
         },
         token: MapboxAccessToken,
-        data: null,
         events: {}
     };
-
-    componentDidMount() {
-        const {data, api_url } = this.state;
-
-        if (!data) {
-            fetch(api_url, { method: 'GET'})
-            .then(res => this.setState({data: res}))
-        }
-    }
 
     _updateViewport = (viewport) => {
         this.setState({viewport});
@@ -51,17 +40,17 @@ class ReactMap extends Component {
                 ...this.state.events,
                 [name]: event.lngLat
             }
-        });
+            });
     }
-
+    
     _onMarkerDragStart = event => {
         this._logDragEvent('onDragStart', event);
     };
-        
+    
     _onMarkerDrag = event => {
         this._logDragEvent('onDrag', event);
     };
-
+    
     _onMarkerDragEnd = event => {
         this._logDragEvent('onDragEnd', event);
         this.setState({
@@ -72,38 +61,37 @@ class ReactMap extends Component {
         });
     };
 
-
     render() {
         const { viewport, marker } = this.state;
 
         return (
-        <ReactMapGL
-            {...viewport}
-            mapboxApiAccessToken={this.state.token}
-            // mapStyle='mapbox://styles/mapbox/light-v9'
-            mapStyle='mapbox://styles/mapbox/outdoors-v11'
-            {...this.state.viewport}
-            onViewportChange={this._updateViewport}
-            onViewportChange={(viewport) => this.setState({viewport})} >
-
+            <MapGL
+                {...viewport}
+                mapboxApiAccessToken={this.state.token}
+                mapStyle='mapbox://styles/mapbox/outdoors-v11'
+                onViewportChange={this._updateViewport}
+            >
             <Marker 
                 longitude={marker.longitude}
-                latitude={marker.latitude} 
+                latitude={marker.latitude}
+                offsetTop={-20}
+                offsetLeft={-10}
                 draggable
                 onDragStart={this._onMarkerDragStart}
                 onDrag={this._onMarkerDrag}
-                onDragEnd={this._onMarkerDragEnd} >
+                onDragEnd={this._onMarkerDragEnd} 
+            >
                 <Pin />
             </Marker>
 
-        <div className="nav" style={navStyle}>
-            <NavigationControl onViewportChange={this._updateViewport} />
-        </div>
+            <div className="nav" style={navStyle}>
+                <NavigationControl onViewportChange={this._updateViewport} />
+            </div>
 
-        <ControlPanel
-            containerComponent={this.props.containerComponent}
-            events={this.state.events} />
-        </ReactMapGL>
+            <ControlPanel
+                containerComponent={this.props.containerComponent}
+                events={this.state.events} />
+            </MapGL>
         );
     }
 }

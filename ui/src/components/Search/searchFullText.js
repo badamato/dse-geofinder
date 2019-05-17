@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-
-import { getGeoName } from '../../actions/actions';
 import SearchBar from './searchBar';
 
 
