@@ -7,9 +7,6 @@ import { getGeoName } from '../../actions/actions';
 
 
 const styles = {
-    button: {
-        margin: '15px',
-    },
     input: {
         display: 'none',
     },
@@ -45,7 +42,6 @@ class SearchBar extends Component {
                 this.setState({lat: position.coords.latitude, lng: position.coords.longitude})
             })
         }
-        this.props.getGeoName
     }
     
     search = (e) => {
@@ -68,7 +64,6 @@ class SearchBar extends Component {
                     placeholder="Type your search here…"
                     onChange = {this.search}
                     className={classes.inputInput}/>
-                {/* <div className={classes.searchIcon}><SearchIcon /></div> */}
             </div>
         )
     }

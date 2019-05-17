@@ -36,7 +36,15 @@ class SearchFullText extends Component {
                 <Divider variant="middle" className={classes.divider} />
                 <br/>
                 <div className={classes.resultsContainer}>
+                    <Typography className={classes.results}>
+                        **put results here
+                        **put results here
+                        **put results here
+                        **put results here
+                        **put results here
+                        **put results here
 
+                    </Typography>
                 </div>
             </div>
         )
