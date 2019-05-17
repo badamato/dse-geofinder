@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {render} from 'react-dom';
 import MapGL, { Marker, NavigationControl } from 'react-map-gl';
 
 import ControlPanel from './controlpanel';
@@ -20,7 +21,9 @@ class ReactMap extends Component {
             height: 815,
             latitude: 33.758447,
             longitude: -84.386171,
-            zoom: 13
+            zoom: 13,
+            bearing: 0,
+            pitch: 0,
         },
         marker: {
             latitude: 33.758447,
@@ -33,64 +36,63 @@ class ReactMap extends Component {
     _updateViewport = (viewport) => {
         this.setState({viewport});
     }
-
+    
     _logDragEvent(name, event) {
         this.setState({
             events: {
                 ...this.state.events,
-                [name]: event.lngLat
+                [name]: event.lngLat,
             }
-            });
+        })
     }
     
-    _onMarkerDragStart = event => {
+    _onMarkerDragStart = (event) => {
         this._logDragEvent('onDragStart', event);
     };
     
-    _onMarkerDrag = event => {
+    _onMarkerDrag = (event) => {
         this._logDragEvent('onDrag', event);
     };
     
-    _onMarkerDragEnd = event => {
+    _onMarkerDragEnd = (event) => {
         this._logDragEvent('onDragEnd', event);
         this.setState({
-        marker: {
-            longitude: event.lngLat[0],
-            latitude: event.lngLat[1]
-        }
+            marker: {
+                longitude: event.lngLat[0],
+                latitude: event.lngLat[1],
+            }
         });
     };
 
     render() {
-        const { viewport, marker } = this.state;
+        const {viewport, marker} = this.state;
 
         return (
             <MapGL
                 {...viewport}
                 mapboxApiAccessToken={this.state.token}
                 mapStyle='mapbox://styles/mapbox/outdoors-v11'
-                onViewportChange={this._updateViewport}
-            >
-            <Marker 
-                longitude={marker.longitude}
-                latitude={marker.latitude}
-                offsetTop={-20}
-                offsetLeft={-10}
-                draggable
-                onDragStart={this._onMarkerDragStart}
-                onDrag={this._onMarkerDrag}
-                onDragEnd={this._onMarkerDragEnd} 
-            >
-                <Pin />
-            </Marker>
+                onViewportChange={this._updateViewport}>
+                <Marker 
+                    longitude={marker.longitude}
+                    latitude={marker.latitude}
+                    offsetTop={-20}
+                    offsetLeft={-10}
+                    draggable
+                    onDragStart={this._onMarkerDragStart}
+                    onDrag={this._onMarkerDrag}
+                    onDragEnd={this._onMarkerDragEnd} 
+                >
+                    <Pin />
+                </Marker>
 
-            <div className="nav" style={navStyle}>
-                <NavigationControl onViewportChange={this._updateViewport} />
-            </div>
+                <div className="nav" style={navStyle}>
+                    <NavigationControl onViewportChange={this._updateViewport} />
+                </div>
 
-            <ControlPanel
-                containerComponent={this.props.containerComponent}
-                events={this.state.events} />
+                <ControlPanel
+                    containerComponent={this.props.containerComponent}
+                    events={this.state.events} />
             </MapGL>
         );
     }
