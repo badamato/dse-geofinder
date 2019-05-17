@@ -11,7 +11,6 @@ export const getGeoName = (name, lat, lng) => dispatch => {
                 url: url,
                 success: function(res){
                     dispatch(updateValue('locData', res.data))
-                    // console.log(res.data)
                 },
                 dispatch: dispatch
             });
