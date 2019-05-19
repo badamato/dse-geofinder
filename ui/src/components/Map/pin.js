@@ -9,6 +9,7 @@ c-82.271,9.008-151.628,37.085-151.628,87.755c0,62.838,106.615,90.976,212.28,90.9
 C454.887,343.567,385.53,315.49,303.253,306.482z`;
 
 const pinStyle = {
+    cursor: 'pointer',
     fill: '#d00',
     stroke: 'black'
 };
@@ -16,13 +17,14 @@ const pinStyle = {
 class Pin extends PureComponent {
 
     render() {
-        const {size = 45} = this.props;
+        const {size = 45, onClick} = this.props;
 
         return (
         <svg 
             height={size}
             viewBox="0 0 485.212 485.212"
-            style={pinStyle}
+            style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
+            onClick={onClick}
         >
             <path d={ICON}/>
         </svg>

@@ -1,21 +1,38 @@
 import React, {PureComponent} from 'react';
 
-export default class CityInfo extends PureComponent {
+
+const eventNames = ['onDragStart', 'onDrag', 'onDragEnd'];
+
+function round5(value) {
+    return (Math.round(value * 1e5) / 1e5).toFixed(5);
+}
+
+
+
+class PinInfo extends PureComponent {
+
+    renderEvent = (eventName) => {
+        const {events = {}} = this.props;
+        const lngLat = events[eventName];
+        return (
+            <div key={eventName}>
+                <strong>{eventName}:</strong>{' '}
+                {lngLat ? lngLat.map(round5).join(', ') : <em>null</em>}
+            </div>
+        );
+    };
 
     render() {
-        const {info} = this.props;
-        const displayName = `${info.city}, ${info.state}`;
+        const Container = this.props.containerComponent || defaultContainer;
 
         return (
-        <div>
-            <div>
-            {displayName} | <a target="_new"
-            href={`http://en.wikipedia.org/w/index.php?title=Special:Search&search=${displayName}`}>
-                Wikipedia
-            </a>
-            </div>
-            <img width={240} src={info.image} />
-        </div>
+            <Container>
+                <div>
+                    {eventNames.map(this.renderEvent)}
+                </div>
+            </Container>
         );
     }
 }
+
+export default PinInfo;

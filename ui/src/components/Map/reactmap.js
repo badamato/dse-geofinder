@@ -4,6 +4,7 @@ import MapGL, { Marker, NavigationControl } from 'react-map-gl';
 
 import ControlPanel from './controlpanel';
 import Pin from './pin';
+import PinInfo from './pininfo';
 import style from '../../style/style.css';
 import secrets from '../../secrets/secrets';
 
@@ -30,7 +31,8 @@ class ReactMap extends Component {
             longitude: -84.386171,
         },
         token: MapboxAccessToken,
-        events: {}
+        events: {},
+        popupInfo: null
     };
 
     _updateViewport = (viewport) => {
@@ -83,7 +85,7 @@ class ReactMap extends Component {
                     onDrag={this._onMarkerDrag}
                     onDragEnd={this._onMarkerDragEnd} 
                 >
-                    <Pin />
+                    <Pin onClick={() => this.setState({popupInfo: marker})} />
                 </Marker>
 
                 <div className="nav" style={navStyle}>
