@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
+import Select from 'react-select';
 
 import { getGeoName } from '../../actions/actions';
 
@@ -32,7 +33,8 @@ class SearchBar extends Component {
 
     state = {
         lat: null,
-        lng: null
+        lng: null,
+        isLoading: false
     }
     
     //built in formula for getting users current location - at init
@@ -48,7 +50,7 @@ class SearchBar extends Component {
         const { lat, lng } = this.state;
         const query = e.target.value;
 
-        if (query.length > 1) {
+        if (query.length > 2) {
             this.props.getGeoName(query, lat, lng)
         }
         
@@ -56,14 +58,25 @@ class SearchBar extends Component {
 
     render() {
         const { classes } = this.props;
-        const { names } = (this.props.locData || {});
+        console.log(this.props)
+        const { names } = (this.props.location.locData || {});
+        const { isLoading } = this.props.location
 
         return (
-            <div className={classes.searchBox}>
-                <InputBase
-                    placeholder="Type your search here…"
-                    onChange = {this.search}
-                    className={classes.inputInput}/>
+            <div>
+                <div className={classes.searchBox}>
+                    <InputBase
+                        placeholder="Type your search here…"
+                        onChange = {this.search}
+                        className={classes.inputInput}/>
+                        <br />
+                </div>
+                <div>
+                    <Select className={"select"} 
+                        isLoading={isLoading}
+                        name="locations"
+                        options={names} />
+                </div>
             </div>
         )
     }
@@ -71,7 +84,7 @@ class SearchBar extends Component {
 
 
 const mapStateToProps = (state) => ({
-    locData: state.app.locData,
+    location: state.location
 
 });
 

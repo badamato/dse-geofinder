@@ -6,10 +6,20 @@ import {changeScreen} from './navigationactions';
 
 export const getGeoName = (name, lat, lng) => dispatch => {
 
+        dispatch(setLoading())
+
         const url = `/api/geo-name-suggest?name=${name}&lat=${lat}&lng=${lng}`;
             get({
                 url: url,
                 success: function(res){
+                    const names = res.data.names
+                    const formattedNames = names.map(name => {
+                        return {
+                            value: name,
+                            label: name,
+                        }
+                    })
+                    res.data.names = formattedNames
                     dispatch(updateValue('locData', res.data))
                 },
                 dispatch: dispatch
@@ -23,6 +33,13 @@ export function updateValue(key, value){
             dispatch(updateData("UPDATE", {"key": key, "value": value}))
     }
 }
+
+export const setLoading = () => {
+    return{
+        type: "SET_LOADING"
+    }
+}
+
 
 export const updateData = (type, data) => {
     return {

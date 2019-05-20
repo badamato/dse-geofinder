@@ -4,11 +4,13 @@ import {routerReducer} from 'react-router-redux';
 import RequestReducer from './requestreducer'
 import NavigationReducer from './navigationreducer';
 import AppReducer from './appreducer'
+import LocationReducer from './locationreducer'
 
 const reducers = combineReducers({
     RequestReducer,
     NavigationReducer,
     app: AppReducer,
+    location: LocationReducer,
     interval: handleAction(
         'SET_INTERVAL',
         (state, action) => ({

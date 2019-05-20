@@ -111,7 +111,7 @@ class HomePage extends PureComponent {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        locData: state.app.locData
+        locData: state.location.locData
     }
 }
 
