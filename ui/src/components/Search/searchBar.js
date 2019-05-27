@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import InputBase from '@material-ui/core/InputBase';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, jssPreset } from '@material-ui/core/styles';
 import Select from 'react-select';
 
 import { getGeoName } from '../../actions/actions';
@@ -27,7 +27,28 @@ const styles = {
                 backgroundColor: '#c0c0c0',
             },
     },
+    select: {
+    }
 };
+
+const selectStyles = {
+    indicatorSeparator: base => ({
+        ...base,
+        display: 'none',
+    }),
+    dropdownIndicator: base => ({
+        ...base,
+        display: 'none',
+    }),
+    control: (base, state) => ({
+        ...base,
+        borderColor: "silver",
+        boxShadow: state.isFocused ? '#1AB5E0' : null,
+        "&:hover": {
+            borderColor: '#1AB5E0'
+        }
+    })
+}
 
 class SearchBar extends Component {
 
@@ -58,24 +79,25 @@ class SearchBar extends Component {
 
     render() {
         const { classes } = this.props;
-        console.log(this.props)
         const { names } = (this.props.location.locData || {});
         const { isLoading } = this.props.location
 
         return (
             <div>
-                <div className={classes.searchBox}>
+                {/* <div className={classes.searchBox}>
                     <InputBase
                         placeholder="Type your search here…"
-                        onChange = {this.search}
+                        onChange={this.search}
                         className={classes.inputInput}/>
                         <br />
-                </div>
+                </div> */}
                 <div>
-                    <Select className={"select"} 
+                    <Select className={classes.select} 
                         isLoading={isLoading}
+                        menuIsOpen //use this temporarily while developing
                         name="locations"
-                        options={names} />
+                        options={names}
+                        styles={selectStyles} />
                 </div>
             </div>
         )

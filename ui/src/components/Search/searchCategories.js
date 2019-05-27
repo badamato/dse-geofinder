@@ -76,7 +76,7 @@ class SearchCategories extends Component {
                 </div>
                 <div>
                     <Button variant="contained" color="primary" size="small" className={classes.button}>
-                        GO
+                        Move Marker Location
                     </Button>
                     <input
                         accept="image/*"
