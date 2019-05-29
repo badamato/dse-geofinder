@@ -22,7 +22,7 @@ const styles = {
     searchBox: {
         display: 'flex',
         borderRadius: '2px',
-        backgroundColor: '#e5e5e5e5',
+        backgroundColor: '#e5e5e5',
             '&:hover': {
                 backgroundColor: '#c0c0c0',
             },
@@ -74,13 +74,14 @@ class SearchBar extends Component {
         if (query.length > 2) {
             this.props.getGeoName(query, lat, lng)
         }
-        
+        console.log(query)
     }
 
     render() {
         const { classes } = this.props;
         const { names } = (this.props.location.locData || {});
         const { isLoading } = this.props.location
+        console.log(names)
 
         return (
             <div>
@@ -92,7 +93,8 @@ class SearchBar extends Component {
                         <br />
                 </div> */}
                 <div>
-                    <Select className={classes.select} 
+                    <Select className={classes.select}
+                        onChange={this.search}
                         isLoading={isLoading}
                         menuIsOpen //use this temporarily while developing
                         name="locations"
