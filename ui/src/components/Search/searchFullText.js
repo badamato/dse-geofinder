@@ -29,8 +29,6 @@ const styles = {
 
 class SearchFullText extends Component {
 
-    
-
     render() {
         const { classes } = this.props;
 

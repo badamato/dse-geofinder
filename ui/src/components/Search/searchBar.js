@@ -12,20 +12,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { getGeoName } from '../../actions/actions';
 
-
-
-
 function renderInput(inputProps) {
-    const { InputProps, classes, ref, ...other } = inputProps;
+    const { InputProps,  ref, ...other } = inputProps;
 
     return (
         <TextField
             InputProps={{
                 inputRef: ref,
-                classes: {
-                root: classes.inputRoot,
-                input: classes.inputInput,
-                },
                 ...InputProps,
             }}
             {...other}
@@ -72,226 +65,73 @@ function getSuggestions(value, { showEmpty = false } = {}) {
         });
 }
 
-/////////////////////////combo function - what do I need from this?!
-
-let popperNode;
-
-function DownshiftMultiple(props) {
-    const { classes } = props;
-    const [inputValue, setInputValue] = React.useState('');
-    const [selectedItem, setSelectedItem] = React.useState([]);
-
-    function handleKeyDown(event) {
-        if (selectedItem.length && !inputValue.length && event.key === 'Backspace') {
-        setSelectedItem(selectedItem.slice(0, selectedItem.length - 1));
-        }
-    }
-
-    function handleInputChange(event) {
-        setInputValue(event.target.value);
-    }
-
-    function handleChange(item) {
-        let newSelectedItem = [...selectedItem];
-        if (newSelectedItem.indexOf(item) === -1) {
-        newSelectedItem = [...newSelectedItem, item];
-        }
-        setInputValue('');
-        setSelectedItem(newSelectedItem);
-    }
-
-    const handleDelete = item => () => {
-        const newSelectedItem = [...selectedItem];
-        newSelectedItem.splice(newSelectedItem.indexOf(item), 1);
-        setSelectedItem(newSelectedItem);
-    };
-
-    return (
-        <Downshift
-        id="downshift-multiple"
-        inputValue={inputValue}
-        onChange={handleChange}
-        selectedItem={selectedItem}
-        >
-        {({
-            getInputProps,
-            getItemProps,
-            isOpen,
-            inputValue: inputValue2,
-            selectedItem: selectedItem2,
-            highlightedIndex,
-        }) => (
-            <div className={classes.container}>
-            {renderInput({
-                fullWidth: true,
-                classes,
-                InputProps: getInputProps({
-                startAdornment: selectedItem.map(item => (
-                    <Chip
-                    key={item}
-                    tabIndex={-1}
-                    label={item}
-                    className={classes.chip}
-                    onDelete={handleDelete(item)}
-                    />
-                )),
-                onChange: handleInputChange,
-                onKeyDown: handleKeyDown,
-                placeholder: 'Select multiple countries',
-                }),
-                label: 'Label',
-            })}
-
-            {isOpen ? (
-                <Paper className={classes.paper} square>
-                {getSuggestions(inputValue2).map((suggestion, index) =>
-                    renderSuggestion({
-                    suggestion,
-                    index,
-                    itemProps: getItemProps({ item: suggestion.label }),
-                    highlightedIndex,
-                    selectedItem: selectedItem2,
-                    }),
-                )}
-                </Paper>
-            ) : null}
-            </div>
-        )}
-        </Downshift>
-    );
-}
-///////////////////////end of combo function
-
-
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-        height: 250,
-    },
-    container: {
-        flexGrow: 1,
-        position: 'relative',
-    },
-    paper: {
-        position: 'absolute',
-        zIndex: 1,
-        marginTop: theme.spacing(1),
-        left: 0,
-        right: 0,
-    },
-    chip: {
-        margin: theme.spacing(0.5, 0.25),
-    },
-    inputRoot: {
-        flexWrap: 'wrap',
-    },
-    inputInput: {
-        width: 'auto',
-        flexGrow: 1,
-    },
-    divider: {
-        height: theme.spacing(2),
-    },
-}));
-
 
 class SearchBar extends Component {
 
-    // state = {
-    //     lat: null,
-    //     lng: null,
-    // }
-    
-    // componentDidMount() {
-    //     if (navigator.geolocation) {
-    //         navigator.geolocation.getCurrentPosition((position) => {
-    //             this.setState({lat: position.coords.latitude, lng: position.coords.longitude})
-    //         })
-    //     }
-    // }
-    
-    // search = (e) => {
-    //     const { lat, lng } = this.state;
-    //     const query = e.target.value;
-
-    //     if (query.length > 2) {
-    //         this.props.getGeoName(query, lat, lng)
-    //     }
-    // }
-
     render() {
-        const classes = useStyles();
-        // const { names } = (this.props.location.locData || {});
 
-        return (
-            <div>
-                {/* <div className={classes.searchBox}>
-                    <InputBase
-                        placeholder="Type your search here…"
-                        onChange={this.search}
-                        className={classes.inputInput}/>
-                        <br />
-                </div> */}
-                <Downshift id="downshift-popper">
-                {({
-                    getInputProps,
-                    getItemProps,
-                    getMenuProps,
-                    highlightedIndex,
-                    inputValue,
-                    isOpen,
-                    selectedItem,
-                }) => (
-                    <div className={classes.container}>
-                    {renderInput({
-                        fullWidth: true,
-                        classes,
-                        InputProps: getInputProps({
-                        placeholder: 'Search...',
-                        }),
-                        ref: node => {
-                        popperNode = node;
-                        },
-                    })}
+        let isOpen = false;
+        let selectedItem = [];
 
-                    <Popper open={isOpen} anchorEl={popperNode}>
-                        <div {...(isOpen ? getMenuProps({}, { suppressRefError: true }) : {})}>
-                        <Paper
-                            square
-                            style={{ marginTop: 8, width: popperNode ? popperNode.clientWidth : undefined }}
-                        >
-                            {getSuggestions(inputValue).map((suggestion, index) =>
-                            renderSuggestion({
-                                suggestion,
-                                index,
-                                itemProps: getItemProps({ item: suggestion.label }),
-                                highlightedIndex,
-                                selectedItem,
-                            }),
-                            )}
-                        </Paper>
-                        </div>
-                    </Popper>
-                    </div>
-                )}
-                </Downshift>
-            </div>
-        )
-    }
+      return (
+        <div>
+        <Downshift id="downshift-popper">
+        {({
+          getInputProps,
+          getItemProps,
+          isOpen,
+          inputValue: inputValue2,
+          selectedItem: selectedItem2,
+          highlightedIndex,
+        }) => (
+          <div >
+          {renderInput({
+            fullWidth: true,
+            InputProps: getInputProps({
+              startAdornment: selectedItem.map(item => (
+                <Chip
+                key={item}
+                tabIndex={-1}
+                label={item}
+                onDelete={handleDelete(item)}
+                />
+              )),
+              onChange: (event) => { console.log(event.target.value)} ,
+              //onKeyDown: handleKeyDown,
+              placeholder: 'Select multiple countries',
+            }),
+            label: 'Label',
+          })}
+
+          <div >
+          <Popper open={isOpen}  >
+          <Paper square>
+          </Paper>
+          </Popper>
+          </div>
+        </div>
+      )}
+    </Downshift>
+    </div>
+)
+}
 }
 
 
 const mapStateToProps = (state) => ({
-    location: state.location
+  location: state.location
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getGeoName(name, lat, lng) {
-        return dispatch(getGeoName(name, lat, lng))
-    }
+  getGeoName(name, lat, lng) {
+    return dispatch(getGeoName(name, lat, lng))
+  }
 })
 
+const SearchBarContainer= connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchBar)
 
-export default withStyles(connect(mapStateToProps, mapDispatchToProps)(SearchBar));
+export default SearchBarContainer;
