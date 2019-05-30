@@ -38,9 +38,9 @@ class SearchFullText extends Component {
             <div className={classes.root}>
                 <SearchBar />
                 <div>
-                    <Button variant="contained" color="primary" size="small" className={classes.button}>
+                    {/* <Button variant="contained" color="primary" size="small" className={classes.button}>
                         Move Marker Location
-                    </Button>
+                    </Button> */}
                 </div>
                 <br />
                 <Divider variant="middle" className={classes.divider} />
