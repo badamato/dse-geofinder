@@ -53,7 +53,6 @@ class SearchFullText extends Component {
                         **put results here
                         **put results here
                         **put results here
-
                     </Typography>
                 </div>
             </div>
