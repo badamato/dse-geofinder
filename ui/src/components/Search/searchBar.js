@@ -12,6 +12,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { getGeoName } from '../../actions/actions';
 
+
+
 function renderInput(inputProps) {
     const { InputProps,  ref, ...other } = inputProps;
 
@@ -67,6 +69,19 @@ function getSuggestions(value, { showEmpty = false } = {}) {
 
 
 class SearchBar extends Component {
+    state = {
+        lat: null,
+        lng: null,
+        names: [],
+    }
+
+    componentDidMount() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.setState({lat: position.coords.latitude, lng: position.coords.longitude})
+            })
+        }
+    }
 
     render() {
 
@@ -86,19 +101,26 @@ class SearchBar extends Component {
             }) => (
                 <div >
                 {renderInput({
-                fullWidth: true,
-                InputProps: getInputProps({
-                    startAdornment: selectedItem.map(item => (
-                    <Chip
-                    key={item}
-                    tabIndex={-1}
-                    label={item}
-                    onDelete={handleDelete(item)}
-                    />
-                    )),
-                    onChange: (event) => { console.log(event.target.value)} ,
-                    placeholder: 'Search ...',
-                }),
+                    fullWidth: true,
+                    InputProps: getInputProps({
+                        onChange: (e) => {
+                            const {lat, lng} = this.state;
+                            const query = e.target.value;
+                
+                            if (query.length > 2) {
+                                this.props.getGeoName(query, lat, lng)
+                            }
+                            console.log(this.state)
+                        },
+                        placeholder: 'Search ...',
+                        startAdornment: selectedItem.map(item => (
+                        <Chip
+                            key={item}
+                            tabIndex={-1}
+                            label={item}
+                        />
+                        )),
+                    }),
                 })}
 
                 <div >
@@ -118,19 +140,18 @@ class SearchBar extends Component {
 
 
 const mapStateToProps = (state) => ({
-  location: state.location
-
+    location: state.location
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getGeoName(name, lat, lng) {
-    return dispatch(getGeoName(name, lat, lng))
-  }
+    getGeoName(name, lat, lng) {
+        return dispatch(getGeoName(name, lat, lng))
+    }
 })
 
 const SearchBarContainer= connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(SearchBar)
 
 export default SearchBarContainer;
