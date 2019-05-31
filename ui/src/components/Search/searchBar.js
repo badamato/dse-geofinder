@@ -73,44 +73,43 @@ class SearchBar extends Component {
         let isOpen = false;
         let selectedItem = [];
 
-      return (
+        return (
         <div>
         <Downshift id="downshift-popper">
-        {({
-          getInputProps,
-          getItemProps,
-          isOpen,
-          inputValue: inputValue2,
-          selectedItem: selectedItem2,
-          highlightedIndex,
-        }) => (
-          <div >
-          {renderInput({
-            fullWidth: true,
-            InputProps: getInputProps({
-              startAdornment: selectedItem.map(item => (
-                <Chip
-                key={item}
-                tabIndex={-1}
-                label={item}
-                onDelete={handleDelete(item)}
-                />
-              )),
-              onChange: (event) => { console.log(event.target.value)} ,
-              //onKeyDown: handleKeyDown,
-              placeholder: 'Select multiple countries',
-            }),
-            label: 'Label',
-          })}
+            {({
+                getInputProps,
+                getItemProps,
+                isOpen,
+                inputValue: inputValue2,
+                selectedItem: selectedItem2,
+                highlightedIndex,
+            }) => (
+                <div >
+                {renderInput({
+                fullWidth: true,
+                InputProps: getInputProps({
+                    startAdornment: selectedItem.map(item => (
+                    <Chip
+                    key={item}
+                    tabIndex={-1}
+                    label={item}
+                    onDelete={handleDelete(item)}
+                    />
+                    )),
+                    onChange: (event) => { console.log(event.target.value)} ,
+                    placeholder: 'Search ...',
+                }),
+                })}
 
-          <div >
-          <Popper open={isOpen}  >
-          <Paper square>
-          </Paper>
-          </Popper>
-          </div>
-        </div>
-      )}
+                <div >
+                <Popper open={isOpen}  >
+                    <Paper square>
+                        
+                    </Paper>
+                </Popper>
+                </div>
+            </div>
+        )}
     </Downshift>
     </div>
 )
