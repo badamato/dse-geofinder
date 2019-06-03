@@ -72,7 +72,7 @@ class SearchBar extends Component {
     state = {
         lat: null,
         lng: null,
-        names: [],
+        names: '',
     }
 
     componentDidMount() {
@@ -90,7 +90,7 @@ class SearchBar extends Component {
 
         return (
         <div>
-        <Downshift id="downshift-popper">
+        <Downshift>
             {({
                 getInputProps,
                 getItemProps,
