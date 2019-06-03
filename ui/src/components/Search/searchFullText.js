@@ -3,7 +3,7 @@ import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 // import Button from '@material-ui/core/Button';
-import SearchBar from './searchBar';
+import SearchBar from './searchbar';
 
 
 const styles = {
@@ -44,12 +44,7 @@ class SearchFullText extends Component {
                 <br />
                 <div className={classes.resultsContainer}>
                     <Typography className={classes.results}>
-                        **put results here
-                        **put results here
-                        **put results here
-                        **put results here
-                        **put results here
-                        **put results here
+                        {this.props.location.locData.names}
                     </Typography>
                 </div>
             </div>

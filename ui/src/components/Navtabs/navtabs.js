@@ -8,8 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import FindInPage from '@material-ui/icons/FindInPage';
 import ViewList from '@material-ui/icons/ViewList';
 
-import SearchFullText from '../Search/searchFullText';
-import SearchCategories from '../Search/searchCategories';
+import SearchFullText from '../Search/searchfulltext';
+import SearchCategories from '../Search/searchcategories';
 
 
 function TabContainer(props) {
