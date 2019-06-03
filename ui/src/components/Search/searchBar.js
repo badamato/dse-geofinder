@@ -72,7 +72,6 @@ class SearchBar extends Component {
     state = {
         lat: null,
         lng: null,
-        names: '',
     }
 
     componentDidMount() {
@@ -87,55 +86,57 @@ class SearchBar extends Component {
 
         let isOpen = false;
         let selectedItem = [];
+        const { names } = (this.props.location.locData || {});
 
         return (
-        <div>
-        <Downshift>
-            {({
-                getInputProps,
-                getItemProps,
-                isOpen,
-                inputValue: inputValue2,
-                selectedItem: selectedItem2,
-                highlightedIndex,
-            }) => (
-                <div >
-                {renderInput({
-                    fullWidth: true,
-                    InputProps: getInputProps({
-                        onChange: (e) => {
-                            const {lat, lng} = this.state;
-                            const query = e.target.value;
-                
-                            if (query.length > 2) {
-                                this.props.getGeoName(query, lat, lng)
-                            }
-                            console.log(this.state)
-                        },
-                        placeholder: 'Search ...',
-                        startAdornment: selectedItem.map(item => (
-                        <Chip
-                            key={item}
-                            tabIndex={-1}
-                            label={item}
-                        />
-                        )),
-                    }),
-                })}
+            <div>
+            <Downshift>
+                {({
+                    getInputProps,
+                    getItemProps,
+                    isOpen,
+                    inputValue: inputValue2,
+                    selectedItem: selectedItem2,
+                    highlightedIndex,
+                }) => (
+                    <div >
+                    {renderInput({
+                        fullWidth: true,
+                        InputProps: getInputProps({
+                            onChange: (e) => {
+                                const {lat, lng} = this.state;
+                                const query = e.target.value;
+                    
+                                if (query.length > 2) {
+                                    this.props.getGeoName(query, lat, lng)
+                                }
+                                console.log(names)
+                            },
+                            placeholder: 'Search ...',
+                            startAdornment: selectedItem.map(item => (
+                            <Chip
+                                key={item}
+                                tabIndex={-1}
+                                label={item}
+                                // names={names}
+                            />
+                            )),
+                        }),
+                    })}
 
-                <div >
-                <Popper open={isOpen}  >
-                    <Paper square>
-                        
-                    </Paper>
-                </Popper>
+                    <div >
+                    <Popper open={isOpen}  >
+                        <Paper square>
+                            
+                        </Paper>
+                    </Popper>
+                    </div>
                 </div>
+                )}
+            </Downshift>
             </div>
-        )}
-    </Downshift>
-    </div>
-)
-}
+        )
+    }
 }
 
 
