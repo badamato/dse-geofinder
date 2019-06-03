@@ -44,7 +44,11 @@ class SearchFullText extends Component {
                 <br />
                 <div className={classes.resultsContainer}>
                     <Typography className={classes.results}>
-                        {this.props.location.locData.names}
+                        **RESULTS HERE**
+                        **RESULTS HERE**
+                        **RESULTS HERE**
+                        **RESULTS HERE**
+                        **RESULTS HERE**
                     </Typography>
                 </div>
             </div>

@@ -25,8 +25,6 @@ const styles = {
             '&:hover': {
                 backgroundColor: '#c0c0c0',
             },
-    },
-    select: {
     }
 };
 
@@ -38,7 +36,6 @@ class SearchBar extends Component {
         lng: null,
     }
     
-    //built in formula for getting users current location - at init
     componentDidMount() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
