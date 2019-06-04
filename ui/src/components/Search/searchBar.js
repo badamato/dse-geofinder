@@ -28,6 +28,14 @@ const styles = {
             '&:hover': {
                 backgroundColor: '#c0c0c0',
             },
+    },
+    menuBox: {
+        borderRight: '1px solid lightgray',
+        borderBottom: '1px solid lightgray',
+        borderLeft: '1px solid lightgray',
+        paddingRight: '5px',
+        paddingLeft: '5px',
+        backgroundColor: '#f5f5f5'
     }
 };
 
@@ -56,8 +64,6 @@ class Searchbar extends Component {
         }
     }
 
-    
-
     render() {
         const { classes } = this.props;
         const names = get(this.props, "location.locData.names", []);
@@ -73,11 +79,11 @@ class Searchbar extends Component {
                         className={classes.inputInput}/>
                         <br />
                 </div>
-                <Menu>
+                <div className={classes.menuBox}>
                     {names.map((name, index) => (
-                        <MenuItem key={index}>{name.value}</MenuItem>
+                        <div key={index}>{name.value}</div>
                     ))}
-                </Menu>
+                </div>
             </div>
         )
     }
