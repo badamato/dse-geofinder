@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import MapGL, { Marker, NavigationControl } from 'react-map-gl';
+import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
 
 import ControlPanel from './controlpanel';
 import Pin from './pin';
@@ -70,7 +70,7 @@ class ReactMap extends Component {
         const {viewport, marker} = this.state;
 
         return (
-            <MapGL
+            <ReactMapGL
                 {...viewport}
                 mapboxApiAccessToken={this.state.token}
                 mapStyle='mapbox://styles/mapbox/outdoors-v11'
@@ -95,7 +95,7 @@ class ReactMap extends Component {
                 <ControlPanel
                     containerComponent={this.props.containerComponent}
                     events={this.state.events} />
-            </MapGL>
+            </ReactMapGL>
         );
     }
 }
