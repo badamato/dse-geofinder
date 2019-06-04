@@ -30,7 +30,7 @@ const styles = {
 };
 
 
-class SearchBar extends Component {
+class Searchbar extends Component {
 
     state = {
         lat: null,
@@ -71,8 +71,8 @@ class SearchBar extends Component {
                         <br />
                 </div>
                 <ul>
-                    {names.map((name) => (
-                        <li>{name.value}</li>
+                    {names.map((name, index) => (
+                        <li key={index}>{name.value}</li>
                     ))}
                 </ul>
             </div>
@@ -93,4 +93,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(SearchBar));
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(Searchbar));
