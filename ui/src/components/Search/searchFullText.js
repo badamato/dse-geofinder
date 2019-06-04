@@ -19,7 +19,7 @@ const styles = {
     resultsContainer: {
         marginTop: '10px',
         padding: '10px',
-        height: '720px',
+        maxHeight: '720px',
         overflow: 'scroll',
     },
     results: {
