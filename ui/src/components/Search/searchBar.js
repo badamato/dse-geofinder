@@ -64,11 +64,21 @@ class Searchbar extends Component {
         }
     }
 
+    handlesApiCall() {
+
+    }
+
+    handlesAddressBlock() {
+
+    }
+
+    handlesAddressBlockPin() {
+        
+    }
+
     render() {
         const { classes } = this.props;
         const names = get(this.props, "location.locData.names", []);
-        console.log(this.props)
-    
 
         return (
             <div>
