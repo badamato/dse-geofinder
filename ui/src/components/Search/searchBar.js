@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import InputBase from '@material-ui/core/InputBase';
+import Input from '@material-ui/core/Input';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import get from "lodash/get";
 
 import { getGeoName } from '../../actions/actions';
@@ -17,7 +19,7 @@ const styles = {
         paddingBottom: '2px',
         paddingLeft: '30px',
         transition: 'width 2s',
-        width: '80%',
+        width: '90%',
     },
     searchBox: {
         display: 'flex',
@@ -34,8 +36,7 @@ class Searchbar extends Component {
 
     state = {
         lat: null,
-        lng: null,
-        value: '',
+        lng: null
     }
     
     componentDidMount() {
@@ -55,6 +56,8 @@ class Searchbar extends Component {
         }
     }
 
+    
+
     render() {
         const { classes } = this.props;
         const names = get(this.props, "location.locData.names", []);
@@ -64,17 +67,17 @@ class Searchbar extends Component {
         return (
             <div>
                 <div className={classes.searchBox}>
-                    <InputBase
-                        placeholder="Type your search here…"
+                    <Input
+                        placeholder="Search …"
                         onChange={this.search}
                         className={classes.inputInput}/>
                         <br />
                 </div>
-                <ul>
+                <Menu>
                     {names.map((name, index) => (
-                        <li key={index}>{name.value}</li>
+                        <MenuItem key={index}>{name.value}</MenuItem>
                     ))}
-                </ul>
+                </Menu>
             </div>
         )
     }
