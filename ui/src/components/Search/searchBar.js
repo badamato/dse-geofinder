@@ -18,6 +18,7 @@ const styles = {
         paddingLeft: '30px',
         transition: 'width 2s',
         width: '90%',
+        height: '45px'
     },
     searchBox: {
         display: 'flex',

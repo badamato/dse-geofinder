@@ -41,7 +41,6 @@ class SearchFullText extends Component {
                     </Button> */}
                 </div>
                 <br />
-                <br />
                 <div className={classes.resultsContainer}>
                     <Typography className={classes.results}>
                         **RESULTS HERE**
