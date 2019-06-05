@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import { Input, MenuItem } from '@material-ui/core'
 import get from "lodash/get";
 
 import { getGeoName } from '../../actions/actions';
@@ -35,7 +33,7 @@ const styles = {
         borderLeft: '1px solid lightgray',
         paddingRight: '5px',
         paddingLeft: '5px',
-        backgroundColor: '#f5f5f5'
+        // backgroundColor: '#f5f5f5'
     }
 };
 
@@ -91,7 +89,7 @@ class Searchbar extends Component {
                 </div>
                 <div className={classes.menuBox}>
                     {names.map((name, index) => (
-                        <div key={index}>{name.value}</div>
+                        <MenuItem key={index}>{name.value}</MenuItem>
                     ))}
                 </div>
             </div>
