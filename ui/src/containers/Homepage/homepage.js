@@ -93,14 +93,14 @@ class HomePage extends PureComponent {
                     <div className={classes.cqlContainer}>
                         <Typography variant="h5" className={classes.cqlTitle}>Queries</Typography>
                         <Divider varient='middle' />
-                        <Typography className={classes.cqlSection}>
-                                <h3 className={classes.queryText}>SUGGEST CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{querySuggest}</span>
-                                </h3>
+                        <Typography variant='h6' className={classes.cqlSection}>
+                                <div className={classes.queryText}>SUGGEST CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{querySuggest}</span>
+                                </div>
                         </Typography>
                         <Divider varient='middle' />
-                        <Typography className={classes.cqlSection}>
-                            <h3 className={classes.queryText}>SEARCH CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{querySearch}</span>
-                            </h3>
+                        <Typography variant='h6' className={classes.cqlSection}>
+                            <div className={classes.queryText}>SEARCH CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{querySearch}</span>
+                            </div>
                         </Typography>
                     </div>
                 </Paper>
