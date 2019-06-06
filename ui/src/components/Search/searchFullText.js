@@ -13,13 +13,10 @@ const styles = {
     // button: {
     //     margin: '15px',
     // },
-    divider: {
-        margin: 0,
-    },
     resultsContainer: {
         marginTop: '10px',
         padding: '10px',
-        maxHeight: '720px',
+        maxHeight: '700px',
         overflow: 'scroll',
     },
     results: {
@@ -41,6 +38,7 @@ class SearchFullText extends Component {
                     </Button> */}
                 </div>
                 <br />
+                <hr />
                 <div className={classes.resultsContainer}>
                     <Typography className={classes.results}>
                         **RESULTS HERE**

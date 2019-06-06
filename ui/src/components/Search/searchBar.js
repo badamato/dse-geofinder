@@ -15,9 +15,9 @@ const styles = {
         paddingTop: '2px',
         paddingRight: '2px',
         paddingBottom: '2px',
-        paddingLeft: '30px',
+        paddingLeft: '20px',
         transition: 'width 2s',
-        width: '90%',
+        width: '100%',
         height: '45px'
     },
     searchBox: {
@@ -34,7 +34,6 @@ const styles = {
         borderLeft: '1px solid lightgray',
         paddingRight: '5px',
         paddingLeft: '5px',
-        // backgroundColor: '#f5f5f5'
     }
 };
 
