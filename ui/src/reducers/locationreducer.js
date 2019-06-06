@@ -1,13 +1,15 @@
 const initialState = {
         isLoading: false,
-        locData: {},
+        locDataSuggest: {},
+        locDataSearch: {},
 }
+
 const LocationReducer = (state = initialState, action) => {
     switch (action.type) {
         case "UPDATE":
             return {
                 ...state,
-                locData: action.data.value,
+                [action.data.key]: action.data.value,
                 isLoading: false,
             }
             case "SET_LOADING":

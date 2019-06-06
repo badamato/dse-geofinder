@@ -8,8 +8,8 @@ const AppReducer = (state = '', action) => {
         //     case "SET_LOADING":
         //         return {
         //             ...state,
-        //             locData: {
-        //                 ...state.locData,
+        //             locDataSuggest: {
+        //                 ...state.locDataSuggest,
         //                 isLoading: true,
         //             }
         //         }

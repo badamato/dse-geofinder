@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Input, MenuItem } from '@material-ui/core'
 import get from "lodash/get";
+import axios from 'axios';
 
-import { getGeoName } from '../../actions/actions';
+import { getGeoNameSuggest, getGeoNameSearch } from '../../actions/actions';
 
 
 const styles = {
@@ -42,7 +43,8 @@ class Searchbar extends Component {
 
     state = {
         lat: null,
-        lng: null
+        lng: null,
+
     }
     
     componentDidMount() {
@@ -58,25 +60,21 @@ class Searchbar extends Component {
         const query = e.target.value;
 
         if (query.length > 2) {
-            this.props.getGeoName(query, lat, lng)
+            this.props.getGeoNameSuggest(query, lat, lng)
         }
     }
 
-    handlesApiCall() {
-
-    }
-
-    handlesAddressBlock() {
-
-    }
-
-    handlesAddressBlockPin() {
-        
+    handleClick = (name) => {
+        const { lat, lng } = this.state;
+        const value = name.value;
+        const res = this.props.getGeoNameSearch(value, lat, lng)
     }
 
     render() {
         const { classes } = this.props;
-        const names = get(this.props, "location.locData.names", []);
+        const names = get(this.props, "location.locDataSuggest.names", []);
+        const searchGeoNames = get(this.props, "location.locDataSearch.locations", []);
+        console.log(searchGeoNames)
 
         return (
             <div>
@@ -89,7 +87,7 @@ class Searchbar extends Component {
                 </div>
                 <div className={classes.menuBox}>
                     {names.map((name, index) => (
-                        <MenuItem key={index}>{name.value}</MenuItem>
+                        <MenuItem key={index} onClick={this.handleClick.bind(this, name)}>{name.value}</MenuItem>
                     ))}
                 </div>
             </div>
@@ -104,8 +102,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getGeoName(name, lat, lng) {
-        return dispatch(getGeoName(name, lat, lng))
+    getGeoNameSuggest(name, lat, lng) {
+        return dispatch(getGeoNameSuggest(name, lat, lng))
+    },
+    getGeoNameSearch(name, lat, lng) {
+        return dispatch(getGeoNameSearch(name, lat, lng))
     }
 })
 

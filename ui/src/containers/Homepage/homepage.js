@@ -11,7 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import secrets from '../../secrets/secrets';
 import style from '../../style/style.css';
 
-import {getGeoName} from '../../actions/actions'
+import {getGeoNameSuggest} from '../../actions/actions'
 
 
 const styles = {
@@ -73,7 +73,7 @@ class HomePage extends PureComponent {
     
     render() {
         const { classes } = this.props;
-        const { query } = (this.props.locData || {});
+        const { query } = (this.props.locDataSuggest || {});
         
         return (
         <div className={classes.container}>
@@ -111,7 +111,7 @@ class HomePage extends PureComponent {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        locData: state.location.locData
+        locDataSuggest: state.location.locDataSuggest
     }
 }
 

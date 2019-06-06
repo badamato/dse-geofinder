@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 import get from "lodash/get";
 import { FilledInput, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core'
 
-import { getGeoName } from '../../actions/actions';
+import { getGeoNameSuggest } from '../../actions/actions';
 
 const useStyles = makeStyles({
     root: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 
 export default function Searchbar() {
     const classes = useStyles()
-    // const names = get(this.props, "location.locData.names", []);
+    // const names = get(this.props, "location.locDataSuggest.names", []);
     const [values, setValues] = React.useState({
         lat: null,
         lng: null,

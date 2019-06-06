@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Divider } from '@material-ui/core';
 // import Button from '@material-ui/core/Button';
 import SearchBar from './searchbar';
 
@@ -38,7 +37,7 @@ class SearchFullText extends Component {
                     </Button> */}
                 </div>
                 <br />
-                <hr />
+                <hr style={{width: '80%', backgroundColor: 'darkgray', height: '1px'}} />
                 <div className={classes.resultsContainer}>
                     <Typography className={classes.results}>
                         **RESULTS HERE**

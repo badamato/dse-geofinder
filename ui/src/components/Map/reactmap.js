@@ -67,7 +67,7 @@ class ReactMap extends Component {
     };
 
     render() {
-        const {viewport, marker} = this.state;
+        const {viewport, marker, events, popupInfo} = this.state;
 
         return (
             <ReactMapGL
@@ -78,14 +78,13 @@ class ReactMap extends Component {
                 <Marker 
                     longitude={marker.longitude}
                     latitude={marker.latitude}
-                    offsetTop={-20}
-                    offsetLeft={-10}
                     draggable
+                    // onClick={() => this.setState({popupInfo: })}
                     onDragStart={this._onMarkerDragStart}
                     onDrag={this._onMarkerDrag}
                     onDragEnd={this._onMarkerDragEnd} 
                 >
-                    <Pin onClick={() => this.setState({popupInfo: marker})} />
+                    <Pin  />
                 </Marker>
 
                 <div className="nav" style={navStyle}>

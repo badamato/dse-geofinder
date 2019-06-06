@@ -4,7 +4,7 @@ import {get} from '../common/requests';
 import {changeScreen} from './navigationactions';
 
 
-export const getGeoName = (name, lat, lng) => dispatch => {
+export const getGeoNameSuggest = (name, lat, lng) => dispatch => {
 
         dispatch(setLoading())
 
@@ -20,7 +20,34 @@ export const getGeoName = (name, lat, lng) => dispatch => {
                         }
                     })
                     res.data.names = formattedNames
-                    dispatch(updateValue('locData', res.data))
+                    dispatch(updateValue('locDataSuggest', res.data))
+                },
+                dispatch: dispatch
+            });
+}
+
+export const getGeoNameSearch = (name, lat, lng, radius) => dispatch => {
+
+        dispatch(setLoading())
+
+        const url = `/api/geo-name-search?name=${name}&lat=${lat}&lng=${lng}&radius=8`;
+            get({
+                url: url,
+                success: function(res){
+                    const formattedLocations = res.data.locations.map(location => {
+                        return {
+                            value: location.name,
+                            label: location.name,
+                            address: location.address,
+                            city: location.city,
+                            province: location.province,
+                            zip: location.post_code,
+                            phone: location.phone
+                        }
+                    })
+                    res.data.locations = formattedLocations
+                    dispatch(updateValue('locDataSearch', res.data))
+                    
                 },
                 dispatch: dispatch
             });
@@ -48,4 +75,4 @@ export const updateData = (type, data) => {
     }
 }
 
-export default {updateValue, getGeoName};
+export default {updateValue, getGeoNameSuggest, getGeoNameSearch};
