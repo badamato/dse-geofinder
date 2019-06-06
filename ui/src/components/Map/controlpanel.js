@@ -31,13 +31,31 @@ class ControlPanel extends PureComponent {
                 <h3>DEMOGRAPHICS PANEL</h3>
                 <hr />
                     <div className="input">
-                        <label>Food Desert Locations </label>
                         <input type="checkbox"
                             name="geodata"
                             // checked={allDay}
                             checked={null}
                             onChange={event => onChangeAllDay(event.target.checked)}
                             />
+                        <label>Banks</label>
+                    </div>
+                    <div className="input">
+                        <input type="checkbox"
+                            name="geodata"
+                            // checked={allDay}
+                            checked={null}
+                            onChange={event => onChangeAllDay(event.target.checked)}
+                            />
+                        <label>Restaurants</label>
+                    </div>
+                    <div className="input">
+                        <input type="checkbox"
+                            name="geodata"
+                            // checked={allDay}
+                            checked={null}
+                            onChange={event => onChangeAllDay(event.target.checked)}
+                            />
+                        <label>Shopping</label>
                     </div>
                 <hr />
                 <div>{eventNames.map(this.renderEvent)}</div>

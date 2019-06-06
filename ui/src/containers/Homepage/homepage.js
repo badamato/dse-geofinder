@@ -27,7 +27,8 @@ const styles = {
         padding: '50px 10px 0 10px',
         marginBottom: '2%',
         width: '29%',
-        minHeight: '965px',
+        minHeight: '1010px',
+        maxHeight: '1010px',
     },
     mapPaper: {
         display: 'flex',
