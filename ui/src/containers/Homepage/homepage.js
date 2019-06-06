@@ -11,7 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import secrets from '../../secrets/secrets';
 import style from '../../style/style.css';
 
-import {getGeoNameSuggest} from '../../actions/actions'
+import {getGeoNameSuggest, getGeoNameSearch} from '../../actions/actions'
 
 
 const styles = {
@@ -44,16 +44,16 @@ const styles = {
         top: '838px',
         marginLeft: '30.5%',
         width: '70%',
-        minHeight: '188px',
-        maxHeight: '188px',
+        minHeight: '240px',
+        maxHeight: '240px',
+        padding: '0 10px 10px 10px'
     },
     cqlContainer: {
         width: '100%',
-        maxHeight: '170px',
+        minHeight: '200px',
+        maxHeight: '200px',
         margin:  '0 30px 0 20px',
-        padding: '10px',
-        overflow: 'scroll',
-        
+        padding: '10px'
     },
     cqlTitle: {
         paddingBottom: '10px',
@@ -73,7 +73,8 @@ class HomePage extends PureComponent {
     
     render() {
         const { classes } = this.props;
-        const { query } = (this.props.locDataSuggest || {});
+        const { query: querySuggest } = (this.props.locDataSuggest || {});
+        const { query: querySearch } = (this.props.locDataSearch || {});
         
         return (
         <div className={classes.container}>
@@ -91,15 +92,15 @@ class HomePage extends PureComponent {
                     <div className={classes.cqlContainer}>
                         <Typography variant="h5" className={classes.cqlTitle}>Queries</Typography>
                         <Divider varient='middle' />
-                        <div className={classes.cqlSection}>
-                                <h5 className={classes.queryText}>SUGGEST CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{query}</span>
-                                </h5>
-                        </div>
+                        <Typography className={classes.cqlSection}>
+                                <h3 className={classes.queryText}>SUGGEST CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{querySuggest}</span>
+                                </h3>
+                        </Typography>
                         <Divider varient='middle' />
-                        <div className={classes.cqlSection}>
-
-
-                        </div>
+                        <Typography className={classes.cqlSection}>
+                            <h3 className={classes.queryText}>SEARCH CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{querySearch}</span>
+                            </h3>
+                        </Typography>
                     </div>
                 </Paper>
             </Grid>
@@ -111,7 +112,8 @@ class HomePage extends PureComponent {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        locDataSuggest: state.location.locDataSuggest
+        locDataSuggest: state.location.locDataSuggest,
+        locDataSearch: state.location.locDataSearch
     }
 }
 

@@ -44,6 +44,7 @@ class Searchbar extends Component {
     state = {
         lat: null,
         lng: null,
+        isHidden: true
 
     }
     
@@ -67,7 +68,14 @@ class Searchbar extends Component {
     handleClick = (name) => {
         const { lat, lng } = this.state;
         const value = name.value;
-        const res = this.props.getGeoNameSearch(value, lat, lng)
+
+        this.props.getGeoNameSearch(value, lat, lng)
+    }
+
+    toggleHidden = () => {
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
     }
 
     render() {
