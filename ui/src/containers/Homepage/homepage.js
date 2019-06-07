@@ -54,7 +54,8 @@ const styles = {
         minHeight: '200px',
         maxHeight: '200px',
         margin:  '0 30px 0 20px',
-        padding: '10px'
+        padding: '10px',
+        overflow: 'scroll'
     },
     cqlTitle: {
         paddingBottom: '10px',
@@ -65,7 +66,7 @@ const styles = {
         textAlign: 'left',
     },
     queryText: {
-        margin: '10px'
+        margin: '5px'
     },
 }
 
@@ -93,12 +94,12 @@ class HomePage extends PureComponent {
                     <div className={classes.cqlContainer}>
                         <Typography variant="h5" className={classes.cqlTitle}>Queries</Typography>
                         <Divider varient='middle' />
-                        <Typography variant='h6' className={classes.cqlSection}>
+                        <Typography variant='subtitle1' className={classes.cqlSection}>
                                 <div className={classes.queryText}>SUGGEST CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{querySuggest}</span>
                                 </div>
                         </Typography>
                         <Divider varient='middle' />
-                        <Typography variant='h6' className={classes.cqlSection}>
+                        <Typography variant='subtitle1' className={classes.cqlSection}>
                             <div className={classes.queryText}>SEARCH CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{querySearch}</span>
                             </div>
                         </Typography>

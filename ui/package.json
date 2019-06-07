@@ -17,6 +17,7 @@
         "copy-webpack-plugin": "^4.5.1",
         "file-loader": "^3.0.1",
         "global": "^4.3.2",
+        "immutable": "^4.0.0-rc.12",
         "lodash": ">=4.17.11",
         "mapbox-gl": "^0.53.1",
         "react": "^16.6.3",
