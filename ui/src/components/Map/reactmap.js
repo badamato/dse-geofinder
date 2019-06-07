@@ -16,6 +16,7 @@ const navStyle = {
 
 class ReactMap extends Component {
     state = {
+        mapStyle: '',
         viewport: {
             width: '100%',
             height: 815,
