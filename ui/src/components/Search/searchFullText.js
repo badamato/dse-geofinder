@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography, Divider } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 // import Button from '@material-ui/core/Button';
 import SearchBar from './searchbar';
 
@@ -9,9 +9,9 @@ const styles = {
     root: {
 
     },
-    // button: {
-    //     margin: '15px',
-    // },
+    button: {
+        margin: '15px',
+    },
     resultsContainer: {
         marginTop: '10px',
         padding: '10px',
@@ -32,9 +32,9 @@ class SearchFullText extends Component {
             <div className={classes.root}>
                 <SearchBar />
                 <div>
-                    {/* <Button variant="contained" color="primary" size="small" className={classes.button}>
-                        Move Marker Location
-                    </Button> */}
+                    <Button variant="contained" color="primary" size="small" className={classes.button}>
+                        Move User
+                    </Button>
                 </div>
                 <br />
                 <hr style={{width: '80%', backgroundColor: 'darkgray', height: '1px'}} />
