@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Input, MenuItem } from '@material-ui/core'
 import get from "lodash/get";
-import axios from 'axios';
 
 import { getGeoNameSuggest, getGeoNameSearch } from '../../actions/actions';
 
@@ -44,8 +43,6 @@ class Searchbar extends Component {
     state = {
         lat: null,
         lng: null,
-        isHidden: true
-
     }
     
     componentDidMount() {
@@ -56,7 +53,7 @@ class Searchbar extends Component {
         }
     }
     
-    search = (e) => {
+    handlesearch = (e) => {
         const { lat, lng } = this.state;
         const query = e.target.value;
 
@@ -68,15 +65,9 @@ class Searchbar extends Component {
     handleClick = (name) => {
         const { lat, lng } = this.state;
         const value = name.value;
-
         this.props.getGeoNameSearch(value, lat, lng)
     }
 
-    toggleHidden = () => {
-        this.setState({
-            isHidden: !this.state.isHidden
-        })
-    }
 
     render() {
         const { classes } = this.props;
@@ -89,13 +80,17 @@ class Searchbar extends Component {
                 <div className={classes.searchBox}>
                     <Input
                         placeholder="Search …"
-                        onChange={this.search}
+                        onChange={this.handlesearch}
                         className={classes.inputInput}/>
                         <br />
                 </div>
                 <div className={classes.menuBox}>
                     {names.map((name, index) => (
-                        <MenuItem key={index} onClick={this.handleClick.bind(this, name)}>{name.value}</MenuItem>
+                        <MenuItem 
+                            key={index} 
+                            onClick={this.handleClick.bind(this, name)}>
+                            {name.value}
+                        </MenuItem>
                     ))}
                 </div>
             </div>
