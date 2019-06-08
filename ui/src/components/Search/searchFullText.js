@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
 import SearchBar from './searchbar';
+import { get, isEmpty, nth, size } from 'lodash'
 
 
 const styles = {
@@ -18,14 +20,41 @@ const styles = {
         overflow: 'scroll',
     },
     results: {
-        border: '1px solid green',
+        border: '1px solid green', 
     }
 };
 
 class SearchFullText extends Component {
 
     render() {
-        const { classes } = this.props;
+        console.log(isEmpty)
+        const { classes, location } = this.props;
+        console.log('This is my PROPS:', this.props)
+        // const names = get(this.props, "location.locDataSuggest.names", []);
+
+        const locationDatas = get(this.props, "location.locDataSearch.locations", []);
+
+        console.log("!LOCATION IS:")
+        console.log(size(locationDatas))
+
+        console.log('This is locationDatas stuff:', isEmpty(locationDatas))
+        let resultsFound = !isEmpty(locationDatas)
+        // if (!resultsFound) {
+        //     return null;
+        // }
+        
+        console.log(nth(locationDatas, 0))
+        console.log("NAME AND ADDRESS IS:")
+
+        let name, address;
+        if (resultsFound){
+            ( { name, address } = nth(locationDatas, 0) );
+        }
+        console.log(name)
+        console.log(address)
+
+        console.log("RESULTS FOUND: ", resultsFound)
+
 
         return (
             <div className={classes.root}>
@@ -37,17 +66,33 @@ class SearchFullText extends Component {
                 </div>
                 <br />
                 <hr style={{width: '80%', backgroundColor: 'darkgray', height: '1px'}} />
-                <div className={classes.resultsContainer}>
-                    <Typography className={classes.results}>
-                        name <br />
-                        address <br />
-                        city, province, post_code <br />
-                        phone (as link) <br />
-                    </Typography>
-                </div>
+                {
+                    resultsFound
+                        ? <div className={classes.resultsContainer}>
+                            <Typography className={classes.results}>
+                                {name}<br />
+                                {address}<br />
+                                city, province, post_code <br />
+                                phone (as link) <br />
+                            </Typography>
+                        </div>
+                        : null
+                }
             </div>
         )
     }
 }
 
-export default withStyles(styles)(SearchFullText);
+const mapStateToProps = (state) => ({
+    location: state.location
+    
+});
+
+// const mapStateToProps = (state) => {
+//     console.log(state.location);
+//     return {
+//         location: state.location
+//     };
+// };
+
+export default withStyles(styles)(connect(mapStateToProps, null)(SearchFullText));
