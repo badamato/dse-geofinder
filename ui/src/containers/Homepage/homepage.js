@@ -47,7 +47,7 @@ const styles = {
         width: '70%',
         minHeight: '240px',
         maxHeight: '240px',
-        padding: '0 10px 10px 10px'
+        padding: '10px'
     },
     cqlContainer: {
         width: '100%',
@@ -64,6 +64,7 @@ const styles = {
         display: 'flex',
         margin: '0 auto',
         textAlign: 'left',
+        lineHeight: '26px'
     },
     queryText: {
         margin: '5px'

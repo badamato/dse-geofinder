@@ -52,7 +52,7 @@ render() {
             <AppBar position="static">
                 <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
                     <LinkTab label="Full-Text Search" icon={<FindInPage />} href="page1" />
-                    <LinkTab label="Catagory Search" icon={<ViewList />} href="page2" />
+                    <LinkTab label="Category Search" icon={<ViewList />} href="page2" />
                 </Tabs>
             </AppBar>
             {value === 0 && 

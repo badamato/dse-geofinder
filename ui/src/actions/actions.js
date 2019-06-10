@@ -36,7 +36,7 @@ export const getGeoNameSearch = (name, lat, lng, radius) => dispatch => {
                 success: function(res){
                     const formattedLocations = res.data.locations.map(location => {
                         return {
-                            value: location.name,
+                            // value: location.name,
                             label: location.name,
                             address: location.address,
                             city: location.city,

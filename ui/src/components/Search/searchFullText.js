@@ -20,40 +20,22 @@ const styles = {
         overflow: 'scroll',
     },
     results: {
-        border: '1px solid green', 
+        border: '1px solid lightgray',
+        padding: '10px',
+        lineHeight: '24px'
     }
 };
 
 class SearchFullText extends Component {
 
     render() {
-        console.log(isEmpty)
         const { classes, location } = this.props;
-        console.log('This is my PROPS:', this.props)
-        // const names = get(this.props, "location.locDataSuggest.names", []);
-
         const locationDatas = get(this.props, "location.locDataSearch.locations", []);
-
-        console.log("!LOCATION IS:")
-        console.log(size(locationDatas))
-
-        console.log('This is locationDatas stuff:', isEmpty(locationDatas))
         let resultsFound = !isEmpty(locationDatas)
-        // if (!resultsFound) {
-        //     return null;
-        // }
-        
-        console.log(nth(locationDatas, 0))
-        console.log("NAME AND ADDRESS IS:")
-
-        let name, address;
+        let label, address, city, province, zip, phone;
         if (resultsFound){
-            ( { name, address } = nth(locationDatas, 0) );
+            ( { label, address, city, province, zip, phone } = nth(locationDatas, 0) );
         }
-        console.log(name)
-        console.log(address)
-
-        console.log("RESULTS FOUND: ", resultsFound)
 
 
         return (
@@ -69,11 +51,11 @@ class SearchFullText extends Component {
                 {
                     resultsFound
                         ? <div className={classes.resultsContainer}>
-                            <Typography className={classes.results}>
-                                {name}<br />
+                            <Typography variant="subtitle1" className={classes.results}>
+                                {label}<br />
                                 {address}<br />
-                                city, province, post_code <br />
-                                phone (as link) <br />
+                                {city}, {province} {' '} {zip}<br />
+                                <a href={"tel:" + this.props.phone} target="_blank">{phone}</a><br />
                             </Typography>
                         </div>
                         : null
