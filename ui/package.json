@@ -12,7 +12,7 @@
         "@material-ui/core": "^3.7.0",
         "@material-ui/icons": "^3.0.1",
         "@material-ui/styles": "^4.0.1",
-        "axios": "^0.18.0",
+        "axios": "^0.18.1",
         "classnames": "^2.2.6",
         "global": "^4.3.2",
         "immutable": "^4.0.0-rc.12",
