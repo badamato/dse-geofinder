@@ -32,8 +32,7 @@ const styles = {
         borderRight: '1px solid lightgray',
         borderBottom: '1px solid lightgray',
         borderLeft: '1px solid lightgray',
-        paddingRight: '5px',
-        paddingLeft: '5px',
+        padding: '0 5px 0 5px',
     }
 };
 
@@ -43,6 +42,7 @@ class Searchbar extends Component {
     state = {
         lat: null,
         lng: null,
+        hideResultsList: false,
     }
     
     componentDidMount() {
@@ -66,33 +66,40 @@ class Searchbar extends Component {
         const { lat, lng } = this.state;
         const value = name.value;
         this.props.getGeoNameSearch(value, lat, lng)
+
+        this.setState({
+            hideResultsList: !this.state.hideResultsList
+        })
     }
-
-
+    
+    
     render() {
         const { classes } = this.props;
         const names = get(this.props, "location.locDataSuggest.names", []);
         const searchGeoNames = get(this.props, "location.locDataSearch.locations", []);
-        console.log(searchGeoNames)
-
+        
         return (
             <div>
                 <div className={classes.searchBox}>
                     <Input
                         placeholder="Search …"
                         onChange={this.handlesearch}
-                        className={classes.inputInput}/>
-                        <br />
+                        className={classes.inputInput}
+                    />
+                    <br />
                 </div>
-                <div className={classes.menuBox}>
-                    {names.map((name, index) => (
-                        <MenuItem 
-                            key={index} 
-                            onClick={this.handleClick.bind(this, name)}>
-                            {name.value}
-                        </MenuItem>
-                    ))}
-                </div>
+
+                {!this.state.hideResultsList && 
+                    <div className={classes.menuBox}>
+                        {names.map((name, index) => (
+                            <MenuItem 
+                                key={index} 
+                                onClick={this.handleClick.bind(this, name)}>
+                                {name.value}
+                            </MenuItem>
+                        ))}
+                    </div>
+                }
             </div>
         )
     }

@@ -18,10 +18,11 @@ const styles = {
         height: '120px',
         overflow: 'scroll',
     },
-    results: {
+    resultsBox: {
         border: '1px solid lightgray',
         padding: '10px',
         lineHeight: '24px',
+        backgroundColor: '#e5e5e5'
     },
     a: {
         textDecoration: 'none'
@@ -53,7 +54,7 @@ class SearchFullText extends Component {
                 {
                     resultsFound
                         ? <div className={classes.resultsContainer}>
-                            <Typography variant="subtitle1" className={classes.results}>
+                            <Typography variant="subtitle1" className={classes.resultsBox}>
                                 {label}<br />
                                 {address}<br />
                                 {city}, {province} {' '} {zip}<br />
