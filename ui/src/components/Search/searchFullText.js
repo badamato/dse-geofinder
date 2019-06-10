@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
 import SearchBar from './searchbar';
-import { get, isEmpty, nth, size } from 'lodash'
+import { get, isEmpty, nth} from 'lodash'
 
 
 const styles = {
@@ -11,7 +11,7 @@ const styles = {
 
     },
     button: {
-        margin: '15px',
+        margin: '15px 15px 15px 0',
     },
     resultsContainer: {
         marginTop: '20px',
@@ -22,7 +22,7 @@ const styles = {
         border: '1px solid lightgray',
         padding: '10px',
         lineHeight: '24px',
-        backgroundColor: '#e5e5e5'
+        backgroundColor: '#f6f6f6'
     },
     a: {
         textDecoration: 'none'

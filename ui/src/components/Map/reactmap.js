@@ -19,7 +19,7 @@ class ReactMap extends Component {
         mapStyle: '',
         viewport: {
             width: '100%',
-            height: 815,
+            height: 720,
             latitude: 33.758447,
             longitude: -84.386171,
             zoom: 13,

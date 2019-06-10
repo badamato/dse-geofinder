@@ -1,15 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import { Input, MenuItem } from '@material-ui/core'
+import { InputBase, MenuItem } from '@material-ui/core'
 import get from "lodash/get";
 
 import { getGeoNameSuggest, getGeoNameSearch } from '../../actions/actions';
 
 
 const styles = {
+    root: {
+        width: '75%'
+    },
     input: {
         display: 'none',
+
     },
     inputInput: {
         paddingTop: '2px',
@@ -23,9 +27,9 @@ const styles = {
     searchBox: {
         display: 'flex',
         borderRadius: '2px',
-        backgroundColor: '#e5e5e5',
+        backgroundColor: '#ededed',
             '&:hover': {
-                backgroundColor: '#c0c0c0',
+                backgroundColor: '#dbdbdb',
             },
     },
     menuBox: {
@@ -79,9 +83,9 @@ class Searchbar extends Component {
         const searchGeoNames = get(this.props, "location.locDataSearch.locations", []);
         
         return (
-            <div>
+            <div className={classes.root}>
                 <div className={classes.searchBox}>
-                    <Input
+                    <InputBase
                         placeholder="Search …"
                         onChange={this.handlesearch}
                         className={classes.inputInput}

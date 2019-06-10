@@ -27,8 +27,8 @@ const styles = {
         padding: '50px 10px 0 10px',
         marginBottom: '2%',
         width: '29%',
-        minHeight: '1010px',
-        maxHeight: '1010px',
+        minHeight: '925px',
+        maxHeight: '925px',
     },
     mapPaper: {
         display: 'flex',
@@ -37,28 +37,28 @@ const styles = {
         marginBottom: '1%',
         marginLeft: '30.5%',
         width: '70%',
-        minHeight: '815px',
+        minHeight: '720px',
     },
     cqlPaper: {
         display: 'flex',
         position: 'absolute',
-        top: '838px',
+        top: '745px',
         marginLeft: '30.5%',
         width: '70%',
-        minHeight: '213px',
-        maxHeight: '213px',
+        minHeight: '220px',
+        maxHeight: '220px',
         padding: '10px'
     },
     cqlContainer: {
         width: '100%',
         minHeight: '200px',
         maxHeight: '200px',
-        margin:  '0 30px 0 20px',
+        margin:  '0 40px 0 10px',
         padding: '10px',
         overflow: 'scroll'
     },
     cqlTitle: {
-        paddingBottom: '10px',
+        paddingBottom: '5px',
     },
     cqlSection: {
         display: 'flex',
