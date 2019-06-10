@@ -14,15 +14,17 @@ const styles = {
         margin: '15px',
     },
     resultsContainer: {
-        marginTop: '10px',
-        padding: '10px',
-        maxHeight: '700px',
+        marginTop: '20px',
+        height: '120px',
         overflow: 'scroll',
     },
     results: {
         border: '1px solid lightgray',
         padding: '10px',
-        lineHeight: '24px'
+        lineHeight: '24px',
+    },
+    a: {
+        textDecoration: 'none'
     }
 };
 
@@ -55,7 +57,7 @@ class SearchFullText extends Component {
                                 {label}<br />
                                 {address}<br />
                                 {city}, {province} {' '} {zip}<br />
-                                <a href={"tel:" + this.props.phone} target="_blank">{phone}</a><br />
+                                <a className={classes.a} href={"tel:" + this.props.phone} target="_blank">{phone}</a><br />
                             </Typography>
                         </div>
                         : null
