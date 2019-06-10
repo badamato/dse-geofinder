@@ -45,8 +45,8 @@ const styles = {
         top: '838px',
         marginLeft: '30.5%',
         width: '70%',
-        minHeight: '240px',
-        maxHeight: '240px',
+        minHeight: '213px',
+        maxHeight: '213px',
         padding: '10px'
     },
     cqlContainer: {
