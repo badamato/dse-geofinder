@@ -9,7 +9,7 @@ import { getGeoNameSuggest, getGeoNameSearch } from '../../actions/actions';
 
 const styles = {
     root: {
-        width: '75%'
+   
     },
     input: {
         display: 'none',
@@ -22,7 +22,7 @@ const styles = {
         paddingLeft: '20px',
         transition: 'width 2s',
         width: '100%',
-        height: '45px'
+        height: '40px'
     },
     searchBox: {
         display: 'flex',
@@ -37,6 +37,9 @@ const styles = {
         borderBottom: '1px solid lightgray',
         borderLeft: '1px solid lightgray',
         padding: '0 5px 0 5px',
+    },
+    menuItem: {
+        padding: '5px 11px'
     }
 };
 
@@ -97,6 +100,7 @@ class Searchbar extends Component {
                     <div className={classes.menuBox}>
                         {names.map((name, index) => (
                             <MenuItem 
+                                className={classes.menuItem}
                                 key={index} 
                                 onClick={this.handleClick.bind(this, name)}>
                                 {name.value}
