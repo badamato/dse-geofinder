@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import { InputBase, MenuItem } from '@material-ui/core'
+import { InputBase, MenuItem } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 import get from "lodash/get";
 
 import { getGeoNameSuggest, getGeoNameSearch } from '../../actions/actions';
@@ -9,11 +10,10 @@ import { getGeoNameSuggest, getGeoNameSearch } from '../../actions/actions';
 
 const styles = {
     root: {
-   
+        width: '75%'
     },
-    input: {
+    inputBase: {
         display: 'none',
-
     },
     inputInput: {
         paddingTop: '2px',
@@ -31,6 +31,11 @@ const styles = {
             '&:hover': {
                 backgroundColor: '#dbdbdb',
             },
+    },
+    searchIcon: {
+        padding: '12px 12px 7px 7px',
+        pointerEvents: 'none',
+        color: '#999999',
     },
     menuBox: {
         borderRight: '1px solid lightgray',
@@ -89,10 +94,13 @@ class Searchbar extends Component {
             <div className={classes.root}>
                 <div className={classes.searchBox}>
                     <InputBase
+                        className={classes.inputInput}
                         placeholder="Search …"
                         onChange={this.handlesearch}
-                        className={classes.inputInput}
                     />
+                    <div className={classes.searchIcon}>
+                        <SearchIcon />
+                    </div>
                     <br />
                 </div>
 
