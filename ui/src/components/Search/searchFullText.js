@@ -43,7 +43,11 @@ class SearchFullText extends Component {
         let resultsFound = !isEmpty(locationDatas)
         let label, address, city, province, zip, phone;
         if (resultsFound){
-            ( { label, address, city, province, zip, phone } = nth(locationDatas, 0) );
+            ( { label, address, city, province, zip, phone, geo } = nth(locationDatas, 0) );
+        }
+
+        handleButtonClickMoveUser = () => {
+
         }
 
 

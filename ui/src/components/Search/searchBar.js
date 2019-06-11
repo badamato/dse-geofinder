@@ -54,6 +54,7 @@ class Searchbar extends Component {
     state = {
         lat: null,
         lng: null,
+        locations: '',
         hideResultsList: false,
     }
     
@@ -65,7 +66,7 @@ class Searchbar extends Component {
         }
     }
     
-    handlesearch = (e) => {
+    handleSearch = (e) => {
         const { lat, lng } = this.state;
         const query = e.target.value;
 
@@ -96,7 +97,8 @@ class Searchbar extends Component {
                     <InputBase
                         className={classes.inputInput}
                         placeholder="Search …"
-                        onChange={this.handlesearch}
+                        onChange={this.handleSearch}
+                        // value={this.state.locations}
                     />
                     <div className={classes.searchIcon}>
                         <SearchIcon />
