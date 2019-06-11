@@ -66,6 +66,16 @@ class ReactMap extends Component {
         });
     };
 
+    _onMapClick = (event) => {
+        this.setState({
+            marker: {
+                longitude: event.lngLat[0],
+                latitude: event.lngLat[1]
+            }
+        })
+    }
+
+
     render() {
         const {viewport, marker, events, popupInfo} = this.state;
 
@@ -74,12 +84,14 @@ class ReactMap extends Component {
                 {...viewport}
                 mapboxApiAccessToken={this.state.token}
                 mapStyle='mapbox://styles/mapbox/outdoors-v11'
-                onViewportChange={this._updateViewport}>
+                onViewportChange={this._updateViewport}
+                onClick={(event) => 
+                    this._onMapClick(event)}
+            >
                 <Marker 
                     longitude={marker.longitude}
                     latitude={marker.latitude}
                     draggable
-                    // onClick={() => this.setState({popupInfo: })}
                     onDragStart={this._onMarkerDragStart}
                     onDrag={this._onMarkerDrag}
                     onDragEnd={this._onMarkerDragEnd} 

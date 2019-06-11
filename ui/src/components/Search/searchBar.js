@@ -54,7 +54,6 @@ class Searchbar extends Component {
     state = {
         lat: null,
         lng: null,
-        locations: '',
         hideResultsList: false,
     }
     
@@ -73,6 +72,10 @@ class Searchbar extends Component {
         if (query.length > 2) {
             this.props.getGeoNameSuggest(query, lat, lng)
         }
+
+        this.setState({
+            hideResultsList: false
+        })
     }
 
     handleClick = (name) => {
@@ -81,7 +84,7 @@ class Searchbar extends Component {
         this.props.getGeoNameSearch(value, lat, lng)
 
         this.setState({
-            hideResultsList: !this.state.hideResultsList
+            hideResultsList: true //!this.state.hideResultsList
         })
     }
     
@@ -98,7 +101,6 @@ class Searchbar extends Component {
                         className={classes.inputInput}
                         placeholder="Search …"
                         onChange={this.handleSearch}
-                        // value={this.state.locations}
                     />
                     <div className={classes.searchIcon}>
                         <SearchIcon />
