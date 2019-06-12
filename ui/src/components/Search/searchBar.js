@@ -86,6 +86,8 @@ class Searchbar extends Component {
         this.setState({
             hideResultsList: true //!this.state.hideResultsList
         })
+
+        console.log( lat, lng )
     }
     
     

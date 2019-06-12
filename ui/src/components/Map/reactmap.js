@@ -39,32 +39,32 @@ class ReactMap extends Component {
         this.setState({viewport});
     }
     
-    _logDragEvent(name, event) {
-        this.setState({
-            events: {
-                ...this.state.events,
-                [name]: event.lngLat,
-            }
-        })
-    }
+    // _logDragEvent(name, event) {
+    //     this.setState({
+    //         events: {
+    //             ...this.state.events,
+    //             [name]: event.lngLat,
+    //         }
+    //     })
+    // }
     
-    _onMarkerDragStart = (event) => {
-        this._logDragEvent('onDragStart', event);
-    };
+    // _onMarkerDragStart = (event) => {
+    //     this._logDragEvent('onDragStart', event);
+    // };
     
-    _onMarkerDrag = (event) => {
-        this._logDragEvent('onDrag', event);
-    };
+    // _onMarkerDrag = (event) => {
+    //     this._logDragEvent('onDrag', event);
+    // };
     
-    _onMarkerDragEnd = (event) => {
-        this._logDragEvent('onDragEnd', event);
-        this.setState({
-            marker: {
-                longitude: event.lngLat[0],
-                latitude: event.lngLat[1],
-            }
-        });
-    };
+    // _onMarkerDragEnd = (event) => {
+    //     this._logDragEvent('onDragEnd', event);
+    //     this.setState({
+    //         marker: {
+    //             longitude: event.lngLat[0],
+    //             latitude: event.lngLat[1],
+    //         }
+    //     });
+    // };
 
     _onMapClick = (event) => {
         this.setState({
@@ -92,9 +92,9 @@ class ReactMap extends Component {
                     longitude={marker.longitude}
                     latitude={marker.latitude}
                     draggable
-                    onDragStart={this._onMarkerDragStart}
-                    onDrag={this._onMarkerDrag}
-                    onDragEnd={this._onMarkerDragEnd} 
+                    // onDragStart={this._onMarkerDragStart}
+                    // onDrag={this._onMarkerDrag}
+                    // onDragEnd={this._onMarkerDragEnd} 
                 >
                     <Pin size={40} />
                 </Marker>

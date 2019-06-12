@@ -41,21 +41,22 @@ class SearchFullText extends Component {
         const { classes, location } = this.props;
         const locationDatas = get(this.props, "location.locDataSearch.locations", []);
         let resultsFound = !isEmpty(locationDatas)
-        let label, address, city, province, zip, phone;
+        let label, address, city, province, zip, phone, geo;
         if (resultsFound){
-            ( { label, address, city, province, zip, phone } = nth(locationDatas, 0) );
+            ( { label, address, city, province, zip, phone, geo} = nth(locationDatas, 0) );
         }
+        console.log(locationDatas)
 
 
         return (
             <div className={classes.root}>
                 <SearchBar />
-                <div>
+                {/* <div>
                     <Button variant="contained" color="primary" size="small" className={classes.button}>
                         Move User
                     </Button>
                     <br />
-                </div>
+                </div> */}
                 {
                     resultsFound
                     ? <div className={classes.resultsContainer}>
@@ -66,6 +67,7 @@ class SearchFullText extends Component {
                                 {address}<br />
                                 {city}, {province} {' '} {zip}<br />
                                 <a className={classes.a} href={"tel:" + this.props.phone} target="_blank">{phone}</a><br />
+                                {/* {geo.lat}, {geo.lng} */}
                             </Typography>
                         </div>
                         : null
