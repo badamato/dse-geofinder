@@ -96,7 +96,7 @@ class ReactMap extends Component {
                     onDrag={this._onMarkerDrag}
                     onDragEnd={this._onMarkerDragEnd} 
                 >
-                    <Pin  />
+                    <Pin size={40} />
                 </Marker>
 
                 <div className="nav" style={navStyle}>
