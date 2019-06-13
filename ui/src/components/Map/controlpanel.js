@@ -34,7 +34,7 @@ class ControlPanel extends PureComponent {
                             checked={null}
                             onChange={event => onChangeAllDay(event.target.checked)}
                             />
-                        <label>Banks</label>
+                        <label>Banking</label>
                     </div>
                     <div className="input">
                         <input type="checkbox"
@@ -42,7 +42,7 @@ class ControlPanel extends PureComponent {
                             checked={null}
                             onChange={event => onChangeAllDay(event.target.checked)}
                             />
-                        <label>Restaurants</label>
+                        <label>Fast Food</label>
                     </div>
                     <div className="input">
                         <input type="checkbox"

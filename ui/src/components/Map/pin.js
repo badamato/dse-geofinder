@@ -10,8 +10,9 @@ C454.887,343.567,385.53,315.49,303.253,306.482z`;
 
 const pinStyle = {
     cursor: 'pointer',
-    fill: '#d00',
-    stroke: 'black'
+    fill: '#ffbf00',
+    stroke: 'black',
+    strokeWidth: '2',
 };
 
 class Pin extends PureComponent {

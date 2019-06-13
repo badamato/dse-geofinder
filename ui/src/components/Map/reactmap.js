@@ -1,10 +1,8 @@
-import React, {Component} from 'react';
-import MapGL, { Marker, NavigationControl, Popup } from 'react-map-gl';
+import React, { Component } from 'react';
+import MapGL, { Marker, NavigationControl } from 'react-map-gl';
 
 import ControlPanel from './controlpanel';
 import Pin from './pin';
-import PinInfo from './pininfo';
-import style from '../../style/style.css';
 import secrets from '../../secrets/secrets';
 
 const navStyle = {
@@ -20,19 +18,18 @@ class ReactMap extends Component {
         viewport: {
             width: '100%',
             height: 720,
-            latitude: 33.758447,
-            longitude: -84.386171,
-            zoom: 13,
+            latitude: 33.763806,
+            longitude: -84.392326,
+            zoom: 14,
             bearing: 0,
             pitch: 0,
         },
         marker: {
-            latitude: 33.758447,
-            longitude: -84.386171,
+            latitude: 33.763806,
+            longitude: -84.392326,
         },
         token: MapboxAccessToken,
-        events: {},
-        popupInfo: null
+        // events: {}
     };
 
     _updateViewport = (viewport) => {
@@ -77,13 +74,14 @@ class ReactMap extends Component {
 
 
     render() {
-        const {viewport, marker, events, popupInfo} = this.state;
+        const {viewport, marker, events} = this.state;
 
         return (
             <MapGL
                 {...viewport}
                 mapboxApiAccessToken={this.state.token}
-                mapStyle='mapbox://styles/mapbox/outdoors-v11'
+                // mapStyle='mapbox://styles/mapbox/outdoors-v11'
+                mapStyle='mapbox://styles/badamato/cjwtnuc3d2nem1cmu3bxpicw2'
                 onViewportChange={this._updateViewport}
                 onClick={(event) => 
                     this._onMapClick(event)}
@@ -91,12 +89,12 @@ class ReactMap extends Component {
                 <Marker 
                     longitude={marker.longitude}
                     latitude={marker.latitude}
-                    draggable
+                    // draggable
                     // onDragStart={this._onMarkerDragStart}
                     // onDrag={this._onMarkerDrag}
                     // onDragEnd={this._onMarkerDragEnd} 
                 >
-                    <Pin size={40} />
+                    <Pin size={50} />
                 </Marker>
 
                 <div className="nav" style={navStyle}>
