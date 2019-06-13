@@ -34,12 +34,12 @@ performance: { hints: false },
                 include: join(__dirname, 'src'),
                 exclude: [/node_modules/]
             },
-            {
-                // The example has some JSON data
-                test: /\.json$/,
-                loader: 'json-loader',
-                exclude: [/node_modules/]
-            },
+            // {
+            //     // The example has some JSON data
+            //     test: /\.json$/,
+            //     loader: 'json-loader',
+            //     exclude: [/node_modules/]
+            // },
             {
                 test: /\.css$/,
                 use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
@@ -112,12 +112,12 @@ const PROD = {
                 include: join(__dirname, 'src'),
                 exclude: [/node_modules/]
             },
-            {
-                // The example has some JSON data
-                test: /\.json$/,
-                loader: 'json-loader',
-                exclude: [/node_modules/]
-            },
+            // {
+            //     // The example has some JSON data
+            //     test: /\.json$/,
+            //     loader: 'json-loader',
+            //     exclude: [/node_modules/]
+            // },
             {
                 test: /\.css$/,
                 use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]

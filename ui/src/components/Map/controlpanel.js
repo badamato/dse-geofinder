@@ -1,4 +1,25 @@
 import React, {PureComponent} from 'react';
+import { fromJS } from 'immutable';
+import MAP_STYLE from './mapstyle.json';
+
+const defaultMapStyle = fromJS(MAP_STYLE);
+
+const categories = ['banks', 'fastfood', 'retail'];
+
+const layerSelector = {
+    banks: /banks/,
+    fastfood: /fastfood/,
+    retail: /retail1|retail2/
+}
+
+//layer color class by TYPE
+const colorClass = {
+    circle: 'circle-color',
+    stroke: 'circle-stroke-width',
+    radius: 'circle-radius',
+    blur: 'circle-blur',
+    opacity: 'circle-opacity'
+}
 
 
 const defaultContainer = ({children}) => <div className="control-panel">{children}</div>;

@@ -3623,7 +3623,7 @@
             "id": "banks",
             "type": "circle",
             "source": "composite",
-            "source-layer": "Banks-20ejz9",
+            "source-layer": "banks",
             "layout": {},
             "paint": {
                 "circle-color": "#ca5f14",
@@ -3637,7 +3637,7 @@
             "id": "fastfood",
             "type": "circle",
             "source": "composite",
-            "source-layer": "fastfood-5bxwds",
+            "source-layer": "fastfood",
             "layout": {},
             "paint": {
                 "circle-color": "hsl(272, 89%, 39%)",
@@ -3651,7 +3651,7 @@
             "id": "smallbox",
             "type": "circle",
             "source": "composite",
-            "source-layer": "walmart-3exobz",
+            "source-layer": "retail1",
             "layout": {},
             "paint": {
                 "circle-color": "#08b7e2",
@@ -3665,7 +3665,7 @@
             "id": "bigbox",
             "type": "circle",
             "source": "composite",
-            "source-layer": "retail2-7d5mqc",
+            "source-layer": "retail2",
             "layout": {},
             "paint": {
                 "circle-color": "#08b7e2",
