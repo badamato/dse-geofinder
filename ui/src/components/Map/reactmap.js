@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MapGL, { Marker, NavigationControl } from 'react-map-gl';
+import ScatterplotOverlay from './scatterplotoverlay'
 
 import ControlPanel from './controlpanel';
 import Pin from './pin';
@@ -91,6 +92,16 @@ class ReactMap extends Component {
                 onClick={(event) => 
                     this._onMapClick(event)}
             >
+                <ScatterplotOverlay
+                    locations={[
+                        [-84.392326, 33.763806]
+                    ]}
+                    dotRadius={20}
+                    globalOpacity={0.8}
+                    compositeOperation="lighter"
+                    dotFill="blue"
+                    renderWhileDragging={true}
+                    />
                 <Marker 
                     longitude={marker.longitude}
                     latitude={marker.latitude}
