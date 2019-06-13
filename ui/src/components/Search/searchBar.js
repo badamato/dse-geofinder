@@ -130,6 +130,9 @@ class Searchbar extends Component {
 
 const mapStateToProps = (state) => ({
     location: state.location
+    lat:
+    lng:
+    hideResultsList: 
 
 });
 
