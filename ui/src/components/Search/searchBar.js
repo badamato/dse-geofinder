@@ -86,15 +86,13 @@ class Searchbar extends Component {
         this.setState({
             hideResultsList: true //!this.state.hideResultsList
         })
-
-        console.log( lat, lng )
     }
     
     
     render() {
         const { classes } = this.props;
         const names = get(this.props, "location.locDataSuggest.names", []);
-        const searchGeoNames = get(this.props, "location.locDataSearch.locations", []);
+        console.log(names)
         
         return (
             <div className={classes.root}>

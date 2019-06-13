@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import MapGL, { Marker, NavigationControl } from 'react-map-gl';
+import get from "lodash/get";
 import ScatterplotOverlay from './scatterplotoverlay'
-
-// import ControlPanel from './controlpanel';
 import Pin from './pin';
 import secrets from '../../secrets/secrets';
+// import ControlPanel from './controlpanel';
+
 
 const navStyle = {
     position: 'absolute',
@@ -29,7 +31,7 @@ class ReactMap extends Component {
             latitude: 33.763806,
             longitude: -84.392326,
         },
-        token: MapboxAccessToken,
+        token: MapboxAccessToken
         // events: {}
     };
 
@@ -81,6 +83,8 @@ class ReactMap extends Component {
 
     render() {
         const {viewport, mapStyle, marker, events} = this.state;
+        const searchGeoNames = get(this.props, "location.locDataSearch.locations", []);
+        console.log('These are props:', this.props.location)
 
         return (
             <MapGL
@@ -93,9 +97,7 @@ class ReactMap extends Component {
                     this._onMapClick(event)}
             >
                 <ScatterplotOverlay
-                    locations={[
-                        [-84.392326, 33.763806]
-                    ]}
+                    // locations={}
                     dotRadius={10}
                     globalOpacity={0.8}
                     compositeOperation="lighter"
@@ -128,4 +130,16 @@ class ReactMap extends Component {
     }
 }
 
-export default ReactMap;
+const mapStateToProps = (state) => {
+    return {
+        
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+export default (connect(mapStateToProps, mapDispatchToProps)(ReactMap));

@@ -41,9 +41,9 @@ class SearchFullText extends Component {
         const { classes, location } = this.props;
         const locationDatas = get(this.props, "location.locDataSearch.locations", []);
         let resultsFound = !isEmpty(locationDatas)
-        let label, address, city, province, zip, phone, geo;
+        let label, address, city, province, zip, phone;
         if (resultsFound){
-            ( { label, address, city, province, zip, phone, geo} = nth(locationDatas, 0) );
+            ({ label, address, city, province, zip, phone} = nth(locationDatas, 0));
         }
         console.log(locationDatas)
 
@@ -77,16 +77,17 @@ class SearchFullText extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    location: state.location
-    
-});
 
-// const mapStateToProps = (state) => {
-//     console.log(state.location);
-//     return {
-//         location: state.location
-//     };
-// };
+const mapStateToProps = (state) => {
+    return {
+        location: state.location
+    }
+}
 
-export default withStyles(styles)(connect(mapStateToProps, null)(SearchFullText));
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(SearchFullText));
