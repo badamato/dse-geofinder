@@ -10,7 +10,7 @@ const categories = ['banks', 'fastfood', 'retail'];
 const layerSelector = {
     banks: /banks/,
     fastfood: /fastfood/,
-    retail: /retail1|retail2/
+    retail: /smallbox|bigbox/
 }
 
 //layer color class by TYPE
