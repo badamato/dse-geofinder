@@ -32,10 +32,23 @@ class ReactMap extends Component {
         // events: {}
     };
 
-    _updateViewport = (viewport) => {
+    _onViewportChange = (viewport) => {
         this.setState({viewport});
     }
     
+    _onStyleChange = (mapStyle) => {
+        this.setState({mapStyle})
+    }
+
+    _onMapClick = (event) => {
+        this.setState({
+            marker: {
+                longitude: event.lngLat[0],
+                latitude: event.lngLat[1]
+            }
+        })
+    }
+
     // _logDragEvent(name, event) {
     //     this.setState({
     //         events: {
@@ -63,26 +76,18 @@ class ReactMap extends Component {
     //     });
     // };
 
-    _onMapClick = (event) => {
-        this.setState({
-            marker: {
-                longitude: event.lngLat[0],
-                latitude: event.lngLat[1]
-            }
-        })
-    }
 
 
     render() {
-        const {viewport, marker, events} = this.state;
+        const {viewport, mapStyle, marker, events} = this.state;
 
         return (
             <MapGL
                 {...viewport}
                 mapboxApiAccessToken={this.state.token}
                 // mapStyle='mapbox://styles/mapbox/outdoors-v11'
-                mapStyle='mapbox://styles/badamato/cjwtnuc3d2nem1cmu3bxpicw2'
-                onViewportChange={this._updateViewport}
+                mapStyle={mapStyle}
+                onViewportChange={this._onViewportChange}
                 onClick={(event) => 
                     this._onMapClick(event)}
             >
@@ -98,12 +103,15 @@ class ReactMap extends Component {
                 </Marker>
 
                 <div className="nav" style={navStyle}>
-                    <NavigationControl onViewportChange={this._updateViewport} />
+                    <NavigationControl 
+                        onViewportChange={this._updateViewport} 
+                    />
                 </div>
 
                 <ControlPanel
                     containerComponent={this.props.containerComponent}
-                    events={this.state.events} />
+                    onChange={this._onStyleChange} 
+                />
             </MapGL>
         );
     }
