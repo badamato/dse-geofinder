@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MapGL, { Marker, NavigationControl } from 'react-map-gl';
 import ScatterplotOverlay from './scatterplotoverlay'
 
-import ControlPanel from './controlpanel';
+// import ControlPanel from './controlpanel';
 import Pin from './pin';
 import secrets from '../../secrets/secrets';
 
@@ -86,8 +86,8 @@ class ReactMap extends Component {
             <MapGL
                 {...viewport}
                 mapboxApiAccessToken={this.state.token}
-                // mapStyle='mapbox://styles/mapbox/outdoors-v11'
-                mapStyle={mapStyle}
+                mapStyle='mapbox://styles/mapbox/outdoors-v11'
+                // mapStyle={mapStyle}
                 onViewportChange={this._onViewportChange}
                 onClick={(event) => 
                     this._onMapClick(event)}
@@ -96,7 +96,7 @@ class ReactMap extends Component {
                     locations={[
                         [-84.392326, 33.763806]
                     ]}
-                    dotRadius={20}
+                    dotRadius={10}
                     globalOpacity={0.8}
                     compositeOperation="lighter"
                     dotFill="blue"
@@ -119,10 +119,10 @@ class ReactMap extends Component {
                     />
                 </div>
 
-                <ControlPanel
+                {/* <ControlPanel
                     containerComponent={this.props.containerComponent}
                     onChange={this._onStyleChange} 
-                />
+                /> */}
             </MapGL>
         );
     }

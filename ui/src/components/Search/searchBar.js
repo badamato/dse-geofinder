@@ -10,7 +10,7 @@ import { getGeoNameSuggest, getGeoNameSearch } from '../../actions/actions';
 
 const styles = {
     root: {
-        width: '75%'
+        width: '100%'
     },
     inputBase: {
         display: 'none',
@@ -130,9 +130,6 @@ class Searchbar extends Component {
 
 const mapStateToProps = (state) => ({
     location: state.location
-    // lat:
-    // lng:
-    // hideResultsList: 
 
 });
 
