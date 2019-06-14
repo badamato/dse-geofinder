@@ -3,15 +3,11 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
+import { getAllCategories } from '../../actions/actions';
+
 
 const styles = {
     root: {
-
-    },
-    categoriesContainer: {
-
-    },
-    hr: {
 
     },
     categoriesBox: {
@@ -21,6 +17,8 @@ const styles = {
 
 class CategoryItem extends Component {
     render() {
+        const { classes } = this.props;
+
         return (
             <div>
                     <Typography variant="subtitle1" className={classes.categoriesBox}>
@@ -32,7 +30,7 @@ class CategoryItem extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+
 
 });
 
