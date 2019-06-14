@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import CategoryItem from './categoryitem'
 
 
 const styles = {
@@ -11,12 +11,6 @@ const styles = {
     categoriesContainer: {
 
     },
-    hr: {
-
-    },
-    categoriesBox: {
-
-    }
 };
 
 class SearchCategories extends Component {
@@ -28,15 +22,23 @@ class SearchCategories extends Component {
             <div className={classes.categoriesContainer}>
                 <hr className={classes.hr} />
                 <br />
-                    <Typography variant="subtitle1" className={classes.categoriesBox}>
-                        **CATEGORIES HERE**
-                        **CATEGORIES HERE**
-                        **CATEGORIES HERE**
-                        **CATEGORIES HERE**
-                    </Typography>
+                <CategoryItem />
             </div>
         )
     }
 }
 
-export default withStyles(styles)(SearchCategories);
+const mapStateToProps = (state) => {
+    return {
+        location: state.location
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(SearchCategories));

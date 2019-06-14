@@ -51,21 +51,25 @@ class SearchFullText extends Component {
             <div className={classes.root}>
                 <SearchBar />
                 {
-                    resultsFound
-                    ? <div className={classes.resultsContainer}>
-                        <hr className={classes.hr} />
-                        <br />
-                            <Typography variant="subtitle1" className={classes.resultsBox}>
-                                {label}<br />
-                                {address}<br />
-                                {city}, {province} {' '} {zip}<br />
-                                <a className={classes.a} href={"tel:" + this.props.phone} target="_blank">{phone}</a><br />
-                            </Typography>
-                    </div>
-                    : null
+                    locationDatas.map((location, index) => {
+                        ({ label, address, city, province, zip, phone} = location);
+                        return (
+                            <div key={index} className={classes.resultsContainer}>
+                                <hr className={classes.hr} />
+                                <br />
+                                    <Typography variant="subtitle1" className={classes.resultsBox}>
+                                        {label}<br />
+                                        {address}<br />
+                                        {city}, {province} {' '} {zip}<br />
+                                        <a className={classes.a} href={"tel:" + this.props.phone} target="_blank">{phone}</a><br />
+                                    </Typography>
+                            </div>
+                        )
+                    })
                 }
             </div>
         )
+        
     }
 }
 

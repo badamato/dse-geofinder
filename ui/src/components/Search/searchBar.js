@@ -5,7 +5,7 @@ import { InputBase, MenuItem } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import get from "lodash/get";
 
-import { getGeoNameSuggest, getGeoNameSearch } from '../../actions/actions';
+import { getGeoNameSuggest, getGeoNameSearch} from '../../actions/actions';
 
 
 const styles = {
@@ -66,11 +66,11 @@ class Searchbar extends Component {
     }
     
     handleSearch = (e) => {
-        const { lat, lng } = this.state;
+        const { latitude, longitude } = this.props.marker;
         const query = e.target.value;
 
         if (query.length > 2) {
-            this.props.getGeoNameSuggest(query, lat, lng)
+            this.props.getGeoNameSuggest(query, latitude, longitude)
         }
 
         this.setState({
@@ -79,9 +79,9 @@ class Searchbar extends Component {
     }
 
     handleClick = (name) => {
-        const { lat, lng } = this.state;
+        const { latitude, longitude } = this.props.marker;
         const value = name.value;
-        this.props.getGeoNameSearch(value, lat, lng)
+        this.props.getGeoNameSearch(value, latitude, longitude)
 
         this.setState({
             hideResultsList: true //!this.state.hideResultsList
@@ -126,7 +126,8 @@ class Searchbar extends Component {
 
 
 const mapStateToProps = (state) => ({
-    location: state.location
+    location: state.location,
+    marker: state.app.marker
 
 });
 

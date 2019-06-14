@@ -20,7 +20,11 @@ const initialAppState = {
     viewport: {
         width: "100%",
         height: "100%"
-    }
+    },
+    marker: {
+        latitude: 33.763806,
+        longitude: -84.392326,
+    },
 };
 
 const initialState = {

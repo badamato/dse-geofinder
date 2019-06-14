@@ -60,6 +60,11 @@ export function updateValue(key, value){
             dispatch(updateData("UPDATE", {"key": key, "value": value}))
     }
 }
+export function updateAppValue(key, value){
+    return(dispatch, getState) => {
+            dispatch(updateData("UPDATE_APP", {"key": key, "value": value}))
+    }
+}
 
 export const setLoading = () => {
     return{
@@ -75,4 +80,4 @@ export const updateData = (type, data) => {
     }
 }
 
-export default {updateValue, getGeoNameSuggest, getGeoNameSearch};
+export default {updateValue, updateAppValue, getGeoNameSuggest, getGeoNameSearch};

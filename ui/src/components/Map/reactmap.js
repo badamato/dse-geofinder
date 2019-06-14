@@ -7,6 +7,8 @@ import Pin from './pin';
 import secrets from '../../secrets/secrets';
 // import ControlPanel from './controlpanel';
 
+import { updateAppValue } from '../../actions/actions'
+
 
 const navStyle = {
     position: 'absolute',
@@ -27,10 +29,6 @@ class ReactMap extends Component {
             bearing: 0,
             pitch: 0,
         },
-        marker: {
-            latitude: 33.763806,
-            longitude: -84.392326,
-        },
         token: MapboxAccessToken
         // events: {}
     };
@@ -44,17 +42,16 @@ class ReactMap extends Component {
     }
 
     _onMapClick = (event) => {
-        this.setState({
-            marker: {
-                longitude: event.lngLat[0],
-                latitude: event.lngLat[1]
-            }
+        this.props.updateAppValue('marker', {
+            longitude: event.lngLat[0],
+            latitude: event.lngLat[1]
         })
     }
 
     render() {
         const {viewport, mapStyle, marker, events} = this.state;
         const locations = get(this.props, "location.locDataSearch.locations", [])
+        // debugger
 
         return (
             <MapGL
@@ -75,10 +72,10 @@ class ReactMap extends Component {
                     renderWhileDragging={true}
                     />
                 <Marker 
-                    longitude={marker.longitude}
-                    latitude={marker.latitude}
+                    latitude={this.props.marker.latitude}
+                    longitude={this.props.marker.longitude}
                 >
-                    <Pin size={50} />
+                    <Pin size={30} />
                 </Marker>
 
                 <div className="nav" style={navStyle}>
@@ -98,13 +95,16 @@ class ReactMap extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        location: state.location
-    }
+        location: state.location,
+        marker: state.app.marker
+        }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        updateAppValue: (key, value) => {
+            dispatch(updateAppValue(key, value))
+            },
     }
 }
 
