@@ -93,7 +93,7 @@ class ReactMap extends Component {
             <MapGL
                 {...viewport}
                 mapboxApiAccessToken={this.state.token}
-                mapStyle='mapbox://styles/mapbox/outdoors-v11'
+                mapStyle='mapbox://styles/mapbox/light-v10'
                 // mapStyle={mapStyle}
                 onViewportChange={this._onViewportChange}
                 onClick={(event) => 
