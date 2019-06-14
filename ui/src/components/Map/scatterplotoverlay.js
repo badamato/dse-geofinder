@@ -10,7 +10,10 @@ function round(x, n) {
 
 
 const defaultProps = {
-  lngLatAccessor: location => [location[0], location[1]],
+  lngLatAccessor: location => {
+    // debugger
+    return [location.geo.lng, location.geo.lat]
+  },
   renderWhileDragging: true,
   dotRadius: 4,
   dotFill: '#1FBAD6',

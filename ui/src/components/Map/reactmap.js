@@ -83,8 +83,11 @@ class ReactMap extends Component {
 
     render() {
         const {viewport, mapStyle, marker, events} = this.state;
-        const searchGeoNames = get(this.props, "location.locDataSearch.locations", []);
-        console.log('These are props:', this.props.location)
+        // const searchGeoNames = get(this.props, "location.locDataSearch.locations", []);
+        console.log(this.state.props)
+        // debugger
+        const locations = get(this.props, "location.locDataSearch.locations", [])
+        console.log("This is my locations log:", locations)
 
         return (
             <MapGL
@@ -97,7 +100,7 @@ class ReactMap extends Component {
                     this._onMapClick(event)}
             >
                 <ScatterplotOverlay
-                    // locations={}
+                    locations={locations}
                     dotRadius={10}
                     globalOpacity={0.8}
                     compositeOperation="lighter"
@@ -132,7 +135,7 @@ class ReactMap extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        
+        location: state.location
     }
 }
 

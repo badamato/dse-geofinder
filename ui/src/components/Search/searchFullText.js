@@ -45,7 +45,7 @@ class SearchFullText extends Component {
         if (resultsFound){
             ({ label, address, city, province, zip, phone} = nth(locationDatas, 0));
         }
-        console.log(locationDatas)
+        // console.log(locationDatas)
 
 
         return (

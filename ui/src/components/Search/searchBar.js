@@ -92,7 +92,6 @@ class Searchbar extends Component {
     render() {
         const { classes } = this.props;
         const names = get(this.props, "location.locDataSuggest.names", []);
-        console.log(names)
         
         return (
             <div className={classes.root}>
