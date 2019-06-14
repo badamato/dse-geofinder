@@ -30,7 +30,7 @@ export const getGeoNameSearch = (name, lat, lng, radius) => dispatch => {
 
         dispatch(setLoading())
 
-        const url = `/api/geo-name-search?name=${name}&lat=${lat}&lng=${lng}&radius=10`;
+        const url = `/api/geo-name-search?name=${name}&lat=${lat}&lng=${lng}&radius=30`;
             get({
                 url: url,
                 success: function(res){
