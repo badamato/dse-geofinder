@@ -22,8 +22,8 @@ const initialAppState = {
         height: "100%"
     },
     marker: {
-        latitude: 33.763806,
-        longitude: -84.392326,
+        latitude: 33.769003,
+        longitude: -84.389811,
     },
 };
 

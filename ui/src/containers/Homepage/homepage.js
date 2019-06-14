@@ -36,22 +36,22 @@ const styles = {
         marginBottom: '1%',
         marginLeft: '30.5%',
         width: '70%',
-        minHeight: '720px',
+        minHeight: '710px',
     },
     cqlPaper: {
         display: 'flex',
         position: 'absolute',
-        top: '745px',
+        top: '735px',
         marginLeft: '30.5%',
         width: '70%',
-        minHeight: '220px',
-        maxHeight: '220px',
+        minHeight: '230px',
+        maxHeight: '230px',
         padding: '10px'
     },
     cqlContainer: {
         width: '100%',
-        minHeight: '200px',
-        maxHeight: '200px',
+        minHeight: '220px',
+        maxHeight: '220px',
         margin:  '0 40px 0 10px',
         padding: '10px',
         overflow: 'auto'
@@ -63,10 +63,16 @@ const styles = {
         display: 'flex',
         margin: '0 auto',
         textAlign: 'left',
-        lineHeight: '26px'
+        lineHeight: '24px'
     },
     queryText: {
-        margin: '5px'
+        margin: '5px',
+    },
+    span: {
+        margin: '5px',
+        display: "flex", 
+        color: "#ca5f14", 
+        fontStyle: "italic"
     },
 }
 
@@ -95,12 +101,12 @@ class HomePage extends PureComponent {
                         <Typography variant="h5" className={classes.cqlTitle}>Queries</Typography>
                         <Divider varient='middle' />
                         <Typography variant='subtitle1' className={classes.cqlSection}>
-                                <div className={classes.queryText}>SUGGEST CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{querySuggest}</span>
+                                <div className={classes.queryText}>SUGGEST CQL:<span className={classes.span}>{querySuggest}</span>
                                 </div>
                         </Typography>
                         <Divider varient='middle' />
                         <Typography variant='subtitle1' className={classes.cqlSection}>
-                            <div className={classes.queryText}>SEARCH CQL:<span style={{display: "flex", color: "gray", fontStyle: "italic"}}>{querySearch}</span>
+                            <div className={classes.queryText}>SEARCH CQL:<span className={classes.span}>{querySearch}</span>
                             </div>
                         </Typography>
                     </div>

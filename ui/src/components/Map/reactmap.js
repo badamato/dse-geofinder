@@ -5,7 +5,6 @@ import get from "lodash/get";
 import ScatterplotOverlay from './scatterplotoverlay'
 import Pin from './pin';
 import secrets from '../../secrets/secrets';
-// import ControlPanel from './controlpanel';
 
 import { updateAppValue } from '../../actions/actions'
 
@@ -22,15 +21,14 @@ class ReactMap extends Component {
         mapStyle: '',
         viewport: {
             width: '100%',
-            height: 720,
-            latitude: 33.763806,
-            longitude: -84.392326,
-            zoom: 14,
+            height:710,
+            latitude: 33.769003,
+            longitude: -84.389811,
+            zoom: 12.5,
             bearing: 0,
             pitch: 0,
         },
         token: MapboxAccessToken
-        // events: {}
     };
 
     _onViewportChange = (viewport) => {
@@ -43,22 +41,17 @@ class ReactMap extends Component {
             latitude: event.lngLat[1]
         })
     }
-    // _onStyleChange = (mapStyle) => {
-    //     this.setState({mapStyle})
-    // }
 
 
     render() {
-        const {viewport, mapStyle, marker, events} = this.state;
+        const {viewport} = this.state;
         const locations = get(this.props, "location.locDataSearch.locations", [])
-        // debugger
 
         return (
             <MapGL
                 {...viewport}
                 mapboxApiAccessToken={this.state.token}
                 mapStyle='mapbox://styles/mapbox/light-v10'
-                // mapStyle={mapStyle}
                 onViewportChange={this._onViewportChange}
                 onClick={(event) => 
                     this._onMapClick(event)}
@@ -75,19 +68,14 @@ class ReactMap extends Component {
                     latitude={this.props.marker.latitude}
                     longitude={this.props.marker.longitude}
                 >
-                    <Pin size={40} />
+                    <Pin size={55} />
                 </Marker>
 
-                <div className="nav" style={navStyle}>
+                <div style={navStyle}>
                     <NavigationControl 
                         onViewportChange={this._updateViewport} 
                     />
                 </div>
-
-                {/* <ControlPanel
-                    containerComponent={this.props.containerComponent}
-                    onChange={this._onStyleChange} 
-                /> */}
             </MapGL>
         );
     }
