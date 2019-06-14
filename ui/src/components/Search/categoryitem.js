@@ -16,6 +16,7 @@ const styles = {
 };
 
 class CategoryItem extends Component {
+    
     render() {
         const { classes } = this.props;
 

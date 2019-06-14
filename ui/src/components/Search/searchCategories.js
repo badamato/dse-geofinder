@@ -11,6 +11,17 @@ const styles = {
     categoriesContainer: {
 
     },
+    hr: {
+        width: '80%', 
+        backgroundColor: 'darkgray',
+        border: '1px solid darkgray',
+        height: '1px',
+        marginBottom: '30px'
+    },
+    a: {
+        textDecoration: 'none',
+        color: '#ca5f14'
+    }
 };
 
 class SearchCategories extends Component {
