@@ -13,7 +13,8 @@ const navStyle = {
     position: 'absolute',
     top: 0,
     left: 0,
-    padding: '10px'
+    padding: '10px',
+    zIndex: 10,
 };
 
 class ReactMap extends Component {
@@ -30,10 +31,6 @@ class ReactMap extends Component {
         },
         token: MapboxAccessToken
     };
-
-    _onViewportChange = (viewport) => {
-        this.setState({viewport});
-    }
     
     _onMapClick = (event) => {
         this.props.updateAppValue('marker', {
@@ -52,7 +49,7 @@ class ReactMap extends Component {
                 {...viewport}
                 mapboxApiAccessToken={this.state.token}
                 mapStyle='mapbox://styles/mapbox/light-v10'
-                onViewportChange={this._onViewportChange}
+                onViewportChange={viewport => this.setState({viewport})}
                 onClick={(event) => 
                     this._onMapClick(event)}
             >
@@ -71,11 +68,9 @@ class ReactMap extends Component {
                     <Pin size={55} />
                 </Marker>
 
-                <div style={navStyle}>
-                    <NavigationControl 
-                        onViewportChange={this._updateViewport} 
-                    />
-                </div>
+                {/* <div style={navStyle}>
+                    <NavigationControl />
+                </div> */}
             </MapGL>
         );
     }
