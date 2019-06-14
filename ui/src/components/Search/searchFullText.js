@@ -16,7 +16,7 @@ const styles = {
     resultsContainer: {
         marginTop: '20px',
         height: '170px',
-        overflow: 'scroll',
+        overflow: 'auto',
     },
     resultsBox: {
         border: '1px solid lightgray',

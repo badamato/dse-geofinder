@@ -55,7 +55,7 @@ const styles = {
         maxHeight: '200px',
         margin:  '0 40px 0 10px',
         padding: '10px',
-        overflow: 'scroll'
+        overflow: 'auto'
     },
     cqlTitle: {
         paddingBottom: '5px',
