@@ -27,7 +27,8 @@ const styles = {
         marginBottom: '30px'
     },
     a: {
-        textDecoration: 'none'
+        textDecoration: 'none',
+        color: '#ca5f14'
     }
 };
 
