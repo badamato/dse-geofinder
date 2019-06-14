@@ -1,14 +1,11 @@
-//React/Redux
-import {connect} from 'react-redux';
 import React, { Component } from 'react'
-
-//MUI
+import {connect} from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-//components
 import HomePage from './Homepage/homepage';
 import MenuContainer from './Menu/menu';
+
 
 const theme = createMuiTheme({
     palette: {

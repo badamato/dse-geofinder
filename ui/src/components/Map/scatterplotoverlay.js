@@ -1,6 +1,4 @@
 import React, {PureComponent} from 'react';
-
-import Immutable from 'immutable';
 import {CanvasOverlay} from 'react-map-gl';
 
 function round(x, n) {

@@ -1,17 +1,15 @@
 import React, {PureComponent} from 'react';
+import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
+import Divider from '@material-ui/core/Divider';
 
 import Reactmap from '../../components/Map/reactmap'
 import Navtabs from '../../components/Navtabs/navtabs';
-import Divider from '@material-ui/core/Divider';
 import secrets from '../../secrets/secrets';
-import style from '../../style/style.css';
-
-import {getGeoNameSuggest, getGeoNameSearch} from '../../actions/actions'
+// import style from '../../style/style.css';
 
 
 const styles = {

@@ -52,42 +52,9 @@ class ReactMap extends Component {
         })
     }
 
-    // _logDragEvent(name, event) {
-    //     this.setState({
-    //         events: {
-    //             ...this.state.events,
-    //             [name]: event.lngLat,
-    //         }
-    //     })
-    // }
-    
-    // _onMarkerDragStart = (event) => {
-    //     this._logDragEvent('onDragStart', event);
-    // };
-    
-    // _onMarkerDrag = (event) => {
-    //     this._logDragEvent('onDrag', event);
-    // };
-    
-    // _onMarkerDragEnd = (event) => {
-    //     this._logDragEvent('onDragEnd', event);
-    //     this.setState({
-    //         marker: {
-    //             longitude: event.lngLat[0],
-    //             latitude: event.lngLat[1],
-    //         }
-    //     });
-    // };
-
-
-
     render() {
         const {viewport, mapStyle, marker, events} = this.state;
-        // const searchGeoNames = get(this.props, "location.locDataSearch.locations", []);
-        console.log(this.state.props)
-        // debugger
         const locations = get(this.props, "location.locDataSearch.locations", [])
-        console.log("This is my locations log:", locations)
 
         return (
             <MapGL
@@ -110,10 +77,6 @@ class ReactMap extends Component {
                 <Marker 
                     longitude={marker.longitude}
                     latitude={marker.latitude}
-                    // draggable
-                    // onDragStart={this._onMarkerDragStart}
-                    // onDrag={this._onMarkerDrag}
-                    // onDragEnd={this._onMarkerDragEnd} 
                 >
                     <Pin size={50} />
                 </Marker>
