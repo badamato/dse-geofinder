@@ -8,15 +8,10 @@ import { get, isEmpty, nth} from 'lodash'
 
 const styles = {
     root: {
-
-    },
-    button: {
-        margin: '15px 15px 15px 0',
+        padding: 0
     },
     resultsContainer: {
-        marginTop: '20px',
-        height: '170px',
-        overflow: 'auto',
+        height: '144px',
     },
     resultsBox: {
         border: '1px solid lightgray',
@@ -28,7 +23,8 @@ const styles = {
         width: '80%', 
         backgroundColor: 'darkgray',
         border: '1px solid darkgray',
-        height: '1px'
+        height: '1px',
+        marginBottom: '30px'
     },
     a: {
         textDecoration: 'none'
@@ -48,15 +44,14 @@ class SearchFullText extends Component {
 
 
         return (
-            <div className={classes.root}>
+            <div>
                 <SearchBar />
+                <hr className={classes.hr} />
                 {
                     locationDatas.map((location, index) => {
                         ({ label, address, city, province, zip, phone} = location);
                         return (
                             <div key={index} className={classes.resultsContainer}>
-                                <hr className={classes.hr} />
-                                <br />
                                     <Typography variant="subtitle1" className={classes.resultsBox}>
                                         {label}<br />
                                         {address}<br />

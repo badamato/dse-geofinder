@@ -25,7 +25,7 @@ class ReactMap extends Component {
             height: 720,
             latitude: 33.763806,
             longitude: -84.392326,
-            zoom: 11,
+            zoom: 14,
             bearing: 0,
             pitch: 0,
         },
@@ -37,16 +37,16 @@ class ReactMap extends Component {
         this.setState({viewport});
     }
     
-    _onStyleChange = (mapStyle) => {
-        this.setState({mapStyle})
-    }
-
     _onMapClick = (event) => {
         this.props.updateAppValue('marker', {
             longitude: event.lngLat[0],
             latitude: event.lngLat[1]
         })
     }
+    // _onStyleChange = (mapStyle) => {
+    //     this.setState({mapStyle})
+    // }
+
 
     render() {
         const {viewport, mapStyle, marker, events} = this.state;
@@ -65,17 +65,17 @@ class ReactMap extends Component {
             >
                 <ScatterplotOverlay
                     locations={locations}
-                    dotRadius={10}
-                    globalOpacity={0.8}
+                    dotRadius={15}
+                    globalOpacity={0.5}
                     compositeOperation="lighter"
-                    dotFill="blue"
+                    dotFill="#ca5f14"
                     renderWhileDragging={true}
                     />
                 <Marker 
                     latitude={this.props.marker.latitude}
                     longitude={this.props.marker.longitude}
                 >
-                    <Pin size={30} />
+                    <Pin size={40} />
                 </Marker>
 
                 <div className="nav" style={navStyle}>

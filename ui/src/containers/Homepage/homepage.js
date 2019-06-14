@@ -27,6 +27,7 @@ const styles = {
         width: '29%',
         minHeight: '925px',
         maxHeight: '925px',
+        overflow: 'auto'
     },
     mapPaper: {
         display: 'flex',

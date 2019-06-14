@@ -26,12 +26,10 @@ function LinkTab(props) {
 
 const styles = theme => ({
     root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
     },
 });
-
-
 
 
 class NavTabs extends Component {
@@ -56,9 +54,9 @@ render() {
                 </Tabs>
             </AppBar>
             {value === 0 && 
-                <TabContainer component='div'>
+                <div className={classes.searchFullTextContainer}>
                     <SearchFullText />
-                </TabContainer>
+                </div>
             }
 
             {value === 1 && 

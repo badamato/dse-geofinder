@@ -10,7 +10,8 @@ import { getGeoNameSuggest, getGeoNameSearch} from '../../actions/actions';
 
 const styles = {
     root: {
-        width: '100%'
+        width: '90%',
+        margin: '50px auto'
     },
     inputBase: {
         display: 'none',
