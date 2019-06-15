@@ -38,7 +38,7 @@ class NavTabs extends Component {
     };
 
     handleChange = (event, value) => {
-    this.setState({ value });
+        this.setState({ value });
     };
 
 render() {

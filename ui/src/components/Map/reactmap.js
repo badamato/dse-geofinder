@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MapGL, { Marker, NavigationControl } from 'react-map-gl';
+import MapGL, { Marker } from 'react-map-gl';
 import get from "lodash/get";
 import ScatterplotOverlay from './scatterplotoverlay'
 import Pin from './pin';
@@ -67,10 +67,6 @@ class ReactMap extends Component {
                 >
                     <Pin size={55} />
                 </Marker>
-
-                {/* <div style={navStyle}>
-                    <NavigationControl />
-                </div> */}
             </MapGL>
         );
     }

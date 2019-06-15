@@ -15,10 +15,13 @@ const styles = {
     }
 };
 
+
+
 class CategoryItem extends Component {
     
     render() {
         const { classes } = this.props;
+        const { latitude, longitude } = this.props.marker;
 
         return (
             <div className={classes.categoriesBox}>
@@ -31,7 +34,8 @@ class CategoryItem extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    marker: state.app.marker,
+    allCategoryData: state.app.allCategoryData
 
 });
 
