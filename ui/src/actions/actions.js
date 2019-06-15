@@ -56,17 +56,18 @@ export const getGeoNameSearch = (name, lat, lng, radius) => dispatch => {
 
 export const getAllCategories = (lllat, lllng, urlat, urlng) => dispatch => {
 
-    dispatch(setLoading())
     const url = `/api/geo-bbox-pivot-on-category-and-subcategory?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}`;
 
         get({
             url: url,
             success: function(res){
                 console.log(res.data)
+                dispatch(updateAppValue('allCategoryData', res.data))
             },
             dispatch: dispatch
         });
 }
+
 
 
 export function updateValue(key, value){

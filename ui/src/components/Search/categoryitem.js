@@ -21,8 +21,8 @@ class CategoryItem extends Component {
         const { classes } = this.props;
 
         return (
-            <div>
-                    <Typography variant="subtitle1" className={classes.categoriesBox}>
+            <div className={classes.categoriesBox}>
+                    <Typography variant="subtitle1">
                         **CATEGORIES HERE**
                     </Typography>
             </div>
