@@ -73,7 +73,6 @@ class Searchbar extends Component {
         if (query.length > 2) {
             this.props.getGeoNameSuggest(query, latitude, longitude)
         }
-
         this.setState({
             hideResultsList: false
         })

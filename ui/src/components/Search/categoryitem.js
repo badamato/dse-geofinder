@@ -16,12 +16,32 @@ const styles = {
 };
 
 
-
 class CategoryItem extends Component {
+
+    _componentDidMount = () => {
+
+        let mapGL = this.mapRef._getMap();
+        let bounds = mapGL.getBounds();
+        let getMapBoundaries = () => ({
+            lllat: bounds._sw.lat,
+            lllng: bounds._sw.lng,
+            urlat: bounds._ne.lat,
+            urlng: bounds._ne.lng
+        })
+        console.log(lllat)
+    }
+
+    _onViewportChange = viewport => {
+        this.setState({viewport});
+    };
+
     
     render() {
         const { classes } = this.props;
         const { latitude, longitude } = this.props.marker;
+        const { zoom } = this.props.viewport;
+
+
 
         return (
             <div className={classes.categoriesBox}>
@@ -35,6 +55,7 @@ class CategoryItem extends Component {
 
 const mapStateToProps = (state) => ({
     marker: state.app.marker,
+    viewport: state.app.viewport,
     allCategoryData: state.app.allCategoryData
 
 });

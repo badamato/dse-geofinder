@@ -6,7 +6,7 @@ import ScatterplotOverlay from './scatterplotoverlay'
 import Pin from './pin';
 import secrets from '../../secrets/secrets';
 
-import { updateAppValue } from '../../actions/actions'
+import { updateAppValue, getAllCategories } from '../../actions/actions'
 
 
 const navStyle = {
@@ -39,6 +39,26 @@ class ReactMap extends Component {
         })
     }
 
+    componentDidMount = () => {
+        this.saveBounds()
+    }
+
+    onMapChange = (viewport) => {
+        this.setState(viewport)
+        this.saveBounds()
+    }
+    
+    saveBounds = () => {
+        // debugger
+        if (this.mapRef !=null) {
+            let mapGL = this.mapRef.getMap();
+            let bounds = mapGL.getBounds();
+            this.props.getAllCategories(bounds._sw.lat, bounds._sw.lng, bounds._ne.lat, bounds._ne.lng)
+        }
+
+
+    }
+
 
     render() {
         const {viewport} = this.state;
@@ -49,7 +69,8 @@ class ReactMap extends Component {
                 {...viewport}
                 mapboxApiAccessToken={this.state.token}
                 mapStyle='mapbox://styles/mapbox/light-v10'
-                onViewportChange={viewport => this.setState({viewport})}
+                onViewportChange={viewport => this.onMapChange({viewport})}
+                ref={ map => this.mapRef = map}
                 onClick={(event) => 
                     this._onMapClick(event)}
             >
@@ -75,7 +96,8 @@ class ReactMap extends Component {
 const mapStateToProps = (state) => {
     return {
         location: state.location,
-        marker: state.app.marker
+        marker: state.app.marker,
+
         }
 }
 
@@ -83,7 +105,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         updateAppValue: (key, value) => {
             dispatch(updateAppValue(key, value))
-            },
+        },
+        getAllCategories: (lllat, lllng, urlat, urlng) => {
+            dispatch(getAllCategories(lllat, lllng, urlat, urlng))
+        }
     }
 }
 

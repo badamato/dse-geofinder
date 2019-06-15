@@ -19,7 +19,8 @@ const initialAppState = {
     primaryColor: '#1AB5E0',
     viewport: {
         width: "100%",
-        height: "100%"
+        height: "100%",
+        zoom: 12.5,
     },
     marker: {
         latitude: 33.769003,
