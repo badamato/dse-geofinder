@@ -20,7 +20,6 @@ const initialAppState = {
     viewport: {
         width: "100%",
         height: "100%",
-        zoom: 12.5,
     },
     marker: {
         latitude: 33.769003,

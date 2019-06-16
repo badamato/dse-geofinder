@@ -61,7 +61,6 @@ export const getAllCategories = (lllat, lllng, urlat, urlng) => dispatch => {
         get({
             url: url,
             success: function(res){
-
                 dispatch(updateAppValue('allCategoryData', res.data))
             },
             dispatch: dispatch
