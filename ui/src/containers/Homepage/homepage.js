@@ -37,6 +37,7 @@ const styles = {
         marginLeft: '30.5%',
         width: '70%',
         minHeight: '710px',
+        border: '2px solid lightgray'
     },
     cqlPaper: {
         display: 'flex',
@@ -87,11 +88,11 @@ class HomePage extends PureComponent {
         return (
         <div className={classes.container}>
         <Grid container>
-            <Paper className={classes.searchPaper}>
+            <Paper className={classes.searchPaper} elevation={1}>
                 <Navtabs />
             </Paper>
 
-            <Paper className={classes.mapPaper} elevation={1}>
+            <Paper className={classes.mapPaper} elevation={4}>
                 <Reactmap />
             </Paper>
 

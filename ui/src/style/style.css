@@ -2,9 +2,11 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
 .grow {
     flex-grow: 1;
 }
+
 #map {
     width: 100%;
 }
@@ -34,6 +36,9 @@ label {
 input {
     margin-left: 20px;
 }
+
+
+
 /* .control-items{
     margin: 4.5% !important;
 }

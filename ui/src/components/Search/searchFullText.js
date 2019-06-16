@@ -40,7 +40,7 @@ class SearchFullText extends Component {
         let resultsFound = !isEmpty(locationDatas)
         let label, address, city, province, zip, phone;
         if (resultsFound){
-            ({ label, address, city, province, zip, phone} = nth(locationDatas, 0));
+            ({ label, address, city, province, zip, phone } = nth(locationDatas, 0));
         }
 
 
@@ -48,8 +48,7 @@ class SearchFullText extends Component {
             <div>
                 <SearchBar />
                 <hr className={classes.hr} />
-                {
-                    locationDatas.map((location, index) => {
+                    {locationDatas.map((location, index) => {
                         ({ label, address, city, province, zip, phone} = location);
                         return (
                             <div key={index} className={classes.resultsContainer}>
@@ -61,8 +60,7 @@ class SearchFullText extends Component {
                                     </Typography>
                             </div>
                         )
-                    })
-                }
+                    })}
             </div>
         )
         
