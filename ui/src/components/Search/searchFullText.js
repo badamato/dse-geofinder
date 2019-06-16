@@ -11,13 +11,15 @@ const styles = {
         padding: 0
     },
     resultsContainer: {
-        height: '144px',
+        height: '115px',
     },
     resultsBox: {
         border: '1px solid lightgray',
         padding: '10px',
         lineHeight: '24px',
-        backgroundColor: '#f6f6f6'
+        backgroundColor: '#f6f6f6',
+        width: '80%',
+        margin: '0 auto'
     },
     hr: {
         width: '80%', 

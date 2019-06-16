@@ -49,10 +49,8 @@ class CategoryItem extends Component {
 
         return (
             <div className={classes.root}>
-
                 {categoriesSubCategories.map((category, index) => {
                     ({ field, value, count, pivot } = category);
-                    console.log(category)
                     return (
                         <div key={index} className={classes.categoriesContainer}>
                             <Typography variant="subtitle1" className={classes.categoriesBox}>
