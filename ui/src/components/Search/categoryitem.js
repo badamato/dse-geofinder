@@ -25,7 +25,7 @@ const styles = {
     },
     subcategoriesBox: {
         border: '1px solid lightgray',
-        padding: '5px 2px 5px 2px',
+        padding: '2px 30px',
         lineHeight: '24px',
         borderBottom: '1px',
         fontSize: '12px'
@@ -39,7 +39,6 @@ class CategoryItem extends Component {
         const { classes } = this.props;
         const categoriesSubCategories = get(this.props, "allCategoryData.category,subcategory", []);
         let categoriesFound = !isEmpty(categoriesSubCategories) //boolean saying there is something found to return
-        console.log(categoriesSubCategories)
         let field, value, count, pivot;
         if (categoriesFound){
             ({ field, value, count, pivot: [] } = nth(categoriesSubCategories, 1));
