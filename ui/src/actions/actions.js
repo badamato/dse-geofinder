@@ -1,7 +1,6 @@
 import {get} from '../common/requests';
 
 
-
 export const getGeoNameSuggest = (name, lat, lng) => dispatch => {
 
     dispatch(setLoading())
@@ -68,6 +67,20 @@ export const getAllCategories = (lllat, lllng, urlat, urlng) => dispatch => {
 }
 
 
+export const getFilteredCategories = (lllat, lllng, urlat, urlng, category, subcategory) => dispatch => {
+
+    const url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=3${urlat}&urlng=${urlng}&category=${category}&subcategory=${subcategory}`;
+
+        get({
+            url: url,
+            success: function(res){
+                dispatch(updateAppValue('filteredCategories', res.data))
+            },
+            dispatch: dispatch
+        });
+}
+
+
 
 export function updateValue(key, value){
     return(dispatch, getState) => {
@@ -95,4 +108,4 @@ export const updateData = (type, data) => {
 }
 
 
-export default {updateValue, updateAppValue, getGeoNameSuggest, getGeoNameSearch, getAllCategories};
+export default {updateValue, updateAppValue, getGeoNameSuggest, getGeoNameSearch, getAllCategories, getFilteredCategories};

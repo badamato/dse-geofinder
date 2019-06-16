@@ -25,7 +25,8 @@ const initialAppState = {
         latitude: 33.769003,
         longitude: -84.389811,
     },
-    allCategoryData: {}
+    allCategoryData: {},
+    filteredCategories: {}
 };
 
 const initialState = {

@@ -15,7 +15,7 @@ const pinStyle = {
     strokeWidth: '2',
 };
 
-class Pin extends PureComponent {
+class UserIcon extends PureComponent {
 
     render() {
         const {size = 45, onClick} = this.props;
@@ -34,4 +34,4 @@ class Pin extends PureComponent {
 }
 
 
-export default Pin;
+export default UserIcon;

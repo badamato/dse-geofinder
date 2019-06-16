@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { get, isEmpty, nth} from 'lodash'
 
-import { getAllCategories } from '../../actions/actions';
+import { getAllCategories, getFilteredCategories } from '../../actions/actions';
 
 
 const styles = {
@@ -70,7 +70,8 @@ class CategoryItem extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    allCategoryData: state.app.allCategoryData
+    allCategoryData: state.app.allCategoryData,
+    filteredCategories: state.app.filteredCategories
 
 });
 

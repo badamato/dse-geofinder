@@ -11,7 +11,7 @@ const styles = {
         padding: 0
     },
     resultsContainer: {
-        height: '115px',
+        height: '125px'
     },
     resultsBox: {
         border: '1px solid lightgray',
@@ -19,7 +19,7 @@ const styles = {
         lineHeight: '24px',
         backgroundColor: '#f6f6f6',
         width: '80%',
-        margin: '0 auto'
+        margin: '0 auto', 
     },
     hr: {
         width: '80%', 

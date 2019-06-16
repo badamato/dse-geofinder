@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import MapGL, { Marker } from 'react-map-gl';
 import get from "lodash/get";
 import ScatterplotOverlay from './scatterplotoverlay'
-import Pin from './pin';
+import UserIcon from './userIcon';
 import secrets from '../../secrets/secrets';
 
-import { updateAppValue, getAllCategories } from '../../actions/actions'
+import { updateAppValue, getAllCategories, getFilteredCategories } from '../../actions/actions'
 
 
 const navStyle = {
@@ -54,9 +54,8 @@ class ReactMap extends Component {
             let mapGL = this.mapRef.getMap();
             let bounds = mapGL.getBounds();
             this.props.getAllCategories(bounds._sw.lat, bounds._sw.lng, bounds._ne.lat, bounds._ne.lng)
+            console.log(this.props.getAllCategories)
         }
-
-
     }
 
 
@@ -86,7 +85,7 @@ class ReactMap extends Component {
                     latitude={this.props.marker.latitude}
                     longitude={this.props.marker.longitude}
                 >
-                    <Pin size={55} />
+                    <UserIcon size={55} />
                 </Marker>
             </MapGL>
         );
