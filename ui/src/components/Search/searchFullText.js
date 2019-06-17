@@ -16,7 +16,7 @@ const styles = {
     resultsBox: {
         border: '1px solid lightgray',
         padding: '10px',
-        lineHeight: '24px',
+        lineHeight: '20px',
         backgroundColor: '#f6f6f6',
         width: '80%',
         margin: '0 auto', 

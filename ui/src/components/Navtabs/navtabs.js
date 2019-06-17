@@ -31,22 +31,16 @@ class NavTabs extends Component {
         value: 0,
     };
 
-
     handleChange = (event, value) => {
         const { resetMap } = this.props;
         if (resetMap) {
-            console.log('call action')
             resetMap()
         }
         event = event.preventDefault();
-
         this.setState({ value });
     };
 
-    // resetMap = (event) => {
-    //     const refresh = event.map.()
-    // }
-
+    
 render() {
     const { classes } = this.props;
     const { value } = this.state;
