@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import { get, isEmpty, nth} from 'lodash'
+import { get, isEmpty, nth} from 'lodash';
+
+import {getFilteredCategories} from '../../actions/actions'
 
 
 const styles = {
@@ -33,21 +35,20 @@ const styles = {
 
 class CategoryItem extends Component {
 
-    handleClick = () => {
-
+    handleClick = (category, subcategory) => {
+        const {lllat, lllng, urlat, urlng } = this.props.bounds
+        this.props.getFilteredCategories(lllat, lllng, urlat, urlng, category, subcategory)
     }
-    
+
     render() {
         const { classes } = this.props;
         const categoriesSubCategories = get(this.props, "allCategoryData.category,subcategory", []);
+
         let categoriesFound = !isEmpty(categoriesSubCategories) //boolean saying there is something found to return
         let field, value, count, pivot;
         if (categoriesFound){
             ({ field, value, count, pivot: [] } = nth(categoriesSubCategories, 1));
         }
-        // const filteredCategoriesSubcategories = get(this.props, 'filteredCategories.locations', [])
-
-
 
         return (
             <div className={classes.root}>
@@ -55,13 +56,17 @@ class CategoryItem extends Component {
                     ({ field, value, count, pivot } = category);
                     return (
                         <div key={index} className={classes.categoriesContainer}>
-                            <Typography variant="subtitle1" className={classes.categoriesBox}>
-                                {category.value}:{" "}{category.count}
-                            </Typography>
-                            {category.pivot &&
-                                <Typography variant="subtitle1" className={classes.subcategoriesBox}>
-                                    {category.pivot[0].value}:{"  "}{category.pivot[0].count}
+                            <div onClick={() => this.handleClick(category.value)}>
+                                <Typography variant="subtitle1" className={classes.categoriesBox}>
+                                    {category.value}:{" "}{category.count}
                                 </Typography>
+                            </div>
+                            {category.pivot &&
+                                <div onClick={() => this.handleClick(category.value, category.pivot[0].value)}>
+                                    <Typography variant="subtitle1" className={classes.subcategoriesBox}>
+                                        {category.pivot[0].value}:{"  "}{category.pivot[0].count}
+                                    </Typography>
+                                </div>
                             }
                         </div>
                     )
@@ -73,12 +78,14 @@ class CategoryItem extends Component {
 
 const mapStateToProps = (state) => ({
     allCategoryData: state.app.allCategoryData,
-    filteredCategories: state.app.filteredCategories
-
+    filteredCategories: state.app.filteredCategories,
+    bounds: state.app.bounds
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+    getFilteredCategories: (lllat, lllng, urlat, urlng, category, subcategory) => {
+        dispatch(getFilteredCategories(lllat, lllng, urlat, urlng, category, subcategory))
+    }
 })
 
 

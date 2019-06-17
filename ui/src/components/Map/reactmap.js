@@ -6,7 +6,7 @@ import ScatterplotOverlay from './scatterplotoverlay'
 import UserIcon from './userIcon';
 import secrets from '../../secrets/secrets';
 
-import { updateAppValue, getAllCategories, getFilteredCategories } from '../../actions/actions'
+import { updateAppValue, getAllCategories } from '../../actions/actions'
 
 
 const navStyle = {
@@ -52,8 +52,15 @@ class ReactMap extends Component {
         if (this.mapRef !=null) {
             let mapGL = this.mapRef.getMap();
             let bounds = mapGL.getBounds();
+
             this.props.getAllCategories(bounds._sw.lat, bounds._sw.lng, bounds._ne.lat, bounds._ne.lng)
-            this.props.getFilteredCategories(bounds._sw.lat, bounds._sw.lng, bounds._ne.lat, bounds._ne.lng)
+
+            this.props.updateAppValue('bounds', {
+                "lllat": bounds._sw.lat,
+                "lllng": bounds._sw.lng,
+                "urlat": bounds._ne.lat,
+                "urlng": bounds._ne.lng
+            })
         }
     }
 
@@ -105,9 +112,6 @@ const mapDispatchToProps = (dispatch) => {
         },
         getAllCategories: (lllat, lllng, urlat, urlng) => {
             dispatch(getAllCategories(lllat, lllng, urlat, urlng))
-        },
-        getFilteredCategories: (lllat, lllng, urlat, urlng) => {
-            dispatch(getFilteredCategories(lllat, lllng, urlat, urlng))
         }
     }
 }

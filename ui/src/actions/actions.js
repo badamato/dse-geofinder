@@ -69,8 +69,11 @@ export const getAllCategories = (lllat, lllng, urlat, urlng) => dispatch => {
 
 export const getFilteredCategories = (lllat, lllng, urlat, urlng, category, subcategory) => dispatch => {
 
-    const url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&category=${category}&subcategory=${subcategory}`;
+    let url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&category=${category}&subcategory=${subcategory}`;
 
+        if (subcategory === null) {
+            url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&category=${category}`;
+        }
         get({
             url: url,
             success: function(res){
@@ -87,7 +90,6 @@ export const getFilteredCategories = (lllat, lllng, urlat, urlng, category, subc
             dispatch: dispatch
         });
 }
-
 
 
 export function updateValue(key, value){

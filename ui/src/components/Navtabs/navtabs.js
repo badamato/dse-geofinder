@@ -36,9 +36,9 @@ class NavTabs extends Component {
         this.setState({ value });
     };
 
-    handleClick = (event) => {
-
-    }
+    // handleClick = (event) => {
+    //     const refresh = event.map.()
+    // }
 
 render() {
     const { classes } = this.props;
