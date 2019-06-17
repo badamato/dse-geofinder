@@ -39,26 +39,19 @@ class SearchFullText extends Component {
     render() {
         const { classes } = this.props;
         const locationDatas = get(this.props, "location.locDataSearch.locations", []);
-        let resultsFound = !isEmpty(locationDatas)
-        let label, address, city, province, zip, phone;
-        if (resultsFound){
-            ({ label, address, city, province, zip, phone } = nth(locationDatas, 0));
-        }
-
 
         return (
             <div>
                 <SearchBar />
                 <hr className={classes.hr} />
                     {locationDatas.map((location, index) => {
-                        ({ label, address, city, province, zip, phone} = location);
                         return (
                             <div key={index} className={classes.resultsContainer}>
                                     <Typography variant="subtitle1" className={classes.resultsBox}>
-                                        {label}<br />
-                                        {address}<br />
-                                        {city}, {province} {' '} {zip}<br />
-                                        <a className={classes.a} href={"tel:" + this.props.phone} target="_blank">{phone}</a><br />
+                                        {location.label}<br />
+                                        {location.address}<br />
+                                        {location.city}, {location.province} {' '} {location.zip}<br />
+                                        <a className={classes.a} href={"tel:" + this.props.phone} target="_blank">{location.phone}</a><br />
                                     </Typography>
                             </div>
                         )

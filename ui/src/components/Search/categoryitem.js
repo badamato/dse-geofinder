@@ -43,18 +43,11 @@ class CategoryItem extends Component {
     render() {
         const { classes } = this.props;
         const categoriesSubCategories = get(this.props, "allCategoryData.category,subcategory", []);
-        let categoriesFound = !isEmpty(categoriesSubCategories) //boolean saying there is something found to return
-        let field, value, count, pivot;
-        if (categoriesFound){
-            ({ field, value, count, pivot } = nth(categoriesSubCategories, 1));
-        }
 
         return (
             <div className={classes.root}>
 
                 {categoriesSubCategories.map((category, index) => {
-                    ({ field, value, count, pivot } = category);
-
                     return (
                         <div key={index} className={classes.categoriesContainer}>
                             <div onClick={() => this.handleClick(category.value)}>
