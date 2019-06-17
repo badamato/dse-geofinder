@@ -79,8 +79,15 @@ export const getFilteredCategories = (lllat, lllng, urlat, urlng, category, subc
             success: function(res){
                 const categorySubCategory = res.data.locations.map(location => {
                     return {
+                        name: location.name,
+                        address: location.address,
+                        city: location.city,
+                        province: location.province,
+                        post_code: location.post_code,
+                        phone: location.phone,
                         category: location.category,
-                        subcategory: location.subcategory
+                        subcategory: location.subcategory,
+                        geo: location.geo
                     }
                 })
                 res.data.locations = categorySubCategory
