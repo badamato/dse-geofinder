@@ -25,7 +25,7 @@ const styles = {
     },
     subcategoriesBox: {
         border: '1px solid lightgray',
-        padding: '2px 30px',
+        padding: '2px 40px',
         lineHeight: '24px',
         borderBottom: '1px',
         fontSize: '12px'
@@ -47,7 +47,7 @@ class CategoryItem extends Component {
         let categoriesFound = !isEmpty(categoriesSubCategories) //boolean saying there is something found to return
         let field, value, count, pivot;
         if (categoriesFound){
-            ({ field, value, count, pivot: [] } = nth(categoriesSubCategories, 1));
+            ({ field, value, count, pivot } = nth(categoriesSubCategories, 1));
         }
 
         return (

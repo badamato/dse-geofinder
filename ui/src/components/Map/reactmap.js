@@ -26,6 +26,7 @@ class ReactMap extends Component {
             latitude: 33.769003,
             longitude: -84.389811,
             zoom: 12.5,
+            maxZoom: 22,
             bearing: 0,
             pitch: 0,
         },
