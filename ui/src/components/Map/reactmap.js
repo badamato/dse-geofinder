@@ -49,12 +49,11 @@ class ReactMap extends Component {
     }
     
     saveBounds = () => {
-        // debugger
         if (this.mapRef !=null) {
             let mapGL = this.mapRef.getMap();
             let bounds = mapGL.getBounds();
             this.props.getAllCategories(bounds._sw.lat, bounds._sw.lng, bounds._ne.lat, bounds._ne.lng)
-            console.log(this.props.getAllCategories)
+            this.props.getFilteredCategories(bounds._sw.lat, bounds._sw.lng, bounds._ne.lat, bounds._ne.lng)
         }
     }
 
@@ -96,8 +95,7 @@ const mapStateToProps = (state) => {
     return {
         location: state.location,
         marker: state.app.marker,
-
-        }
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -107,6 +105,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         getAllCategories: (lllat, lllng, urlat, urlng) => {
             dispatch(getAllCategories(lllat, lllng, urlat, urlng))
+        },
+        getFilteredCategories: (lllat, lllng, urlat, urlng) => {
+            dispatch(getFilteredCategories(lllat, lllng, urlat, urlng))
         }
     }
 }

@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import FindInPage from '@material-ui/icons/FindInPage';
 import ViewList from '@material-ui/icons/ViewList';
 
@@ -12,34 +11,34 @@ import SearchFullText from '../Search/searchfulltext';
 import SearchCategories from '../Search/searchcategories';
 
 
-function TabContainer(props) {
-    return (
-        <Typography component="div" style={{ padding: '40px 20px 30px 20px' }}>
-            {props.children}
-        </Typography>
-    );
-}
-
-function LinkTab(props) {
-    return <Tab component="a" onClick={event => event.preventDefault()} {...props} />;
-}
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
     },
+    tabContainer: {
+        padding: '40px 20px 30px 20px'
+    }
 });
+
+
 
 
 class NavTabs extends Component {
     state = {
-    value: 0,
+        value: 0,
     };
 
+
     handleChange = (event, value) => {
+        event = event.preventDefault();
         this.setState({ value });
     };
+
+    handleClick = (event) => {
+
+    }
 
 render() {
     const { classes } = this.props;
@@ -49,20 +48,19 @@ render() {
         <div className={classes.root}>
             <AppBar position="static">
                 <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
-                    <LinkTab label="Full-Text Search" icon={<FindInPage />} href="page1" />
-                    <LinkTab label="Category Search" icon={<ViewList />} href="page2" />
+                    <Tab label="Full-Text Search" icon={<FindInPage />} />
+                    <Tab label="Category Search" icon={<ViewList />} />
                 </Tabs>
             </AppBar>
             {value === 0 && 
-                <div className={classes.searchFullTextContainer}>
+                <div className={classes.tabContainer}>
                     <SearchFullText />
                 </div>
             }
-
             {value === 1 && 
-                <TabContainer component='div'>
+                <div className={classes.tabContainer}>
                     <SearchCategories />
-                </TabContainer>
+                </div>
             }
         </div>
     );

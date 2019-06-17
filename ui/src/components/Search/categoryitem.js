@@ -4,8 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { get, isEmpty, nth} from 'lodash'
 
-import { getAllCategories, getFilteredCategories } from '../../actions/actions';
-
 
 const styles = {
     root: {
@@ -34,6 +32,10 @@ const styles = {
 
 
 class CategoryItem extends Component {
+
+    handleClick = () => {
+
+    }
     
     render() {
         const { classes } = this.props;
@@ -43,7 +45,7 @@ class CategoryItem extends Component {
         if (categoriesFound){
             ({ field, value, count, pivot: [] } = nth(categoriesSubCategories, 1));
         }
-
+        // const filteredCategoriesSubcategories = get(this.props, 'filteredCategories.locations', [])
 
 
 

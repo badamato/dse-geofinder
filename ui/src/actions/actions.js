@@ -69,11 +69,19 @@ export const getAllCategories = (lllat, lllng, urlat, urlng) => dispatch => {
 
 export const getFilteredCategories = (lllat, lllng, urlat, urlng, category, subcategory) => dispatch => {
 
-    const url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=3${urlat}&urlng=${urlng}&category=${category}&subcategory=${subcategory}`;
+    const url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&category=${category}&subcategory=${subcategory}`;
 
         get({
             url: url,
             success: function(res){
+                const categorySubCategory = res.data.locations.map(location => {
+                    return {
+                        category: location.category,
+                        subcategory: location.subcategory
+                    }
+                })
+                res.data.locations = categorySubCategory
+                console.log(categorySubCategory)
                 dispatch(updateAppValue('filteredCategories', res.data))
             },
             dispatch: dispatch
