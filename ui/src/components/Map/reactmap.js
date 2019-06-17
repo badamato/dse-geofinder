@@ -82,7 +82,7 @@ class ReactMap extends Component {
             >
                 <ScatterplotOverlay
                     locations={locations}
-                    dotRadius={15}
+                    dotRadius={12}
                     globalOpacity={1}
                     compositeOperation="lighter"
                     dotFill="#ca5f14"

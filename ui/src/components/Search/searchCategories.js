@@ -31,8 +31,9 @@ class SearchCategories extends Component {
 
         return (
             <div className={classes.categoriesContainer}>
-                <hr className={classes.hr} />
                 <CategoryItem />
+                <br />
+                <hr className={classes.hr} />
             </div>
         )
     }

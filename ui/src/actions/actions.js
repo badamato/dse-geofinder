@@ -27,7 +27,7 @@ export const getGeoNameSuggest = (name, lat, lng) => dispatch => {
 export const getGeoNameSearch = (name, lat, lng, radius) => dispatch => {
 
     dispatch(setLoading())
-    const url = `/api/geo-name-search?name=${name}&lat=${lat}&lng=${lng}&radius=20`;
+    const url = `/api/geo-name-search?name=${name}&lat=${lat}&lng=${lng}&radius=15`;
 
         get({
             url: url,
@@ -84,7 +84,6 @@ export const getFilteredCategories = (lllat, lllng, urlat, urlng, category, subc
                     }
                 })
                 res.data.locations = categorySubCategory
-                console.log(categorySubCategory)
                 dispatch(updateAppValue('filteredCategories', res.data))
             },
             dispatch: dispatch
