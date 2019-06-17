@@ -6,6 +6,10 @@ const initialState = {
 
 const LocationReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'RESET_MAP': {
+            console.log('reducer updated')
+            return initialState;
+        }
         case "UPDATE":
             return {
                 ...state,

@@ -9,6 +9,7 @@ import ViewList from '@material-ui/icons/ViewList';
 
 import SearchFullText from '../Search/searchfulltext';
 import SearchCategories from '../Search/searchcategories';
+import { resetMap } from '../../actions/actions';
 
 
 
@@ -32,7 +33,13 @@ class NavTabs extends Component {
 
 
     handleChange = (event, value) => {
+        const { resetMap } = this.props;
+        if (resetMap) {
+            console.log('call action')
+            resetMap()
+        }
         event = event.preventDefault();
+
         this.setState({ value });
     };
 
@@ -75,6 +82,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        resetMap: () => dispatch(resetMap()),
+
         init: () => {
         },
     }

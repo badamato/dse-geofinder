@@ -1,5 +1,10 @@
 import {get} from '../common/requests';
 
+export const resetMap = () => dispatch => {
+    return dispatch({
+        type: 'RESET_MAP'
+    })
+}
 
 export const getGeoNameSuggest = (name, lat, lng) => dispatch => {
 
