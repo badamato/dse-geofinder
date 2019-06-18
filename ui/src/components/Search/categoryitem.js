@@ -40,9 +40,11 @@ class CategoryItem extends Component {
         this.props.getFilteredCategories(lllat, lllng, urlat, urlng, category, subcategory)
     }
 
+
     render() {
         const { classes } = this.props;
         const categoriesSubCategories = get(this.props, "allCategoryData.category,subcategory", []);
+        // const objectsWithPivot = categoriesSubCategories.filter(obj => !!obj.pivot)
 
         return (
             <div className={classes.root}>
@@ -55,18 +57,18 @@ class CategoryItem extends Component {
                                     {category.value}:{" "}{category.count}
                                 </Typography>
                             </div>
-
-                            {category.pivot &&
-                                <div onClick={() => this.handleClick(category.value, category.pivot[0].value)}>
-                                    <Typography variant="subtitle1" className={classes.subcategoriesBox}>
-                                        {category.pivot[0].value}:{"  "}{category.pivot[0].count}
-                                    </Typography>
-                                </div>
-                            }
+                                {category.pivot && category.pivot.map((sub, index) => {
+                                    return (
+                                        <div key={index} onClick={() => this.handleClick(category.value, sub.value)}>
+                                            <Typography variant="subtitle1" className={classes.subcategoriesBox}>
+                                                {sub.value}:{"  "}{sub.count}
+                                            </Typography>
+                                        </div>
+                                    )
+                                })}
                         </div>
                     )
                 })}
-
             </div>
         )
     }
