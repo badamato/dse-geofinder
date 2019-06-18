@@ -19,7 +19,7 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.paper,
     },
     tabContainer: {
-        padding: '40px 20px 30px 20px'
+        padding: '15px 20px 30px 20px'
     }
 });
 
