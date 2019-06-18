@@ -72,9 +72,9 @@ export const getAllCategories = (lllat, lllng, urlat, urlng) => dispatch => {
 }
 
 
-export const getFilteredCategories = (lllat, lllng, urlat, urlng, category, subcategory) => dispatch => {
+export const getFilteredCategories = (lllat, lllng, urlat, urlng, num_records, category, subcategory) => dispatch => {
 
-    let url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&category=${category}&subcategory=${subcategory}`;
+    let url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&num_results=${num_records}&category=${category}&subcategory=${subcategory}`;
 
         if (subcategory === null) {
             url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&category=${category}`;
@@ -83,6 +83,7 @@ export const getFilteredCategories = (lllat, lllng, urlat, urlng, category, subc
             url: url,
             success: function(res){
                 const categorySubCategory = res.data.locations.map(location => {
+                    //num_records = num_results (optional)
                     return {
                         name: location.name,
                         address: location.address,

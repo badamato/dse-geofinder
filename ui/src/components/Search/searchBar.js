@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { InputBase, MenuItem } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+// import CloseIcon from '@material-ui/icons/Close';
 import get from "lodash/get";
 
 import { getGeoNameSuggest, getGeoNameSearch} from '../../actions/actions';
@@ -17,10 +17,7 @@ const styles = {
         display: 'none',
     },
     inputInput: {
-        paddingTop: '2px',
-        paddingRight: '2px',
-        paddingBottom: '2px',
-        paddingLeft: '20px',
+        padding: '2px 10px',
         transition: 'width 2s',
         width: '100%',
         height: '40px'
@@ -28,9 +25,9 @@ const styles = {
     searchBox: {
         display: 'flex',
         borderRadius: '2px',
-        backgroundColor: '#ededed',
+        backgroundColor: '#f0f0f0',
             '&:hover': {
-                backgroundColor: '#dbdbdb',
+                backgroundColor: '#e8e8e8',
             },
     },
     closeIcon: {
@@ -98,12 +95,13 @@ class Searchbar extends Component {
                 <div className={classes.searchBox}>
                     <InputBase
                         className={classes.inputInput}
+                        type="search"
                         placeholder="Search …"
                         onChange={this.handleSearch}
                     />
-                    <div className={classes.closeIcon}>
+                    {/* <div className={classes.closeIcon}>
                         <CloseIcon />
-                    </div>
+                    </div> */}
                     <br />
                 </div>
 
