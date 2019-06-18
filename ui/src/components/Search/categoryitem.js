@@ -23,14 +23,14 @@ const styles = {
         lineHeight: '24px',
         backgroundColor: '#f6f6f6',
         borderBottom: '1px',
-        fontSize: '12px'
+        fontSize: '18px'
     },
     subcategoriesBox: {
         border: '1px solid lightgray',
         padding: '2px 40px',
         lineHeight: '24px',
         borderBottom: '1px',
-        fontSize: '12px'
+        fontSize: '15px'
     },
 };
 
