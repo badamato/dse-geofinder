@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
 import CategoryItem from './categoryitem';
-import { get, isEmpty, nth} from 'lodash'
+import { get } from 'lodash'
 
 import {getFilteredCategories} from '../../actions/actions'
 
@@ -43,7 +43,6 @@ class SearchCategories extends Component {
     render() {
         const { classes } = this.props;
         const locationsList = get(this.props, "filteredCategories.locations", [])
-        console.log(locationsList)
 
         return (
             <div className={classes.categoriesContainer}>

@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import { get } from 'lodash'
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -10,6 +11,9 @@ import Reactmap from '../../components/Map/reactmap'
 import Navtabs from '../../components/Navtabs/navtabs';
 import secrets from '../../secrets/secrets';
 // import style from '../../style/style.css';
+
+
+import {getFilteredCategories} from '../../actions/actions'
 
 
 const styles = {
@@ -84,6 +88,8 @@ class HomePage extends PureComponent {
         const { classes } = this.props;
         const { query: querySuggest } = (this.props.locDataSuggest || {});
         const { query: querySearch } = (this.props.locDataSearch || {});
+        const categoriesQuery = get(this.props, "filteredCategories.query", [])
+        console.log(categoriesQuery)
         
         return (
         <div className={classes.container}>
@@ -102,7 +108,7 @@ class HomePage extends PureComponent {
                         <Typography variant="h5" className={classes.cqlTitle}>Queries</Typography>
                         <Divider varient='middle' />
                         <Typography variant='subtitle1' className={classes.cqlSection}>
-                                <div className={classes.queryText}>SUGGEST CQL:<span className={classes.span}>{querySuggest}</span>
+                                <div className={classes.queryText}>SUGGEST CQL:<span className={classes.span}>{querySuggest || categoriesQuery}</span>
                                 </div>
                         </Typography>
                         <Divider varient='middle' />
@@ -122,7 +128,8 @@ class HomePage extends PureComponent {
 const mapStateToProps = (state, ownProps) => {
     return {
         locDataSuggest: state.location.locDataSuggest,
-        locDataSearch: state.location.locDataSearch
+        locDataSearch: state.location.locDataSearch,
+        filteredCategories:  state.app.filteredCategories
     }
 }
 

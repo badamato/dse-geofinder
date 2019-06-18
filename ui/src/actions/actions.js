@@ -97,6 +97,7 @@ export const getFilteredCategories = (lllat, lllng, urlat, urlng, num_records, c
                     }
                 })
                 res.data.locations = categorySubCategory
+                console.log(res.data)
                 dispatch(updateAppValue('filteredCategories', res.data))
             },
             dispatch: dispatch
