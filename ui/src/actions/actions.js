@@ -71,13 +71,15 @@ export const getAllCategories = (lllat, lllng, urlat, urlng) => dispatch => {
         });
 }
 
+//this.props.getFilteredCategories(lllat, lllng, urlat, urlng, category, subcategory)
+export const getFilteredCategories = (lllat, lllng, urlat, urlng, category, subcategory) => dispatch => {
+    category = encodeURIComponent(category)
+    subcategory = encodeURIComponent(subcategory)
 
-export const getFilteredCategories = (lllat, lllng, urlat, urlng, num_records, category, subcategory) => dispatch => {
+    let url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&num_results=10000&category=${category}&subcategory=${subcategory}`;
 
-    let url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&num_results=${num_records}&category=${category}&subcategory=${subcategory}`;
-
-        if (subcategory === null) {
-            url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&category=${category}`;
+        if (subcategory === null || subcategory === "undefined") {
+            url = `/api/geo-bbox-filter-on-category?lllat=${lllat}&lllng=${lllng}&urlat=${urlat}&urlng=${urlng}&num_results=10000&category=${category}`;
         }
         get({
             url: url,
@@ -97,7 +99,6 @@ export const getFilteredCategories = (lllat, lllng, urlat, urlng, num_records, c
                     }
                 })
                 res.data.locations = categorySubCategory
-                console.log(res.data)
                 dispatch(updateAppValue('filteredCategories', res.data))
             },
             dispatch: dispatch

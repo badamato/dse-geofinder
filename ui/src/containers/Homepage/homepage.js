@@ -89,7 +89,6 @@ class HomePage extends PureComponent {
         const { query: querySuggest } = (this.props.locDataSuggest || {});
         const { query: querySearch } = (this.props.locDataSearch || {});
         const categoriesQuery = get(this.props, "filteredCategories.query", [])
-        console.log(categoriesQuery)
         
         return (
         <div className={classes.container}>
