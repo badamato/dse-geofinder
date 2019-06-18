@@ -50,16 +50,18 @@ class SearchCategories extends Component {
                 <CategoryItem />
                 <br />
                 <hr className={classes.hr} />
-                {locationsList.map((category, index) => {(
-                    <div key={index} className={classes.filteredContainer}>
-                        <Typography variant="subtitle1" className={classes.filteredBox}>
-                            {category.name}<br />
-                            {category.address}<br />
-                            {category.city}, {category.province}{" "}{category.zip}<br />
-                            <a className={classes.a} href={"tel:" + this.props.phone} target="_blank">{category.phone}</a><br />
-                        </Typography>
-                    </div>
-                )})}
+                {locationsList.map((category, index) => {
+                    return (
+                        <div key={index} className={classes.filteredContainer}>
+                            <Typography variant="subtitle1" className={classes.filteredBox}>
+                                {category.name}<br />
+                                {category.address}<br />
+                                {category.city}, {category.province}{" "}{category.zip}<br />
+                                <a className={classes.a} href={"tel:" + this.props.phone} target="_blank">{category.phone}</a><br />
+                            </Typography>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
