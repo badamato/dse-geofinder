@@ -10,7 +10,7 @@ import {getFilteredCategories} from '../../actions/actions'
 const styles = {
     root: {
         padding: 0,
-        height: '600px',
+        height: '500px',
         overflow: 'auto'
     },
     categoriesContainer: {
@@ -18,18 +18,22 @@ const styles = {
         margin: '0 auto'
     },
     categoriesBox: {
-        border: '1px solid lightgray',
+        borderTop: '.5px solid lightgray',
+        borderRight: '1px solid lightgray',
+        borderBottom: '1px solid lightgray',
+        borderLeft: '.5px solid lightgray',
         padding: '2px 10px',
         lineHeight: '24px',
         backgroundColor: '#f6f6f6',
-        borderBottom: '1px',
-        fontSize: '18px'
+        fontSize: '18px', 
     },
     subcategoriesBox: {
-        border: '1px solid lightgray',
+        borderTop: '.5px solid lightgray',
+        borderRight: '1px solid lightgray',
+        borderBottom: '1px solid lightgray',
+        borderLeft: '.5px solid lightgray',
         padding: '2px 40px',
         lineHeight: '24px',
-        borderBottom: '1px',
         fontSize: '15px'
     },
 };
@@ -46,7 +50,6 @@ class CategoryItem extends Component {
     render() {
         const { classes } = this.props;
         const categoriesAndSubCategoriesData = get(this.props, "allCategoryData.category,subcategory", []);
-        console.log(categoriesAndSubCategoriesData)
         // const objectsWithPivot = categoriesSubCategories.filter(obj => !!obj.pivot)
 
         return (
