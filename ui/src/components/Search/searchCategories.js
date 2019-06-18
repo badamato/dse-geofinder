@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography'
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button'
 import CategoryItem from './categoryitem';
+import { amber } from '@material-ui/core/colors'
 import { get } from 'lodash'
-
-import {getFilteredCategories} from '../../actions/actions'
 
 
 const styles = {
@@ -37,6 +37,10 @@ const styles = {
     a: {
         textDecoration: 'none',
         color: '#ca5f14'
+    },
+    button: {
+        margin: '10px 0 30px 0',
+        backgroundColor: '#ca5f14',
     }
 };
 
@@ -48,6 +52,8 @@ class SearchCategories extends Component {
 
         return (
             <div className={classes.categoriesContainer}>
+                <Button className={classes.button} size='small'>Remove Marker</Button>
+                <br />
                 <CategoryItem />
                 <br />
                 <hr className={classes.hr} />

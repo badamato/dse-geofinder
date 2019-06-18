@@ -40,7 +40,6 @@ class CategoryItem extends Component {
     handleClick = (category, subcategory) => {
         const {lllat, lllng, urlat, urlng } = this.props.bounds
         this.props.getFilteredCategories(lllat, lllng, urlat, urlng, category, subcategory)
-        console.log(this.props.getFilteredCategories)
     }
 
 
@@ -54,7 +53,6 @@ class CategoryItem extends Component {
             <div className={classes.root}>
 
                 {categoriesAndSubCategoriesData.map((category, index) => {
-                    // console.log(category.value)
                     return (
                         <div key={index} className={classes.categoriesContainer}>
                             <div onClick={() => this.handleClick(category.value)}>
@@ -63,7 +61,6 @@ class CategoryItem extends Component {
                                 </Typography>
                             </div>
                                 {category.pivot && category.pivot.map((sub, index) => {
-                                    // console.log(sub.value)
                                     return (
                                         <div key={index} onClick={() => this.handleClick(category.value, sub.value)}>
                                             <Typography variant="subtitle1" className={classes.subcategoriesBox}>
