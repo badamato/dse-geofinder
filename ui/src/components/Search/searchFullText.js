@@ -13,7 +13,7 @@ const styles = {
     resultsContainer: {
         height: '125px'
     },
-    resultsBox: {
+    resultsText: {
         border: '1px solid lightgray',
         padding: '10px',
         lineHeight: '20px',
@@ -47,7 +47,7 @@ class SearchFullText extends Component {
                     {locationDatas.map((location, index) => {
                         return (
                             <div key={index} className={classes.resultsContainer}>
-                                    <Typography variant="subtitle1" className={classes.resultsBox}>
+                                    <Typography variant="subtitle1" className={classes.resultsText}>
                                         {location.label}<br />
                                         {location.address}<br />
                                         {location.city}, {location.province} {' '} {location.zip}<br />

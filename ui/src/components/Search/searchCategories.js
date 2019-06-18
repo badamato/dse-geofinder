@@ -12,11 +12,13 @@ const styles = {
     root: {
 
     },
-    filteredContainer: {
-        height: '125px'
+    categoriesContainer: {
 
     },
-    filteredBox: {
+    filteredContainer: {
+        height: '125px'
+    },
+    filteredText: {
         border: '1px solid lightgray',
         padding: '10px',
         lineHeight: '20px',
@@ -52,7 +54,7 @@ class SearchCategories extends Component {
                 {locationsList.map((category, index) => {
                     return (
                         <div key={index} className={classes.filteredContainer}>
-                            <Typography variant="subtitle1" className={classes.filteredBox}>
+                            <Typography variant="subtitle1" className={classes.filteredText}>
                                 {category.name}<br />
                                 {category.address}<br />
                                 {category.city}, {category.province}{" "}{category.zip}<br />

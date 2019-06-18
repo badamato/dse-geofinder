@@ -9,7 +9,9 @@ import {getFilteredCategories} from '../../actions/actions'
 
 const styles = {
     root: {
-        padding: 0
+        padding: 0,
+        height: '600px',
+        overflow: 'auto'
     },
     categoriesContainer: {
         width: '80%',
@@ -43,13 +45,13 @@ class CategoryItem extends Component {
 
     render() {
         const { classes } = this.props;
-        const categoriesSubCategories = get(this.props, "allCategoryData.category,subcategory", []);
+        const categoriesAndSubCategoriesData = get(this.props, "allCategoryData.category,subcategory", []);
         // const objectsWithPivot = categoriesSubCategories.filter(obj => !!obj.pivot)
 
         return (
             <div className={classes.root}>
 
-                {categoriesSubCategories.map((category, index) => {
+                {categoriesAndSubCategoriesData.map((category, index) => {
                     return (
                         <div key={index} className={classes.categoriesContainer}>
                             <div onClick={() => this.handleClick(category.value)}>
