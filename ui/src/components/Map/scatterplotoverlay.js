@@ -9,7 +9,6 @@ function round(x, n) {
 
 const defaultProps = {
   lngLatAccessor: location => {
-    // debugger
     return [location.geo.lng, location.geo.lat]
   },
   renderWhileDragging: true,

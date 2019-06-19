@@ -6,7 +6,7 @@ import ScatterplotOverlay from './scatterplotoverlay'
 import UserIcon from './userIcon';
 import secrets from '../../secrets/secrets';
 
-import { updateAppValue, getAllCategories } from '../../actions/actions'
+import { updateAppValue, getAllCategories, getFilteredCategories } from '../../actions/actions'
 
 
 const navStyle = {
@@ -68,7 +68,9 @@ class ReactMap extends Component {
 
     render() {
         const {viewport} = this.state;
-        const locations = get(this.props, "location.locDataSearch.locations", [])
+        const fullTextLocations = get(this.props, "location.locDataSearch.locations", []);
+        const categorySubCategoryLocations = get(this.props, "filteredCategories.locations", [])
+        console.log(categorySubCategoryLocations)
 
         return (
             <MapGL
@@ -81,7 +83,7 @@ class ReactMap extends Component {
                     this._onMapClick(event)}
             >
                 <ScatterplotOverlay
-                    locations={locations}
+                    locations={(fullTextLocations, categorySubCategoryLocations)}
                     dotRadius={12}
                     globalOpacity={1}
                     compositeOperation="lighter"
@@ -103,6 +105,8 @@ const mapStateToProps = (state) => {
     return {
         location: state.location,
         marker: state.app.marker,
+        filteredCategories:  state.app.filteredCategories
+
     }
 }
 
@@ -113,7 +117,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         getAllCategories: (lllat, lllng, urlat, urlng) => {
             dispatch(getAllCategories(lllat, lllng, urlat, urlng))
-        }
+        },
     }
 }
 
