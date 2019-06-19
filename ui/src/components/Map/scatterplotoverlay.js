@@ -15,7 +15,6 @@ const defaultProps = {
   dotRadius: 4,
   dotFill: '#1FBAD6',
   globalOpacity: 1,
-  // Same as browser default.
   compositeOperation: 'source-over'
 };
 

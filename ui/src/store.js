@@ -14,7 +14,7 @@ export const middlewares = [
 
 export const enhancers = [applyMiddleware(...middlewares)];
 
-const initialAppState = {
+export const initialAppState = {
     appName: 'Geofinder API',
     primaryColor: '#1AB5E0',
     viewport: {
@@ -46,3 +46,4 @@ export default createStore(
     initialState,
     composeEnhancers(...enhancers)
 );
+

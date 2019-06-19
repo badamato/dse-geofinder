@@ -70,7 +70,6 @@ class ReactMap extends Component {
         const {viewport} = this.state;
         const fullTextLocations = get(this.props, "location.locDataSearch.locations", []);
         const categorySubCategoryLocations = get(this.props, "filteredCategories.locations", [])
-        console.log(categorySubCategoryLocations)
 
         return (
             <MapGL
@@ -83,7 +82,7 @@ class ReactMap extends Component {
                     this._onMapClick(event)}
             >
                 <ScatterplotOverlay
-                    locations={(fullTextLocations, categorySubCategoryLocations)}
+                    locations={(fullTextLocations.concat(categorySubCategoryLocations))}
                     dotRadius={12}
                     globalOpacity={1}
                     compositeOperation="lighter"

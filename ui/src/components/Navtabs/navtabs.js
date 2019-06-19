@@ -9,8 +9,7 @@ import ViewList from '@material-ui/icons/ViewList';
 
 import SearchFullText from '../Search/searchfulltext';
 import SearchCategories from '../Search/searchcategories';
-import { resetMap } from '../../actions/actions';
-
+import { resetMap, getAllCategories } from '../../actions/actions';
 
 
 const styles = theme => ({
@@ -24,8 +23,6 @@ const styles = theme => ({
 });
 
 
-
-
 class NavTabs extends Component {
     state = {
         value: 0,
@@ -33,9 +30,10 @@ class NavTabs extends Component {
 
     handleChange = (event, value) => {
         const { resetMap } = this.props;
-        if (resetMap) {
-            resetMap()
-        }
+        const {lllat, lllng, urlat, urlng } = this.props.bounds
+
+        resetMap()
+        this.props.getAllCategories(lllat, lllng, urlat, urlng);
         event = event.preventDefault();
         this.setState({ value });
     };
@@ -48,10 +46,13 @@ render() {
     return (
         <div className={classes.root}>
             <AppBar position="static">
+                <div>
                 <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
                     <Tab label="Full-Text Search" icon={<FindInPage />} />
                     <Tab label="Category Search" icon={<ViewList />} />
                 </Tabs>
+
+                </div>
             </AppBar>
             {value === 0 && 
                 <div className={classes.tabContainer}>
@@ -70,16 +71,18 @@ render() {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        
+        bounds: state.app.bounds
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        resetMap: () => dispatch(resetMap()),
-
-        init: () => {
+        resetMap: () => {
+            dispatch(resetMap())
         },
+        getAllCategories: (lllat, lllng, urlat, urlng) => {
+            dispatch(getAllCategories(lllat, lllng, urlat, urlng))
+        }
     }
 }
 
