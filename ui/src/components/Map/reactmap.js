@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MapGL, { Marker } from 'react-map-gl';
+import MapGL, { Marker, NavigationControl, Layer } from 'react-map-gl';
 import get from "lodash/get";
 import ScatterplotOverlay from './scatterplotoverlay'
 import UserIcon from './userIcon';
@@ -11,10 +11,7 @@ import { updateAppValue, getAllCategories, getFilteredCategories } from '../../a
 
 const navStyle = {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    padding: '10px',
-    zIndex: 10,
+    left: 0
 };
 
 class ReactMap extends Component {
@@ -66,6 +63,8 @@ class ReactMap extends Component {
     }
 
 
+
+
     render() {
         const {viewport} = this.state;
         const fullTextLocations = get(this.props, "location.locDataSearch.locations", []);
@@ -74,6 +73,7 @@ class ReactMap extends Component {
         return (
             <MapGL
                 {...viewport}
+                id='map'
                 mapboxApiAccessToken={this.state.token}
                 mapStyle='mapbox://styles/mapbox/light-v10'
                 onViewportChange={viewport => this.onMapChange({viewport})}
@@ -95,6 +95,9 @@ class ReactMap extends Component {
                 >
                     <UserIcon size={55} />
                 </Marker>
+                <div style={navStyle} >
+                    <NavigationControl {...viewport} onViewportChange={viewport => this.onMapChange({viewport})} />
+                </div>
             </MapGL>
         );
     }
