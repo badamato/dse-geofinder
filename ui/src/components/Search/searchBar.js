@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { InputBase, MenuItem } from '@material-ui/core';
-// import CloseIcon from '@material-ui/icons/Close';
-import get from "lodash/get";
+import { get } from "lodash";
 
 import { getGeoNameSuggest, getGeoNameSearch} from '../../actions/actions';
 
@@ -99,9 +98,6 @@ class Searchbar extends Component {
                         placeholder="Search …"
                         onChange={this.handleSearch}
                     />
-                    {/* <div className={classes.closeIcon}>
-                        <CloseIcon />
-                    </div> */}
                     <br />
                 </div>
 

@@ -4,16 +4,12 @@ import MAP_STYLE from './mapstyle.json';
 import style from '../../style/style.css'
 
 const defaultMapStyle = fromJS(MAP_STYLE);
-
 const categories = ['banks', 'fastfood', 'retail'];
-
 const layerSelector = {
     banks: /banks/,
     fastfood: /fastfood/,
     retail: /smallbox|bigbox/
 }
-
-//layer color class by TYPE
 const colorClass = {
     circle: 'circle-color',
     stroke: 'circle-stroke-width',
@@ -21,14 +17,9 @@ const colorClass = {
     blur: 'circle-blur',
     opacity: 'circle-opacity'
 }
-
-
 const defaultContainer = ({children}) => <div className="control-panel">{children}</div>;
-// const eventNames = ['onDragStart', 'onDrag', 'onDragEnd'];
 
-// function round5(value) {
-//     return (Math.round(value * 1e5) / 1e5).toFixed(5);
-// }
+
 
 class ControlPanel extends PureComponent {
 
@@ -106,17 +97,6 @@ class ControlPanel extends PureComponent {
             </div>
         );
     }
-
-    // renderEvent = (eventName) => {
-    //     const {events = {}} = this.props;
-    //     const lngLat = events[eventName];
-    //     return (
-    //         <div key={eventName}>
-    //             <strong>{eventName}:</strong>{' '}
-    //             {lngLat ? lngLat.map(round5).join(', ') : <em>null</em>}
-    //         </div>
-    //     );
-    // };
 
     render() {
         const Container = this.props.containerComponent || defaultContainer;

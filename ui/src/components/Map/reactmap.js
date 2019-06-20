@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MapGL, { Marker, NavigationControl, Layer } from 'react-map-gl';
-import get from "lodash/get";
+import MapGL, { Marker, NavigationControl } from 'react-map-gl';
+import { get } from "lodash";
 import ScatterplotOverlay from './scatterplotoverlay'
-import UserIcon from './userIcon';
 import secrets from '../../secrets/secrets';
 
-import { updateAppValue, getAllCategories, getFilteredCategories } from '../../actions/actions'
+import { updateAppValue, getAllCategories } from '../../actions/actions'
 
-
-const navStyle = {
-    position: 'absolute',
-    left: 0
-};
 
 class ReactMap extends Component {
     state = {
@@ -93,7 +87,6 @@ class ReactMap extends Component {
                     latitude={this.props.marker.latitude}
                     longitude={this.props.marker.longitude}
                 >
-                    {/* <img src='./placeholder.svg' /> */}
                     <svg height="40pt" viewBox="-96 0 512 512" width="40pt" xmlns="http://www.w3.org/2000/svg">
                         <path d="m195.960938 384.738281h-71.921876c-48.699218 7.640625-84.039062 30.390625-84.039062 57.261719 0 33.140625 53.730469 60 120 60s120-26.859375 120-60c0-26.871094-35.339844-49.621094-84.039062-57.261719zm0 0" fill="#91eb90"/>
                         <path d="m310 160c0 30.789062-9.28125 59.421875-25.191406 83.238281-3.988282 6.355469-120.671875 192.175781-124.808594 198.761719-4.101562-6.53125-120.804688-192.382812-124.808594-198.761719-15.910156-23.816406-25.191406-52.449219-25.191406-83.238281 0-82.839844 67.160156-150 150-150s150 67.160156 150 150zm0 0" fill="#ff641a"/>
@@ -105,7 +98,7 @@ class ReactMap extends Component {
                         </g>
                     </svg>
                 </Marker>
-                <div style={navStyle} >
+                <div style={{position: 'absolute', left: 0}} >
                     <NavigationControl {...viewport} onViewportChange={viewport => this.onMapChange({viewport})} />
                 </div>
             </MapGL>

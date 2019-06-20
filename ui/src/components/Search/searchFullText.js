@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import SearchBar from './searchbar';
-import { get, isEmpty, nth} from 'lodash'
+import { get } from 'lodash'
 
 
 const styles = {

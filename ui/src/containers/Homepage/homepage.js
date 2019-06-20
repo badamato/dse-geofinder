@@ -10,10 +10,6 @@ import Divider from '@material-ui/core/Divider';
 import Reactmap from '../../components/Map/reactmap'
 import Navtabs from '../../components/Navtabs/navtabs';
 import secrets from '../../secrets/secrets';
-// import style from '../../style/style.css';
-
-
-import {getFilteredCategories} from '../../actions/actions'
 
 
 const styles = {
