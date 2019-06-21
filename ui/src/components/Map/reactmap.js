@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MapGL, { Marker, NavigationControl } from 'react-map-gl';
 import { get } from "lodash";
 import ScatterplotOverlay from './scatterplotoverlay';
+import RadiusOverlay from './radiusoverlay';
 import UserIcon from './userIcon';
 import secrets from '../../secrets/secrets';
 
@@ -65,6 +66,8 @@ class ReactMap extends Component {
         const fullTextLocations = get(this.props, "location.locDataSearch.locations", []);
         const categorySubCategoryLocations = get(this.props, "filteredCategories.locations", [])
 
+        const locations = get(this.props, 'location.locDataSearch.locations', [])
+
         return (
             <MapGL
                 {...viewport}
@@ -90,6 +93,14 @@ class ReactMap extends Component {
                 >
                 <UserIcon />
                 </Marker>
+                <RadiusOverlay
+                    locations={locations}
+                    dotRadius={50}
+                    globalOpacity={1}
+                    compositeOperation="lighter"
+                    dotFill="#96c4e7"
+                    renderWhileDragging={true}
+                />
                 <div style={{position: 'absolute', left: 0}} >
                     <NavigationControl {...viewport} onViewportChange={viewport => this.onMapChange({viewport})} />
                 </div>
