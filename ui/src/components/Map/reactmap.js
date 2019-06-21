@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
 import MapGL, { Marker, NavigationControl } from 'react-map-gl';
 import { get } from "lodash";
+import classNames from 'classnames';
 import ScatterplotOverlay from './scatterplotoverlay';
 import RadiusOverlay from './radiusoverlay';
 import UserIcon from './userIcon';
 import secrets from '../../secrets/secrets';
 
-import { updateAppValue, getAllCategories } from '../../actions/actions'
+import { updateAppValue, getAllCategories } from '../../actions/actions';
+
+const styles = {
+    root: {
+
+    },
+    marker: {
+        position: 'absolute',
+        left: '350px',
+        top: '325px'
+    }
+};
 
 
 class ReactMap extends Component {
@@ -62,6 +75,7 @@ class ReactMap extends Component {
 
 
     render() {
+        const { classes } = this.props;
         const {viewport} = this.state;
         const fullTextLocations = get(this.props, "location.locDataSearch.locations", []);
         const categorySubCategoryLocations = get(this.props, "filteredCategories.locations", []);
@@ -82,25 +96,25 @@ class ReactMap extends Component {
                     locations={(fullTextLocations.concat(categorySubCategoryLocations))}
                     dotRadius={12}
                     globalOpacity={1}
-                    compositeOperation="lighter"
+                    compositeOperation="multiple"
                     dotFill="#ca5f14"
                     renderWhileDragging={true}
                     />
+                    <RadiusOverlay
+                        locations={[[this.props.marker.longitude, this.props.marker.latitude]]}
+                        dotRadius={300}
+                        globalOpacity={-200}
+                        compositeOperation="lighter"
+                        dotFill="rgba(202,225,243,0.4)"
+                        renderWhileDragging={true}
+                    />
                 <Marker 
+                    className={classNames.marker}
                     latitude={this.props.marker.latitude}
                     longitude={this.props.marker.longitude}
                 >
                 <UserIcon />
                 </Marker>
-                <RadiusOverlay
-                
-                    locations={[[this.props.marker.longitude, this.props.marker.latitude]]}
-                    dotRadius={100}
-                    globalOpacity={1}
-                    compositeOperation="lighter"
-                    dotFill="#96c4e7"
-                    renderWhileDragging={true}
-                />
                 <div style={{position: 'absolute', left: 0}} >
                     <NavigationControl {...viewport} onViewportChange={viewport => this.onMapChange({viewport})} />
                 </div>
@@ -129,4 +143,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default (connect(mapStateToProps, mapDispatchToProps)(ReactMap));
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(ReactMap));

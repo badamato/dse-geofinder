@@ -15,7 +15,7 @@ const defaultProps = {
   dotRadius: 4,
   dotFill: '#1FBAD6',
   globalOpacity: 1,
-  compositeOperation: 'source-over'
+  compositeOperation: 'multiple'
 };
 
 export default class ScatterplotOverlay extends PureComponent {
