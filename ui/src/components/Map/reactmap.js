@@ -64,9 +64,8 @@ class ReactMap extends Component {
     render() {
         const {viewport} = this.state;
         const fullTextLocations = get(this.props, "location.locDataSearch.locations", []);
-        const categorySubCategoryLocations = get(this.props, "filteredCategories.locations", [])
-
-        const locations = get(this.props, 'location.locDataSearch.locations', [])
+        const categorySubCategoryLocations = get(this.props, "filteredCategories.locations", []);
+        const locations = get(this.props, 'marker', [])
 
         return (
             <MapGL
@@ -94,8 +93,9 @@ class ReactMap extends Component {
                 <UserIcon />
                 </Marker>
                 <RadiusOverlay
-                    locations={locations}
-                    dotRadius={50}
+                
+                    locations={[[this.props.marker.longitude, this.props.marker.latitude]]}
+                    dotRadius={100}
                     globalOpacity={1}
                     compositeOperation="lighter"
                     dotFill="#96c4e7"

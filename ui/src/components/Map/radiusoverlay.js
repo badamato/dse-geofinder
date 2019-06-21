@@ -9,11 +9,11 @@ function round(x, n) {
 
 const defaultProps = {
     lngLatAccessor: location => {
-        return [location.geo[0], location.geo[1]]
+        return location
     },
     renderWhileDragging: true,
-    dotRadius: 50,
-    dotFill: '#96c4e7',
+    dotRadius: 4,
+    dotFill: '#1FBAD6',
     globalOpacity: 1,
     compositeOperation: 'source-over'
 };
@@ -34,6 +34,7 @@ export default class RadiusOverlay extends PureComponent {
     ctx.globalCompositeOperation = compositeOperation;
 
     if ((renderWhileDragging || !isDragging) && locations) {
+        // debugger
         for (const location of locations) {
             const pixel = project(lngLatAccessor(location));
             const pixelRounded = [round(pixel[0], 1), round(pixel[1], 1)];
