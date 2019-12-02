@@ -1,15 +1,9 @@
 
 
 ## Overview
-This is a simple web app to demonstrate some of the geospatial capabilities in DSE.  It is not meant to be a demonstration of how to build a REST API. 
+The Geofinder application leverages DSE Search's geospatial, type-ahead, and facet query capabilities to provide the easy-to-use UI end users expect. As new POI data is added to the cluster, it will be indexed immediately and be searchable as soon as it is ingested.
 
 --
-
-**Demo Video**
-
-Will insert a demo video here.
-
-----------
 
 ## Assumptions
 
